@@ -56,6 +56,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
     - l-value 와 r-value
     
 ### 5일
+- 소스파일, 바이트코드, 실행까지의 문자 집합 변화 과정
 - board-app 프로젝트 수행
   - 01. 프로젝트 준비 - Gradle 빌드 도구를 사용하여 프로젝트 준비하기
   - 02. 리터럴과 콘솔 출력 
