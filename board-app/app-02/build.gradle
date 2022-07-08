@@ -1,0 +1,29 @@
+plugins {
+    id 'application'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'junit:junit:4.13.2'
+    implementation 'com.google.guava:guava:30.1.1-jre'
+}
+
+application {
+    mainClass = 'com.bitcamp.board.BoardDetailApp'
+}
+
+// 자바 소스를 컴파일 할 때 적용할 옵션
+tasks.withType(JavaCompile) {
+    // 프로젝트의 소스 파일 인코딩을 gradle에게 알려준다.
+    // $javac -encoding UTF-8 ..
+    options.encoding = 'UTF-8' 
+
+    // 소스 파일을 작성할 때 사용할 자바 버전
+    sourceCompatibility = '11'
+
+    // 자바 클래스를 실행시킬 JVM의 최소 버전
+    targetCompatibility = '11'
+}
