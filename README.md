@@ -56,4 +56,9 @@ export PATH=${JAVA_HOME}/bin:$PATH
     - l-value 와 r-value
     
 ### 5일
-- 
+- board-app 프로젝트 수행
+  - 01. 프로젝트 준비 - Gradle 빌드 도구를 사용하여 프로젝트 준비하기
+  - 02. 리터럴과 콘솔 출력 
+  - 03. 키보드 입력과 변수, 조건문, 반복문
+
+
