@@ -62,4 +62,6 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 02. 리터럴과 콘솔 출력 
   - 03. 키보드 입력과 변수, 조건문, 반복문
 
-
+### 6일
+- 부팅 과정 소개(ROM BIOS, Firmware, HDD 저장 원리 등)
+- 변수와 연산자 사용법
