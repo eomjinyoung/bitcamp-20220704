@@ -68,3 +68,8 @@ export PATH=${JAVA_HOME}/bin:$PATH
 
 ### 7일
 - 연산자 사용법(계속)
+- 흐름제어문: if, if~ else~, switch, while, do~ while
+- board-app 프로젝트 수행
+  - 04. 변수 사용법
+
+### 8일
