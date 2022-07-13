@@ -63,18 +63,9 @@ public class App {
         System.out.printf("내용: %s\n", content);
         System.out.printf("조회수: %d\n", viewCount);
         System.out.printf("작성자: %s\n", writer);
-
-        // Date 도구함의 도구를 쓸 수 있도록 데이터를 준비시킨다.
-        // new Date(밀리초)
-        //   => 지정한 밀리초를 가지고 날짜 관련 도구를 사용할 수 있도록 설정한다.
-        // Date date
-        //   => createdDate 밀리초를 가지고 설정한 날짜 정보
         java.util.Date date = new java.util.Date(createdDate);
-        
-        // Date 도구함을 통해 설정한 날짜 정보를 가지고 printf()를 실행한다.
-        // %Y : date에 설정된 날짜 정보에서 년도만 추출한다.
         System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", date);
-
+      
       } else if (menuNo == 3) {
         System.out.println("[게시글 등록]");
 
@@ -94,6 +85,7 @@ public class App {
         viewCount = 0;
         createdDate = System.currentTimeMillis();
 
+        
       } else {
         System.out.println("메뉴 번호가 옳지 않습니다!");
       }
