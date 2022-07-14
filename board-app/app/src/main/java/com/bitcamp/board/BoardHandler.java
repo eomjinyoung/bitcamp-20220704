@@ -17,8 +17,6 @@ public class BoardHandler {
   static int[] viewCount = new int[SIZE];
   static long[] createdDate = new long[SIZE];
 
-  static java.util.Scanner keyboardInput = new java.util.Scanner(System.in);
-
   static void processList() {
     // 날짜 정보에서 값을 추출하여 특정 포맷의 문자열로 만들어줄 도구를 준비
     java.text.SimpleDateFormat formatter = 
@@ -43,9 +41,7 @@ public class BoardHandler {
   static void processDetail() {
     System.out.println("[게시글 상세보기]");
 
-    System.out.print("조회할 게시글 번호? ");
-    String input = keyboardInput.nextLine();
-    int boardNo = Integer.parseInt(input);
+    int boardNo = Prompt.inputInt("조회할 게시글 번호? ");
 
     // 해당 번호의 게시글이 몇 번 배열에 들어 있는지 알아내기
     int boardIndex = -1;
@@ -81,25 +77,11 @@ public class BoardHandler {
       return;
     }
 
-    System.out.print("제목? ");
-    title[boardCount] = keyboardInput.nextLine();
+    title[boardCount] = Prompt.inputString("제목? ");
+    content[boardCount] = Prompt.inputString("내용? ");
+    writer[boardCount] = Prompt.inputString("작성자? ");
+    password[boardCount] = Prompt.inputString("암호? ");
 
-    System.out.print("내용? ");
-    content[boardCount] = keyboardInput.nextLine();
-
-    System.out.print("작성자? "); 
-    writer[boardCount] = keyboardInput.nextLine();
-
-    System.out.print("암호? ");
-    password[boardCount] = keyboardInput.nextLine();
-
-    /*
-    if (boardCount == 0) {
-      no[boardCount] = 1;
-    } else {
-      no[boardCount] = no[boardCount - 1] + 1;
-    }
-    */
     no[boardCount] = boardCount == 0 ? 1 : no[boardCount - 1] + 1;
 
     viewCount[boardCount] = 0;

@@ -6,13 +6,11 @@ package com.bitcamp.board;
 
 public class App {
   
-  static java.util.Scanner keyboardInput = new java.util.Scanner(System.in);
-
   public static void main(String[] args) {
     welcome();
     loop: while (true) {
       displayMenu();
-      int menuNo = promptMenu();
+      int menuNo = Prompt.inputInt("메뉴를 선택하세요[1..3](0: 종료) ");
       displayLine();
 
       switch (menuNo) {
@@ -27,7 +25,7 @@ public class App {
     } // while
 
     System.out.println("안녕히 가세요!");
-    keyboardInput.close();
+    Prompt.close();
   } // main
 
   static void welcome() {
@@ -43,26 +41,10 @@ public class App {
     System.out.println("  2: 게시글 상세보기");
     System.out.println("  3: 게시글 등록");
     System.out.println();
-    System.out.print("메뉴를 선택하세요[1..3](0: 종료) ");
   }
 
   static void displayLine() {
     System.out.println("=========================================");
-  }
-
-  // 메서드를 통해 특정 코드의 복잡함을 감출 수 있다. ==> encapsulation(캡슐화)
-  static int promptMenu() {
-    // 사용자로부터 메뉴 번호를 입력 받기
-    // 방법1:
-    /*
-    String input = keyboardInput.nextLine();
-    return Integer.parseInt(input);
-    */
-
-    // 방법2:
-    int menuNo = keyboardInput.nextInt();
-    keyboardInput.nextLine(); // 입력한 숫자 뒤에 남아 있는 줄바꿈 코드 제거
-    return menuNo;
   }
 
   static void displayBlankLine() {
