@@ -13,6 +13,10 @@ public class App {
     System.out.println();
 
     java.util.Scanner keyboardInput = new java.util.Scanner(System.in);
+    
+    // 날짜 정보에서 값을 추출하여 특정 포맷의 문자열로 만들어줄 도구를 준비
+    java.text.SimpleDateFormat formatter = 
+      new java.text.SimpleDateFormat("yyyy-MM-dd");
 
     final int SIZE = 3;
 
@@ -44,10 +48,6 @@ public class App {
       } else if (menuNo == 1) {
         System.out.println("[게시글 목록]");
         System.out.println("번호 제목 조회수 작성자 등록일");
-
-        // 날짜 정보에서 값을 추출하여 특정 포맷의 문자열로 만들어줄 도구를 준비
-        java.text.SimpleDateFormat formatter = 
-          new java.text.SimpleDateFormat("yyyy-MM-dd");
         
         for (int i = 0; i < boardCount; i++) {
           // 밀리초 데이터 ==> Date 도구함으로 날짜 정보를 설정
