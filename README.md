@@ -88,3 +88,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
 - board-app 프로젝트 수행
   - 006. 메서드 사용법(with static)
   - 007. 클래스 사용법
+- Eclipse IDE 설치
+  - 다운로드 및 설치, 설정
+  - 프로젝트 임포트
+  - Gradle로 이클립스 설정 파일을 만드는 방법
