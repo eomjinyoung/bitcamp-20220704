@@ -85,3 +85,6 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - new 명령 사용법
 
 ### 9일
+- board-app 프로젝트 수행
+  - 006. 메서드 사용법(with static)
+  - 007. 클래스 사용법
