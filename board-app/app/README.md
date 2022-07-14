@@ -5,6 +5,7 @@
 
 ### 1단계 - 메뉴를 처리하는 코드를 별도의 블록으로 묶는다.
 - com.bitcamp.board.App 클래스 변경
+  - 프로그램 환영 메시지 출력 코드 ==> welcome() {}
   - 게시글 목록을 처리하는 코드 ==> processBoardList() {}
   - 게시글 상세보기를 처리하는 코드 ==> processBoardDetail() {}
   - 게시글 입력을 처리하는 코드 ==> processBoardInput() {}
