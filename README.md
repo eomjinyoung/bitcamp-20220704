@@ -92,3 +92,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 다운로드 및 설치, 설정
   - 프로젝트 임포트
   - Gradle로 이클립스 설정 파일을 만드는 방법
+
+### 10일
+- board-app 프로젝트 수행
+  - 008. 클래스 사용법 II
