@@ -111,6 +111,16 @@ public class BoardHandler {
       return;
     }
 
+    // 삭제할 게시글의 다음 항목을 앞으로 당긴다.
+    for (int i = boardIndex + 1; i < boardCount; i++) {
+      boards[i - 1] = boards[i];
+    }
+
+    // 게시글 개수를 1개 줄이고 맨 마지막 레퍼런스는 null 로 비운다.
+    boards[--boardCount] = null;
+
+    System.out.println("삭제하였습니다.");
+
   }
 }
 
