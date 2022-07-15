@@ -96,3 +96,5 @@ export PATH=${JAVA_HOME}/bin:$PATH
 ### 10일
 - board-app 프로젝트 수행
   - 008. 클래스 사용법 II
+- 기타
+  - 자리 재배치
