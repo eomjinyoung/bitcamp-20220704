@@ -10,7 +10,7 @@ public class App {
     welcome();
     loop: while (true) {
       displayMenu();
-      int menuNo = Prompt.inputInt("메뉴를 선택하세요[1..4](0: 종료) ");
+      int menuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 종료) ");
       displayLine();
 
       switch (menuNo) {
@@ -19,6 +19,7 @@ public class App {
         case 2: BoardHandler.processDetail(); break;
         case 3: BoardHandler.processInput(); break;
         case 4: BoardHandler.processDelete(); break;
+        case 5: BoardHandler.processUpdate(); break;
         default: System.out.println("메뉴 번호가 옳지 않습니다!");
       }
 
@@ -42,6 +43,7 @@ public class App {
     System.out.println("  2: 게시글 상세보기");
     System.out.println("  3: 게시글 등록");
     System.out.println("  4: 게시글 삭제");
+    System.out.println("  5: 게시글 변경");
     System.out.println();
   }
 

@@ -89,6 +89,8 @@ public class BoardHandler {
     boards[boardCount] = board;
 
     boardCount++;
+
+    System.out.println("게시글을 등록했습니다.");
   }
 
   static void processDelete() {
@@ -120,6 +122,11 @@ public class BoardHandler {
     boards[--boardCount] = null;
 
     System.out.println("삭제하였습니다.");
+
+  }
+
+  public static void processUpdate() {
+
 
   }
 }
