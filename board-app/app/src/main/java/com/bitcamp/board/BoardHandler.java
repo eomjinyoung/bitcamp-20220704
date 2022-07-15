@@ -126,8 +126,36 @@ public class BoardHandler {
   }
 
   public static void processUpdate() {
+    System.out.println("[게시글 변경]");
 
+    int boardNo = Prompt.inputInt("변경할 게시글 번호? ");
 
+    // 해당 번호의 게시글이 몇 번 배열에 들어 있는지 알아내기
+    Board board = null;
+    for (int i = 0; i < boardCount; i++) {
+      if (boards[i].no == boardNo) {
+        board = boards[i];
+        break;
+      }
+    }
+
+    // 사용자가 입력한 번호에 해당하는 게시글을 못 찾았다면
+    if (board == null) {
+      System.out.println("해당 번호의 게시글이 없습니다!");
+      return;
+    }
+
+    String newTitle = Prompt.inputString("제목?(" + board.title + ") ");
+    String newContent = Prompt.inputString(String.format("내용?(%s) ", board.content));
+
+    String input = Prompt.inputString("변경하시겠습니까?(y/n) ");
+    if (input.equals("y")) {
+      board.title = newTitle;
+      board.content = newContent;
+      System.out.println("변경했습니다.");
+    } else {
+      System.out.println("변경 취소했습니다.");
+    }
   }
 }
 
