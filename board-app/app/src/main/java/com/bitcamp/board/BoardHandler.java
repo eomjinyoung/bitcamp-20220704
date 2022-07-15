@@ -90,4 +90,30 @@ public class BoardHandler {
 
     boardCount++;
   }
+
+  static void processDelete() {
+    System.out.println("[게시글 삭제]");
+
+    int boardNo = Prompt.inputInt("삭제할 게시글 번호? ");
+
+    // 해당 번호의 게시글이 몇 번 배열에 들어 있는지 알아내기
+    int boardIndex = -1;
+    for (int i = 0; i < boardCount; i++) {
+      if (boards[i].no == boardNo) {
+        boardIndex = i;
+        break;
+      }
+    }
+
+    // 사용자가 입력한 번호에 해당하는 게시글을 못 찾았다면
+    if (boardIndex == -1) {
+      System.out.println("해당 번호의 게시글이 없습니다!");
+      return;
+    }
+
+  }
 }
+
+
+
+
