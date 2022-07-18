@@ -101,3 +101,5 @@ export PATH=${JAVA_HOME}/bin:$PATH
 
 ### 11일
 - 메서드 사용법(eomcs-java-lang: com.eomcs.lang.ex07.*)
+- 클래스 사용법(eomcs-java-lang: com.eomcs.oop.ex01.*)
+
