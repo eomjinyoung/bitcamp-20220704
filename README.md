@@ -98,3 +98,6 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 008. 클래스 사용법 II
 - 기타
   - 자리 재배치
+
+### 11일
+- 메서드 사용법(eomcs-java-lang: com.eomcs.lang.ex07.*)
