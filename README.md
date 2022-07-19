@@ -103,3 +103,12 @@ export PATH=${JAVA_HOME}/bin:$PATH
 - 메서드 사용법(eomcs-java-lang: com.eomcs.lang.ex07.*)
 - 클래스 사용법(eomcs-java-lang: com.eomcs.oop.ex01.*)
 
+### 12일
+- 아침 특강(com.eomcs.quiz)
+  - ex01.Test01: 2진수에서 1 값을 가지는 비트 수를 세기
+  - ex01.Test02: 패리티 값을 알아내기 
+- 클래스 사용법(eomcs-java-lang: com.eomcs.oop.ex01.*)(계속)
+- 클래스 사용법(eomcs-java-lang: com.eomcs.oop.ex02.*)
+  - 클래스 문법을 활용하는 두 가지 경우
+  
+
