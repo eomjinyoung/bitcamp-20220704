@@ -53,11 +53,11 @@ public class BoardHandler {
       // 다른 인스턴스 메서드를 호출할 때 this에 보관된 인스턴스 주소를 사용한다. 
       switch (menuNo) {
         case 0: return;
-        case 1: this.processList(); break;
-        case 2: this.processDetail(); break;
-        case 3: this.processInput(); break;
-        case 4: this.processDelete(); break;
-        case 5: this.processUpdate(); break;
+        case 1: this.onList(); break;
+        case 2: this.onDetail(); break;
+        case 3: this.onInput(); break;
+        case 4: this.onDelete(); break;
+        case 5: this.onUpdate(); break;
         default: System.out.println("메뉴 번호가 옳지 않습니다!");
       }
 
@@ -73,7 +73,7 @@ public class BoardHandler {
     System.out.println(); // 메뉴를 처리한 후 빈 줄 출력
   }
 
-  void processList() {
+  void onList() {
     // 인스턴스 메서드는 호출될 때 넘겨 받은 인스턴스 주소를
     // this 라는 내장 변수에 보관한다.
 
@@ -97,7 +97,7 @@ public class BoardHandler {
 
   }
 
-  void processDetail() {
+  void onDetail() {
     System.out.printf("[%s 상세보기]\n", this.title);
 
     int boardNo = Prompt.inputInt("조회할 게시글 번호? ");
@@ -127,7 +127,7 @@ public class BoardHandler {
 
   }
 
-  void processInput() {
+  void onInput() {
     System.out.printf("[%s 등록]\n", this.title);
 
     // 배열의 크기를 초과하면 배열 크기를 50% 증가시킨다.
@@ -167,7 +167,7 @@ public class BoardHandler {
     System.out.println("게시글을 등록했습니다.");
   }
 
-  void processDelete() {
+  void onDelete() {
     System.out.printf("[%s 삭제]\n", this.title);
 
     int boardNo = Prompt.inputInt("삭제할 게시글 번호? ");
@@ -199,7 +199,7 @@ public class BoardHandler {
 
   }
 
-  void processUpdate() {
+  void onUpdate() {
     System.out.printf("[%s 변경]\n", this.title);
 
     int boardNo = Prompt.inputInt("변경할 게시글 번호? ");

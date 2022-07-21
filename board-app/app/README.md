@@ -24,3 +24,14 @@
 - com.bitcamp.board.BoardHandler 클래스 변경
   - 인스턴스를 생성활 때 게시판 제목을 저장하는 title 필드의 값을 반드시 입력하도록 생성자를 추가한다.
   - 인스턴스 메서드가 제대로 작업할 수 있도록 인스턴스 필드를 유효한 값으로 설정하기 위해 생성자를 이용한다.
+
+### 4단계 - 리팩토링: 사용자의 명령을 처리하는 메서드의 이름을 적절하게 변경한다.
+
+- com.bitcamp.board.BoardHandler 클래스 변경
+  - processList() ==> onList()
+  - processDetail() ==> onDetail()
+  - processInput() ==> onInput()
+  - processDelete() ==> onDelete()
+  - processUpdate() ==> onUpdate();
+
+  
