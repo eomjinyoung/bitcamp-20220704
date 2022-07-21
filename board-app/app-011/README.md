@@ -1,14 +1,13 @@
-# 012. 인스턴스 목록을 다루는 코드를 분리: High Cohesion 구현(재사용성 강화)
+# 011. 인스턴스 필드와 인스턴스 메서드, 생성자 사용법 
 
 
 ## 작업 내용
 
-### 1단계 - BoardHandler에서 인스턴스 목록을 다루는 코드를 분리한다.
+### 1단계 - BoardHandler의 필드와 메서드를 인스턴스 멤버로 전환한다.
 
 - com.bitcamp.board.BoardHandler 클래스 변경
-  - 목록과 관련된 필드를 BoardList 클래스로 옮긴다.
-  - 각 메서드에서 데이터 목록을 다루는 코드를 BoardList 클래스로 옮긴다.
-- com.bitcamp.board.BoardList 클래스 추가
+  - 관련 필드를 인스턴스 필드로 변경한다.
+  - 인스턴스 필드를 다루는 메서드는 인스턴스 메서드로 변경한다.
 - com.bitcamp.board.App 클래스 변경
   - BoardHandler의 인스턴스를 만들어 다양한 게시판을 관리한다.
 

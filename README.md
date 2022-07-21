@@ -129,4 +129,5 @@ export PATH=${JAVA_HOME}/bin:$PATH
 - board-app 프로젝트 수행 
   - 010. 스태틱 필드의 한계
   - 011. 인스턴스 필드와 인스턴스 메서드, 생성자 사용법 
+  - 012. 인스턴스 목록을 다루는 코드를 분리: High Cohesion 구현(재사용성 강화)
 

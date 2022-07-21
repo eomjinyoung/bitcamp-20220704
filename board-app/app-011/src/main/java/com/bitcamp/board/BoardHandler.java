@@ -7,20 +7,46 @@ import java.util.Date;
 
 public class BoardHandler {
 
+  // 모든 게시판 공유하는 데이터는 클래스 변수에 저장한다.
+  // 왜? 클래스 변수는 클래스를 로딩할 때 한 번만 생성되기 때문이다. 
+
+  static final int DEFAULT_SIZE = 3;
+
+  // 각 게시판이 별도로 관리해야 할 데이터는 인스턴스 변수에 저장한다.
+  // 왜? 인스턴스 변수는 게시판 별로 생성할 수 있기 때문이다.
+
+  int boardCount; // 저장된 게시글의 개수
+  Board[] boards; // 배열은 생성자에서 초기화시킨다.
   String title; // 게시판의 제목
 
-  // 게시글 목록을 관리할 객체 준비
-  BoardList boardList = new BoardList();
-
+  // 클래스 생성자가 정의되어 있지 않으면
+  // 다음과 같이 파라미터가 없는 기본 생성자를 컴파일러가 자동으로 추가된다.
+  // 기본 생성자?
+  // - 파라미터가 없다.
+  // - 메서드 몸체는 비어 있다.
+  // - 메서드의 접그 범위는 무조건 공개(public)이다.
+  //
   public BoardHandler() {
+    this.boards = new Board[DEFAULT_SIZE];
     this.title = "게시판";
   }
 
+  // 제목을 입력 받는 생성자
   BoardHandler(String title) {
+    this.boards = new Board[DEFAULT_SIZE];
     this.title = title;
   }
 
+  // 배열의 기본 크기를 설정하는 생성자
+  BoardHandler(int initSize) {
+    boards = new Board[initSize];
+    this.title = "게시판";
+  }
+
   void execute() {
+    // App 클래스에서 이 메서드를 호출할 때 BoardHandler의 인스턴스 주소를 줄 것이다.
+    // 그 주소는 this 라는 내장 변수에 보관 된다.
+
     while (true) {
       System.out.printf("%s:\n", this.title);
       System.out.println("  1: 목록");
@@ -57,18 +83,23 @@ public class BoardHandler {
   }
 
   void onList() {
+    // 인스턴스 메서드는 호출될 때 넘겨 받은 인스턴스 주소를
+    // this 라는 내장 변수에 보관한다.
+
     java.text.SimpleDateFormat formatter = 
         new java.text.SimpleDateFormat("yyyy-MM-dd");
 
     System.out.printf("[%s 목록]\n", this.title);
     System.out.println("번호 제목 조회수 작성자 등록일");
 
-    // boardList 인스턴스에 들어 있는 데이터 목록을 가져온다.
-    Board[] list = this.boardList.toArray();
+    for (int i = 0; i < this.boardCount; i++) {
+      Board board = this.boards[i];
 
-    for (Board board : list) {
       Date date = new Date(board.createdDate);
+
+      // 날짜 정보 ==> "yyyy-MM-dd" 형식의 문자열
       String dateStr = formatter.format(date); 
+
       System.out.printf("%d\t%s\t%d\t%s\t%s\n",
           board.no, board.title, board.viewCount, board.writer, dateStr);
     }
