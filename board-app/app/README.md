@@ -23,3 +23,9 @@
   - BoardHandler 클래스를 복제하고, 코드를 변경한다.
 - com.bitcamp.board.App 클래스 변경
   - 공지사항 메뉴를 실행할 수 있도록 코드 변경
+
+### 4단계 - 게시판의 글목록 크기를 자동으로 증가시킨다.
+
+- com.bitcamp.board.BoardHandler 클래스 변경
+  - processInput() 메서드 변경
+

@@ -7,10 +7,10 @@ public class BoardHandler {
 
   static int boardCount = 0; // 저장된 게시글의 개수
 
-  static final int SIZE = 3;
+  static final int DEFAULT_SIZE = 3;
 
   // Board 인스턴스의 주소를 저장할 레퍼런스 배열을 만든다.
-  static Board[] boards = new Board[SIZE];
+  static Board[] boards = new Board[DEFAULT_SIZE];
 
   static void execute() {
     while (true) {
@@ -103,10 +103,22 @@ public class BoardHandler {
   static void processInput() {
     System.out.println("[게시글 등록]");
 
-    // 배열의 크기를 초과하지 않았는지 검사한다
-    if (boardCount == SIZE) {
-      System.out.println("게시글을 더이상 저장할 수 없습니다.");
-      return;
+    // 배열의 크기를 초과하면 배열 크기를 50% 증가시킨다.
+    if (boardCount == boards.length) {
+
+      // 새로 만들 배열의 크기를 계산한다.
+      int newSize = boards.length + (boards.length >> 1);
+
+      // 새 배열 준비
+      Board[] newArray = new Board[newSize];
+
+      // 기존 배열의 값을 새 배열에 넣는다.
+      for (int i = 0; i < boards.length; i++) {
+        newArray[i] = boards[i];
+      }
+
+      // 기존 배열(주소)을 버리고 새 배열(주소)을 사용한다.
+      boards = newArray;
     }
 
     Board board = new Board();
