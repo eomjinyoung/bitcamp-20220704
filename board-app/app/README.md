@@ -1,4 +1,4 @@
-# 011. 인스턴스 필드와 인스턴스 메서드 사용법 
+# 011. 인스턴스 필드와 인스턴스 메서드, 생성자 사용법 
 
 
 ## 작업 내용
@@ -9,32 +9,18 @@
   - 관련 필드를 인스턴스 필드로 변경한다.
   - 인스턴스 필드를 다루는 메서드는 인스턴스 메서드로 변경한다.
 - com.bitcamp.board.App 클래스 변경
-  - BoardHandler의 인스턴스를 만들어 게시글을 관리한다.
+  - BoardHandler의 인스턴스를 만들어 다양한 게시판을 관리한다.
 
-### 2단계 - 방명록을 추가한다.
-
-- com.bitcamp.board.VisitHandler 클래스 추가
-  - BoardHandler 클래스를 복제하고, 코드를 변경한다.
-- com.bitcamp.board.App 클래스 변경
-  - 방명록 메뉴를 실행할 수 있도록 코드 변경
-
-### 3단계 - 공지사항 게시판을 추가한다.
-
-- com.bitcamp.board.NoticeHandler 클래스 추가
-  - BoardHandler 클래스를 복제하고, 코드를 변경한다.
-- com.bitcamp.board.App 클래스 변경
-  - 공지사항 메뉴를 실행할 수 있도록 코드 변경
-
-### 4단계 - 게시판의 글목록 크기를 자동으로 증가시킨다.
+### 2단계 - 각 게시판의 제목을 따로 다룰 수 있게 한다.
 
 - com.bitcamp.board.BoardHandler 클래스 변경
-  - processInput() 메서드 변경
+  - 게시판 제목을 저장할 인스턴스 필드 title을 추가한다.
+  - 게시판 제목을 출력할 수 있도록 관련 메서드를 변경한다.
+- com.bitcamp.board.App 클래스 변경
+  - BoardHandler의 인스턴스를 만들 때 각 게시판에 대해 title 필드를 설정한다.
 
-### 5단계 - 나머지 게시판의 글목록 크기를 자동으로 증가시킨다.
+### 3단계 - 게시판의 제목을 설정하지 않으면 쓸 수 없도록 제한을 가한다.
 
-- com.bitcamp.board.ReadingHandler 클래스 변경
-  - processInput() 메서드 변경
-- com.bitcamp.board.VisitHandler 클래스 변경
-  - processInput() 메서드 변경
-- com.bitcamp.board.NoticeHandler 클래스 변경
-  - processInput() 메서드 변경
+- com.bitcamp.board.BoardHandler 클래스 변경
+  - 인스턴스를 생성활 때 게시판 제목을 저장하는 title 필드의 값을 반드시 입력하도록 생성자를 추가한다.
+  - 인스턴스 메서드가 제대로 작업할 수 있도록 인스턴스 필드를 유효한 값으로 설정하기 위해 생성자를 이용한다.

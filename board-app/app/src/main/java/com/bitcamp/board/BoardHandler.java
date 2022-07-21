@@ -17,13 +17,29 @@ public class BoardHandler {
 
   int boardCount = 0; // 저장된 게시글의 개수
   Board[] boards = new Board[DEFAULT_SIZE];
+  String title = "";
+
+  // 클래스 생성자가 정의되어 있지 않으면
+  // 다음과 같이 파라미터가 없는 기본 생성자를 컴파일러가 자동으로 추가된다.
+  // 기본 생성자?
+  // - 파라미터가 없다.
+  // - 메서드 몸체는 비어 있다.
+  // - 메서드의 접그 범위는 무조건 공개(public)이다.
+  //
+  //  public BoardHandler() {
+  //  }
+
+  // 제목을 입력 받는 생성자
+  BoardHandler(String title) {
+    this.title = title;
+  }
 
   void execute() {
     // App 클래스에서 이 메서드를 호출할 때 BoardHandler의 인스턴스 주소를 줄 것이다.
     // 그 주소는 this 라는 내장 변수에 보관 된다.
 
     while (true) {
-      System.out.println("게시판:");
+      System.out.printf("%s:\n", this.title);
       System.out.println("  1: 목록");
       System.out.println("  2: 상세보기");
       System.out.println("  3: 등록");
@@ -64,7 +80,7 @@ public class BoardHandler {
     java.text.SimpleDateFormat formatter = 
         new java.text.SimpleDateFormat("yyyy-MM-dd");
 
-    System.out.println("[게시글 목록]");
+    System.out.printf("[%s 목록]\n", this.title);
     System.out.println("번호 제목 조회수 작성자 등록일");
 
     for (int i = 0; i < this.boardCount; i++) {
@@ -82,7 +98,7 @@ public class BoardHandler {
   }
 
   void processDetail() {
-    System.out.println("[게시글 상세보기]");
+    System.out.printf("[%s 상세보기]\n", this.title);
 
     int boardNo = Prompt.inputInt("조회할 게시글 번호? ");
 
@@ -112,7 +128,7 @@ public class BoardHandler {
   }
 
   void processInput() {
-    System.out.println("[게시글 등록]");
+    System.out.printf("[%s 등록]\n", this.title);
 
     // 배열의 크기를 초과하면 배열 크기를 50% 증가시킨다.
     if (this.boardCount == this.boards.length) {
@@ -152,7 +168,7 @@ public class BoardHandler {
   }
 
   void processDelete() {
-    System.out.println("[게시글 삭제]");
+    System.out.printf("[%s 삭제]\n", this.title);
 
     int boardNo = Prompt.inputInt("삭제할 게시글 번호? ");
 
@@ -184,7 +200,7 @@ public class BoardHandler {
   }
 
   void processUpdate() {
-    System.out.println("[게시글 변경]");
+    System.out.printf("[%s 변경]\n", this.title);
 
     int boardNo = Prompt.inputInt("변경할 게시글 번호? ");
 
