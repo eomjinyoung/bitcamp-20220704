@@ -103,10 +103,14 @@ public class VisitHandler {
   static void processInput() {
     System.out.println("[방명록 등록]");
 
-    // 배열의 크기를 초과하지 않았는지 검사한다
-    if (boardCount == SIZE) {
-      System.out.println("게시글을 더이상 저장할 수 없습니다.");
-      return;
+    // 배열의 크기를 초과하면 배열 크기를 50% 증가시킨다.
+    if (boardCount == boards.length) {
+      int newSize = boards.length + (boards.length >> 1);
+      Board[] newArray = new Board[newSize];
+      for (int i = 0; i < boards.length; i++) {
+        newArray[i] = boards[i];
+      }
+      boards = newArray;
     }
 
     Board board = new Board();

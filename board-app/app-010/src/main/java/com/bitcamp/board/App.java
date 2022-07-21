@@ -9,11 +9,6 @@ public class App {
   public static void main(String[] args) {
     welcome();
 
-    BoardHandler boardHandler = new BoardHandler();
-    BoardHandler readingHandler = new BoardHandler();
-    BoardHandler visitHandler = new BoardHandler();
-    BoardHandler noticeHandler = new BoardHandler();
-
     loop: while (true) {
 
       // 메인 메뉴 출력
@@ -28,16 +23,16 @@ public class App {
       switch (mainMenuNo) {
         case 0: break loop;
         case 1: // 게시판
-          boardHandler.execute();
+          BoardHandler.execute();
           break;
         case 2: // 독서록
-          readingHandler.execute();
+          ReadingHandler.execute();
           break;
         case 3: // 방명록
-          visitHandler.execute();
+          VisitHandler.execute();
           break;
         case 4: // 공지사항
-          noticeHandler.execute();
+          NoticeHandler.execute();
           break;
         default: System.out.println("메뉴 번호가 옳지 않습니다!");
       } // switch

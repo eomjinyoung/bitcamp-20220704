@@ -3,17 +3,18 @@
  */
 package com.bitcamp.board;
 
-public class ReadingHandler {
+public class NoticeHandler {
 
-  static int boardCount = 0; // 
+  static int boardCount = 0; // 저장된 게시글의 개수
 
   static final int SIZE = 3;
 
+  // Board 인스턴스의 주소를 저장할 레퍼런스 배열을 만든다.
   static Board[] boards = new Board[SIZE];
 
   static void execute() {
     while (true) {
-      System.out.println("독서록:");
+      System.out.println("공지사항:");
       System.out.println("  1: 목록");
       System.out.println("  2: 상세보기");
       System.out.println("  3: 등록");
@@ -26,11 +27,11 @@ public class ReadingHandler {
 
       switch (menuNo) {
         case 0: return;
-        case 1: ReadingHandler.processList(); break;
-        case 2: ReadingHandler.processDetail(); break;
-        case 3: ReadingHandler.processInput(); break;
-        case 4: ReadingHandler.processDelete(); break;
-        case 5: ReadingHandler.processUpdate(); break;
+        case 1: NoticeHandler.processList(); break;
+        case 2: NoticeHandler.processDetail(); break;
+        case 3: NoticeHandler.processInput(); break;
+        case 4: NoticeHandler.processDelete(); break;
+        case 5: NoticeHandler.processUpdate(); break;
         default: System.out.println("메뉴 번호가 옳지 않습니다!");
       }
 
@@ -51,7 +52,7 @@ public class ReadingHandler {
     java.text.SimpleDateFormat formatter = 
         new java.text.SimpleDateFormat("yyyy-MM-dd");
 
-    System.out.println("[독서록 목록]");
+    System.out.println("[공지사항 목록]");
     System.out.println("번호 제목 조회수 작성자 등록일");
 
     for (int i = 0; i < boardCount; i++) {
@@ -70,7 +71,7 @@ public class ReadingHandler {
   }
 
   static void processDetail() {
-    System.out.println("[독서록 상세보기]");
+    System.out.println("[공지사항 상세보기]");
 
     int boardNo = Prompt.inputInt("조회할 게시글 번호? ");
 
@@ -85,7 +86,7 @@ public class ReadingHandler {
 
     // 사용자가 입력한 번호에 해당하는 게시글을 못 찾았다면
     if (board == null) {
-      System.out.println("해당 번호의 독서록이 없습니다!");
+      System.out.println("해당 번호의 게시글이 없습니다!");
       return;
     }
 
@@ -100,12 +101,16 @@ public class ReadingHandler {
   }
 
   static void processInput() {
-    System.out.println("[독서록 등록]");
+    System.out.println("[공지사항 등록]");
 
-    // 배열의 크기를 초과하지 않았는지 검사한다
-    if (boardCount == SIZE) {
-      System.out.println("게시글을 더이상 저장할 수 없습니다.");
-      return;
+    // 배열의 크기를 초과하면 배열 크기를 50% 증가시킨다.
+    if (boardCount == boards.length) {
+      int newSize = boards.length + (boards.length >> 1);
+      Board[] newArray = new Board[newSize];
+      for (int i = 0; i < boards.length; i++) {
+        newArray[i] = boards[i];
+      }
+      boards = newArray;
     }
 
     Board board = new Board();
@@ -128,7 +133,7 @@ public class ReadingHandler {
   }
 
   static void processDelete() {
-    System.out.println("[독서록 삭제]");
+    System.out.println("[공지사항 삭제]");
 
     int boardNo = Prompt.inputInt("삭제할 게시글 번호? ");
 
@@ -160,7 +165,7 @@ public class ReadingHandler {
   }
 
   public static void processUpdate() {
-    System.out.println("[독서록 변경]");
+    System.out.println("[공지사항 변경]");
 
     int boardNo = Prompt.inputInt("변경할 게시글 번호? ");
 
