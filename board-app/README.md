@@ -51,5 +51,7 @@
   - 생성자를 도입하여 title 필드를 필수 입력으로 설정
   - 기타 초기 값을 설정하는 생성자를 추가
 ### 012. 인스턴스 목록을 다루는 코드를 분리: High Cohesion 구현(재사용성 강화)
+  - GRASP의 원칙 중에서 High Cohesion을 구현한다.
+  - BoardHandler의 역할에서 데이터 목록을 다루는 일을 BoardList로 옮긴다.
 
 
