@@ -26,6 +26,7 @@ public class App {
           BoardHandler.execute();
           break;
         case 2: // 독서록
+          ReadingHandler.execute();
           break;
         case 3: // 방명록
           break;
