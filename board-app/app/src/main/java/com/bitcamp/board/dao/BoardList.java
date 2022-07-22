@@ -4,63 +4,51 @@ import com.bitcamp.board.domain.Board;
 
 // 게시글 목록을 관리하는 역할
 //
-public class BoardList {
+public class BoardList extends ObjectList {
 
   private int no = 0;
 
-
-
-  // 게시글 번호에 해당하는 Board 인스턴스를 찾아 리턴한다.
+  // 수퍼 클래스의 get() 메서드를 BoardList에 맞게 재정의 한다.
+  // => 파라미터는 인덱스가 아닌 게시글 번호가 되게 한다.
+  // => Overriding 이라 부른다.
+  @Override
   public Board get(int boardNo) {
-    for (int i = 0; i < this.boardCount; i++) {
-      if (this.boards[i].no == boardNo) {
-        return this.boards[i];
+    for (int i = 0; i < this.length; i++) {
+      // Object 배열에 실제 들어 있는 것은 Board라고 컴파일러에게 알린다.
+      Board board = (Board) this.list[i]; 
+
+      if (board.no == boardNo) {
+        return board;
       }
     }
     return null;
   }
 
-  // Board 인스턴스를 배열에 저장한다.
-  public void add(Board board) {
-    if (this.boardCount == this.boards.length) {
-      grow();
-    }
+  // 수퍼 클래스의 add() 를 BoardList에 맞게끔 재정의한다. 
+  // => 파라미터로 받은 Board 인스턴스의 no 변수 값을 설정한 다음 배열에 추가한다.
+  // => Overriding 이라 부른다.
+  @Override
+  public void add(Object obj) {
+    Board board = (Board) obj;
     board.no = nextNo();
-    this.boards[this.boardCount++] = board;
+
+    // 재정의하기 전의 수퍼 클래스의 add()를 사용하여 처리한다.
+    super.add(board);
   }
 
+  // 수퍼 클래스의 remove()를 BoardList 클래스의 역할에 맞춰 재정의한다.
+  @Override
   public boolean remove(int boardNo) {
     int boardIndex = -1;
-    for (int i = 0; i < this.boardCount; i++) {
-      if (this.boards[i].no == boardNo) {
+    for (int i = 0; i < this.length; i++) {
+      Board board = (Board) this.list[i];
+      if (board.no == boardNo) {
         boardIndex = i;
         break;
       }
     }
 
-    if (boardIndex == -1) {
-      return false;
-    }
-
-    // 삭제할 항목의 다음 항목을 앞으로 당긴다.
-    for (int i = boardIndex + 1; i < this.boardCount; i++) {
-      this.boards[i - 1] = this.boards[i];
-    }
-
-    // 게시글 개수를 한 개 줄인 후 
-    // 맨 뒤의 있던 항목의 주소를 0으로 설정한다.
-    this.boards[--this.boardCount] = null;
-
-    return true;
-  }
-
-  private void grow() {
-    int newSize = this.boards.length + (this.boards.length >> 1);
-    Board[] newArray = new Board[newSize];
-    for (int i = 0; i < this.boards.length; i++) {
-      newArray[i] = this.boards[i];
-    }
-    this.boards = newArray;
+    return super.remove(boardIndex); // 재정의 하기 전에 수퍼 클래스의 메서드를 호출한다.
   }
 
   private int nextNo() {

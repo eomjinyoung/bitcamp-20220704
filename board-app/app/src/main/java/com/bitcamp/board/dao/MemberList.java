@@ -4,61 +4,43 @@ import com.bitcamp.board.domain.Member;
 
 // 회원 목록을 관리하는 역할
 //
-public class MemberList {
+public class MemberList extends ObjectList {
 
   private int no = 0;
 
+  private int nextNo() {
+    return ++no;
+  }
 
+  @Override
+  public void add(Object obj) {
+    Member member = (Member) obj;
+    member.no = nextNo();
+    super.add(obj);
+  }
+
+  @Override
   public Member get(int memberNo) {
-    for (int i = 0; i < this.memberCount; i++) {
-      if (this.members[i].no == memberNo) {
-        return this.members[i];
+    for (int i = 0; i < this.length; i++) {
+      Member member = (Member) this.list[i];
+      if (member.no == memberNo) {
+        return member;
       }
     }
     return null;
   }
 
-  public void add(Member member) {
-    if (this.memberCount == this.members.length) {
-      grow();
-    }
-    member.no = nextNo();
-    this.members[this.memberCount++] = member;
-  }
-
+  @Override
   public boolean remove(int memberNo) {
-    int memberIndex = -1;
-    for (int i = 0; i < this.memberCount; i++) {
-      if (this.members[i].no == memberNo) {
-        memberIndex = i;
+    int index = -1;
+    for (int i = 0; i < this.length; i++) {
+      Member member = (Member) this.list[i];
+      if (member.no == memberNo) {
+        index = i;
         break;
       }
     }
-
-    if (memberIndex == -1) {
-      return false;
-    }
-
-    for (int i = memberIndex + 1; i < this.memberCount; i++) {
-      this.members[i - 1] = this.members[i];
-    }
-
-    this.members[--this.memberCount] = null;
-
-    return true;
-  }
-
-  private void grow() {
-    int newSize = this.members.length + (this.members.length >> 1);
-    Member[] newArray = new Member[newSize];
-    for (int i = 0; i < this.members.length; i++) {
-      newArray[i] = this.members[i];
-    }
-    this.members = newArray;
-  }
-
-  private int nextNo() {
-    return ++no;
+    return super.remove(index);
   }
 }
 
