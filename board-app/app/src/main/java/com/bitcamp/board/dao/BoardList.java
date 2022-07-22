@@ -6,29 +6,9 @@ import com.bitcamp.board.domain.Board;
 //
 public class BoardList {
 
-  private static final int DEFAULT_SIZE = 3;
-
-  private int boardCount; 
-  private Board[] boards; 
   private int no = 0;
 
-  // 생성자
-  public BoardList() {
-    this.boards = new Board[DEFAULT_SIZE];
-  }
 
-  public BoardList(int initCapacity) {
-    this.boards = new Board[initCapacity];
-  }
-
-  // 목록에 저장된 인스턴스를 꺼내서 리턴한다.
-  public Board[] toArray() {
-    Board[] arr = new Board[this.boardCount];
-    for (int i = 0; i < arr.length; i++) {
-      arr[i] = this.boards[i];
-    }
-    return arr;
-  }
 
   // 게시글 번호에 해당하는 Board 인스턴스를 찾아 리턴한다.
   public Board get(int boardNo) {
