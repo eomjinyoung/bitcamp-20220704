@@ -1,27 +1,30 @@
 /*
  * 게시글 메뉴 처리 클래스
  */
-package com.bitcamp.board;
+package com.bitcamp.board.handler;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import com.bitcamp.board.dao.BoardList;
+import com.bitcamp.board.domain.Board;
+import com.bitcamp.util.Prompt;
 
 public class BoardHandler {
 
-  String title; // 게시판의 제목
+  private String title; // 게시판의 제목
 
   // 게시글 목록을 관리할 객체 준비
-  BoardList boardList = new BoardList();
+  private BoardList boardList = new BoardList();
 
   public BoardHandler() {
     this.title = "게시판";
   }
 
-  BoardHandler(String title) {
+  public BoardHandler(String title) {
     this.title = title;
   }
 
-  void execute() {
+  public void execute() {
     while (true) {
       System.out.printf("%s:\n", this.title);
       System.out.println("  1: 목록");
@@ -49,15 +52,15 @@ public class BoardHandler {
     } // 게시판 while
   }
 
-  static void displayHeadline() {
+  private static void displayHeadline() {
     System.out.println("=========================================");
   }
 
-  static void displayBlankLine() {
+  private static void displayBlankLine() {
     System.out.println(); // 메뉴를 처리한 후 빈 줄 출력
   }
 
-  void onList() {
+  private void onList() {
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
     System.out.printf("[%s 목록]\n", this.title);
@@ -75,7 +78,7 @@ public class BoardHandler {
 
   }
 
-  void onDetail() {
+  private void onDetail() {
     System.out.printf("[%s 상세보기]\n", this.title);
 
     int boardNo = Prompt.inputInt("조회할 게시글 번호? ");
@@ -99,7 +102,7 @@ public class BoardHandler {
 
   }
 
-  void onInput() {
+  private void onInput() {
     System.out.printf("[%s 등록]\n", this.title);
 
     Board board = new Board();
@@ -116,7 +119,7 @@ public class BoardHandler {
     System.out.println("게시글을 등록했습니다.");
   }
 
-  void onDelete() {
+  private void onDelete() {
     System.out.printf("[%s 삭제]\n", this.title);
 
     int boardNo = Prompt.inputInt("삭제할 게시글 번호? ");
@@ -128,7 +131,7 @@ public class BoardHandler {
     }
   }
 
-  void onUpdate() {
+  private void onUpdate() {
     System.out.printf("[%s 변경]\n", this.title);
 
     int boardNo = Prompt.inputInt("변경할 게시글 번호? ");

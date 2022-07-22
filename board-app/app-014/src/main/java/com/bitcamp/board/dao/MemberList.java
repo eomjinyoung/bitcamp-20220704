@@ -1,24 +1,26 @@
-package com.bitcamp.board;
+package com.bitcamp.board.dao;
+
+import com.bitcamp.board.domain.Member;
 
 // 회원 목록을 관리하는 역할
 //
 public class MemberList {
 
-  static final int DEFAULT_SIZE = 3;
+  private static final int DEFAULT_SIZE = 3;
 
-  int memberCount; 
-  Member[] members; 
-  int no = 0;
+  private int memberCount; 
+  private Member[] members; 
+  private int no = 0;
 
-  MemberList() {
+  public MemberList() {
     this.members = new Member[DEFAULT_SIZE];
   }
 
-  MemberList(int initCapacity) {
+  public MemberList(int initCapacity) {
     this.members = new Member[initCapacity];
   }
 
-  Member[] toArray() {
+  public Member[] toArray() {
     Member[] arr = new Member[this.memberCount];
     for (int i = 0; i < arr.length; i++) {
       arr[i] = this.members[i];
@@ -26,7 +28,7 @@ public class MemberList {
     return arr;
   }
 
-  Member get(int memberNo) {
+  public Member get(int memberNo) {
     for (int i = 0; i < this.memberCount; i++) {
       if (this.members[i].no == memberNo) {
         return this.members[i];
@@ -35,7 +37,7 @@ public class MemberList {
     return null;
   }
 
-  void add(Member member) {
+  public void add(Member member) {
     if (this.memberCount == this.members.length) {
       grow();
     }
@@ -43,7 +45,7 @@ public class MemberList {
     this.members[this.memberCount++] = member;
   }
 
-  boolean remove(int memberNo) {
+  public boolean remove(int memberNo) {
     int memberIndex = -1;
     for (int i = 0; i < this.memberCount; i++) {
       if (this.members[i].no == memberNo) {
@@ -65,7 +67,7 @@ public class MemberList {
     return true;
   }
 
-  void grow() {
+  private void grow() {
     int newSize = this.members.length + (this.members.length >> 1);
     Member[] newArray = new Member[newSize];
     for (int i = 0; i < this.members.length; i++) {
@@ -74,7 +76,7 @@ public class MemberList {
     this.members = newArray;
   }
 
-  int nextNo() {
+  private int nextNo() {
     return ++no;
   }
 }

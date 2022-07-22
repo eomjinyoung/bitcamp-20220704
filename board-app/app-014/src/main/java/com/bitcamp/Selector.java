@@ -1,4 +1,4 @@
-package com.bitcamp.board;
+package com.bitcamp;
 
 import java.util.ArrayList;
 import java.util.Scanner;
