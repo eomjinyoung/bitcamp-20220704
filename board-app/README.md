@@ -53,5 +53,7 @@
 ### 012. 인스턴스 목록을 다루는 코드를 분리: High Cohesion 구현(재사용성 강화)
   - GRASP의 원칙 중에서 High Cohesion을 구현한다.
   - BoardHandler의 역할에서 데이터 목록을 다루는 일을 BoardList로 옮긴다.
-
+### 013. 회원관리 기능 추가: CRUD 구현
+  - CRUD 구현을 훈련한다.
+  
 

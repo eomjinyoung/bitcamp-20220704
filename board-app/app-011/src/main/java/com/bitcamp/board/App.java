@@ -28,7 +28,7 @@ public class App {
       System.out.println("  4: 공지사항");
       System.out.println("  5: 일기장");
       System.out.println();
-      int mainMenuNo = Prompt.inputInt("메뉴를 선택하세요[1..4](0: 종료) ");
+      int mainMenuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 종료) ");
 
       switch (mainMenuNo) {
         case 0: break loop;
