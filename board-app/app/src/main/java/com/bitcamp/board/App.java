@@ -17,6 +17,7 @@ public class App {
     BoardHandler visitHandler = new BoardHandler("방명록");
     BoardHandler noticeHandler = new BoardHandler("공지사항");
     BoardHandler diaryHandler = new BoardHandler("일기장");
+    MemberHandler memberHandler = new MemberHandler();
 
     loop: while (true) {
 
@@ -27,8 +28,9 @@ public class App {
       System.out.println("  3: 방명록");
       System.out.println("  4: 공지사항");
       System.out.println("  5: 일기장");
+      System.out.println("  6: 회원");
       System.out.println();
-      int mainMenuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 종료) ");
+      int mainMenuNo = Prompt.inputInt("메뉴를 선택하세요[1..6](0: 종료) ");
 
       switch (mainMenuNo) {
         case 0: break loop;
@@ -46,6 +48,9 @@ public class App {
           break;
         case 5: // 일기장
           diaryHandler.execute();
+          break;
+        case 6: // 회원
+          memberHandler.execute();
           break;
         default: System.out.println("메뉴 번호가 옳지 않습니다!");
       } // switch
