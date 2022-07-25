@@ -139,3 +139,10 @@ export PATH=${JAVA_HOME}/bin:$PATH
 ### 16일 
 - 아침 특강(com.eomcs.quiz)
   - ex02.Test01/02/03: 배열 다루기
+- 클래스 사용법(eomcs-java-lang: com.eomcs.oop.ex03.*)
+  - 스태틱 필드와 인스턴스 필드
+  - 스태틱 메서드와 인스턴스 메서드, this 내장 변수
+  - 생성자와 this()
+  - 스태틱 초기화 블록, 스태틱 변수 초기화 문장
+  - 인스턴스 초기화 블록, 인스턴스 변수 초기화 문장
+
