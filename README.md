@@ -146,3 +146,9 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 스태틱 초기화 블록, 스태틱 변수 초기화 문장
   - 인스턴스 초기화 블록, 인스턴스 변수 초기화 문장
 
+### 17일 
+- 아침 특강(com.eomcs.quiz)
+  - ex01.Test07: 팩토리얼 다루기
+  - ex02.Test04: 배열 다루기
+- 클래스 사용법(eomcs-java-lang: com.eomcs.oop.ex05.*)
+  - 상속을 통한 기능 확장법
