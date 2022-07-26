@@ -152,3 +152,5 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ex02.Test04: 배열 다루기
 - 클래스 사용법(eomcs-java-lang: com.eomcs.oop.ex05.*)
   - 상속을 통한 기능 확장법
+  - UML: 클래스 간의 5가지 관계
+  - 기타 기능 확장법 
