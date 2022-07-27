@@ -161,3 +161,4 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ex01.Test08: 비트 연산자 다루기(2진수의 곱셈)
 - board-app 프로젝트 수행 
   - 015. 공통 코드(필드,메서드)를 공유하는 방법 : 상속 (다시 연습)
+- String 클래스 사용법(eomcs-java-lang: com.eomcs.basic.ex02.*)
