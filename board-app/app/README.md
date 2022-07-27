@@ -12,6 +12,8 @@
 
 - com.bitcamp.board.dao.BoardList 클래스 변경
 - com.bitcamp.board.dao.MemberList 클래스 변경
+  - ObjectList를 상속 받은 후 몇몇의 메서드를 오버라이딩 할 필요가 있음 확인하기 위해 기능을 변경한다.
+  - 회원 번호 대신 이메일로 찾고 삭제하도록 변경한다.
 
 
 

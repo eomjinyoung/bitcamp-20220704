@@ -14,6 +14,10 @@ public class BoardList extends ObjectList {
   // 자동으로 증가한 번호를 게시글 번호로 설정할 수 있도록 
   // add() 메서드를 재정의 한다.
   @Override
+  // 야! 컴파일러야! 부탁이 있다.
+  // 수퍼 클래스의 메서드를 재정의하기 위해 다음 메서드를 만들었는데
+  // 내가 제대로 재정의했는지 확인해 줄래?
+  //
   public void add(Object e) {
     Board board = (Board) e;
     board.no = nextNo();
@@ -42,8 +46,7 @@ public class BoardList extends ObjectList {
     for (int i = 0; i < size(); i++) {
       Board board = (Board) super.get(i);
       if (board.no == boardNo) {
-        super.remove(i);
-        return true;
+        return super.remove(i);
       }
     }
 
