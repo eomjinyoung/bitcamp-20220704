@@ -67,10 +67,9 @@ public class BoardHandler {
     System.out.println("번호 제목 조회수 작성자 등록일");
 
     // boardList 인스턴스에 들어 있는 데이터 목록을 가져온다.
-    Object[] list = this.boardList.toArray();
+    Board[] list = this.boardList.toArray();
 
-    for (Object obj : list) {
-      Board board = (Board) obj;
+    for (Board board : list) {
       Date date = new Date(board.createdDate);
       String dateStr = formatter.format(date); 
       System.out.printf("%d\t%s\t%d\t%s\t%s\n",

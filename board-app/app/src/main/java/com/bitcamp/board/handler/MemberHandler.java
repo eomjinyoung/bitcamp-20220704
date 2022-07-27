@@ -51,10 +51,9 @@ public class MemberHandler {
     System.out.println("[회원 목록]");
     System.out.println("번호 이름 이메일");
 
-    Object[] list = this.memberList.toArray();
+    Member[] list = this.memberList.toArray();
 
-    for (Object obj : list) {
-      Member member = (Member) obj;
+    for (Member member : list) {
       System.out.printf("%d\t%s\t%s\n",
           member.no, member.name, member.email);
     }

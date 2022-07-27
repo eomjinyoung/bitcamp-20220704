@@ -5,11 +5,15 @@
 
 ### 1단계 - BoardList와 MemberList의 공통 필드와 메서드를 찾아 분리한다.
 
-- com.bitcamp.board.dao.ObjectList 클래스 생성
+- com.bitcamp.util.ObjectList 클래스 생성
+  - 여러 프로젝트에서 사용할 수 있도록 패키지를 조정한다.
 
 ### 2단계 - ObjectList를 상속 받아 BoardList와 MemberList를 정의한다.
 
 - com.bitcamp.board.dao.BoardList 클래스 변경
 - com.bitcamp.board.dao.MemberList 클래스 변경
+
+
+
 - com.bitcamp.board.handler.BoardHandler 클래스 변경
 - com.bitcamp.board.handler.MemberHandler 클래스 변경

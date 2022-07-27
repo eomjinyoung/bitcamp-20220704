@@ -1,22 +1,33 @@
 package com.bitcamp.board.dao;
 
 import com.bitcamp.board.domain.Board;
+import com.bitcamp.util.ObjectList;
 
 // 게시글 목록을 관리하는 역할
 //
 public class BoardList extends ObjectList {
 
-  private int no = 0;
+  // 자동으로 증가하는 게시글 번호
+  private int boardNo = 0;
 
-  // 수퍼 클래스의 get() 메서드를 BoardList에 맞게 재정의 한다.
-  // => 파라미터는 인덱스가 아닌 게시글 번호가 되게 한다.
-  // => Overriding 이라 부른다.
+  // 게시글을 저장할 때 
+  // 자동으로 증가한 번호를 게시글 번호로 설정할 수 있도록 
+  // add() 메서드를 재정의 한다.
+  @Override
+  public void add(Object e) {
+    Board board = (Board) e;
+    board.no = nextNo();
+    super.add(e);
+  }
+
+  // 목록에서 인덱스로 해당 항목을 찾는 get() 메서드를 오버라이딩하여
+  // 게시글을 등록할 때 부여한 일련 번호로 찾을 수 있도록 
+  // get() 메서드를 재정의(overriding) 한다.
+  // => 오버라이딩 메서드의 리턴 타입은 원래 타입의 서브 클래스로 변경할 수 있다.
   @Override
   public Board get(int boardNo) {
-    for (int i = 0; i < this.length; i++) {
-      // Object 배열에 실제 들어 있는 것은 Board라고 컴파일러에게 알린다.
-      Board board = (Board) this.list[i]; 
-
+    for (int i = 0; i < size(); i++) {
+      Board board = (Board) super.get(i);
       if (board.no == boardNo) {
         return board;
       }
@@ -24,35 +35,23 @@ public class BoardList extends ObjectList {
     return null;
   }
 
-  // 수퍼 클래스의 add() 를 BoardList에 맞게끔 재정의한다. 
-  // => 파라미터로 받은 Board 인스턴스의 no 변수 값을 설정한 다음 배열에 추가한다.
-  // => Overriding 이라 부른다.
-  @Override
-  public void add(Object obj) {
-    Board board = (Board) obj;
-    board.no = nextNo();
-
-    // 재정의하기 전의 수퍼 클래스의 add()를 사용하여 처리한다.
-    super.add(board);
-  }
-
-  // 수퍼 클래스의 remove()를 BoardList 클래스의 역할에 맞춰 재정의한다.
+  // 수퍼 클래스의 remove()는 인덱스로 지정한 항목을 삭제한다.
+  // 게시글 번호의 항목을 삭제하도록 상속 받은 메서드를 재정의 한다.
   @Override
   public boolean remove(int boardNo) {
-    int boardIndex = -1;
-    for (int i = 0; i < this.length; i++) {
-      Board board = (Board) this.list[i];
+    for (int i = 0; i < size(); i++) {
+      Board board = (Board) super.get(i);
       if (board.no == boardNo) {
-        boardIndex = i;
-        break;
+        super.remove(i);
+        return true;
       }
     }
 
-    return super.remove(boardIndex); // 재정의 하기 전에 수퍼 클래스의 메서드를 호출한다.
+    return false;
   }
 
   private int nextNo() {
-    return ++no;
+    return ++boardNo;
   }
 }
 
