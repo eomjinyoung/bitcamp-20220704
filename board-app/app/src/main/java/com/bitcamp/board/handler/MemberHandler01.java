@@ -8,7 +8,7 @@ import com.bitcamp.board.dao.MemberList;
 import com.bitcamp.board.domain.Member;
 import com.bitcamp.util.Prompt;
 
-public class MemberHandler {
+public class MemberHandler01 {
 
   private MemberList memberList = new MemberList();
 

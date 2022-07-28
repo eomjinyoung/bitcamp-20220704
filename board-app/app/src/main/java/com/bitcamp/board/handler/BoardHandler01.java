@@ -9,18 +9,18 @@ import com.bitcamp.board.dao.BoardList;
 import com.bitcamp.board.domain.Board;
 import com.bitcamp.util.Prompt;
 
-public class BoardHandler {
+public class BoardHandler01 {
 
   private String title; // 게시판의 제목
 
   // 게시글 목록을 관리할 객체 준비
   private BoardList boardList = new BoardList();
 
-  public BoardHandler() {
+  public BoardHandler01() {
     this.title = "게시판";
   }
 
-  public BoardHandler(String title) {
+  public BoardHandler01(String title) {
     this.title = title;
   }
 
@@ -98,22 +98,27 @@ public class BoardHandler {
       }
     }
 
-    // 해당 번호의 게시글이 몇 번 배열에 들어 있는지 알아내기
-    Board board = this.boardList.get(boardNo);
+    try {
+      // 해당 번호의 게시글이 몇 번 배열에 들어 있는지 알아내기
+      Board board = this.boardList.get(boardNo);
 
-    // 사용자가 입력한 번호에 해당하는 게시글을 못 찾았다면
-    if (board == null) {
-      System.out.println("해당 번호의 게시글이 없습니다!");
-      return;
+      // 사용자가 입력한 번호에 해당하는 게시글을 못 찾았다면
+      if (board == null) {
+        System.out.println("해당 번호의 게시글이 없습니다!");
+        return;
+      }
+
+      System.out.printf("번호: %d\n", board.no);
+      System.out.printf("제목: %s\n", board.title);
+      System.out.printf("내용: %s\n", board.content);
+      System.out.printf("조회수: %d\n", board.viewCount);
+      System.out.printf("작성자: %s\n", board.writer);
+      Date date = new Date(board.createdDate);
+      System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", date);
+
+    } catch(Throwable ex) {
+      System.out.printf("예외 발생: %s\n", ex.getMessage());
     }
-
-    System.out.printf("번호: %d\n", board.no);
-    System.out.printf("제목: %s\n", board.title);
-    System.out.printf("내용: %s\n", board.content);
-    System.out.printf("조회수: %d\n", board.viewCount);
-    System.out.printf("작성자: %s\n", board.writer);
-    Date date = new Date(board.createdDate);
-    System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", date);
 
   }
 
@@ -147,10 +152,14 @@ public class BoardHandler {
       }
     }
 
-    if (boardList.remove(boardNo)) {
-      System.out.println("삭제하였습니다.");
-    } else {
-      System.out.println("해당 번호의 게시글이 없습니다!");
+    try {
+      if (boardList.remove(boardNo)) {
+        System.out.println("삭제하였습니다.");
+      } else {
+        System.out.println("해당 번호의 게시글이 없습니다!");
+      }
+    } catch (Throwable ex) {
+      System.out.printf("예외 발생: %s\n", ex.getMessage());
     }
   }
 
@@ -168,23 +177,27 @@ public class BoardHandler {
       }
     }
 
-    Board board = this.boardList.get(boardNo);
+    try {
+      Board board = this.boardList.get(boardNo);
 
-    if (board == null) {
-      System.out.println("해당 번호의 게시글이 없습니다!");
-      return;
-    }
+      if (board == null) {
+        System.out.println("해당 번호의 게시글이 없습니다!");
+        return;
+      }
 
-    String newTitle = Prompt.inputString("제목?(" + board.title + ") ");
-    String newContent = Prompt.inputString(String.format("내용?(%s) ", board.content));
+      String newTitle = Prompt.inputString("제목?(" + board.title + ") ");
+      String newContent = Prompt.inputString(String.format("내용?(%s) ", board.content));
 
-    String input = Prompt.inputString("변경하시겠습니까?(y/n) ");
-    if (input.equals("y")) {
-      board.title = newTitle;
-      board.content = newContent;
-      System.out.println("변경했습니다.");
-    } else {
-      System.out.println("변경 취소했습니다.");
+      String input = Prompt.inputString("변경하시겠습니까?(y/n) ");
+      if (input.equals("y")) {
+        board.title = newTitle;
+        board.content = newContent;
+        System.out.println("변경했습니다.");
+      } else {
+        System.out.println("변경 취소했습니다.");
+      }
+    } catch (Throwable ex) {
+      System.out.printf("예외 발생: %s\n", ex.getMessage());
     }
   }
 }
