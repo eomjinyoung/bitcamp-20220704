@@ -162,3 +162,12 @@ export PATH=${JAVA_HOME}/bin:$PATH
 - board-app 프로젝트 수행 
   - 015. 공통 코드(필드,메서드)를 공유하는 방법 : 상속 (다시 연습)
 - String 클래스 사용법(eomcs-java-lang: com.eomcs.basic.ex02.*)
+
+### 19일 
+- 아침 특강(com.eomcs.quiz)
+  - ex01.Test09: 산술 진행에서 n번째 항목의 값 알아내기
+  - ex01.Test10: n개의 숫자로 원을 구성할 때 서로 마주하는 숫자를 알아내기
+  - ex02.Test05: 분수들 중에서 가장 큰 수를 알아내기
+- board-app 프로젝트 수행 
+  - 016. 예외를 처리하는 방법 1
+- String 클래스 사용법(eomcs-java-lang: com.eomcs.basic.ex02.*)

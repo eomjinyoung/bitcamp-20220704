@@ -1,21 +1,18 @@
-# 015. 공통 코드(필드,메서드)를 공유하는 방법 : 상속 
-
+# 016. 예외를 처리하는 방법 1
 
 ## 작업 내용
 
-### 1단계 - BoardList와 MemberList의 공통 필드와 메서드를 찾아 분리한다.
+### 1단계 - 예외가 발생하는 Prompt 클래스에서 예외를 처리한다.
 
-- com.bitcamp.util.ObjectList 클래스 생성
-  - 여러 프로젝트에서 사용할 수 있도록 패키지를 조정한다.
+- com.bitcamp.util.Prompt 클래스 변경
+  - inputInt() 메서드에 예외 처리 문법 적용
+  - 예외가 발생하면 리턴 값으로 예외 상황을 알린다.
+  - 예외 정보를 즉시 출력한다.
+    - 호출자가 원하는 방식으로 출력하지 못하는 문제가 있다.
 
-### 2단계 - ObjectList를 상속 받아 BoardList와 MemberList를 정의한다.
+### 2단계 - Prompt의 메서드에서 예외를 던질 경우 처리한다.
 
-- com.bitcamp.board.dao.BoardList 클래스 변경
-- com.bitcamp.board.dao.MemberList 클래스 변경
-  - ObjectList를 상속 받은 후 몇몇의 메서드를 오버라이딩 할 필요가 있음 확인하기 위해 기능을 변경한다.
-  - 회원 번호 대신 이메일로 찾고 삭제하도록 변경한다.
-
-### 3단계 - 상속의 일반화를 통해 구조가 변경된 것에 맞춰 XxxHandler를 변경한다.
-
+- com.bitcamp.board.App 클래스 변경
+  - 예외를 발생시킬 수 있는 메서드를 호출할 때 항상 그 리턴 값을 검사한다.
 - com.bitcamp.board.handler.BoardHandler 클래스 변경
 - com.bitcamp.board.handler.MemberHandler 클래스 변경
