@@ -22,24 +22,20 @@ public class MemberHandler {
       System.out.println("  5: 변경");
       System.out.println();
 
-      try {
-        int menuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 이전) ");
-        displayHeadline();
+      int menuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 이전) ");
+      displayHeadline();
 
-        switch (menuNo) {
-          case 0: return;
-          case 1: this.onList(); break;
-          case 2: this.onDetail(); break;
-          case 3: this.onInput(); break;
-          case 4: this.onDelete(); break;
-          case 5: this.onUpdate(); break;
-          default: System.out.println("메뉴 번호가 옳지 않습니다!");
-        }
-
-        displayBlankLine();
-      } catch (Throwable ex) {
-        System.out.println("입력 값이 옳지 않습니다!");
+      switch (menuNo) {
+        case 0: return;
+        case 1: this.onList(); break;
+        case 2: this.onDetail(); break;
+        case 3: this.onInput(); break;
+        case 4: this.onDelete(); break;
+        case 5: this.onUpdate(); break;
+        default: System.out.println("메뉴 번호가 옳지 않습니다!");
       }
+
+      displayBlankLine();
     } // 게시판 while
   }
 

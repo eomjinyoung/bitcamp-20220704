@@ -1,18 +1,21 @@
-# 016. 예외를 처리하는 방법 1
+# 016. 예외를 처리하는 방법 2
 
 ## 작업 내용
 
-### 1단계 - 예외가 발생하는 Prompt 클래스에서 예외를 처리한다.
-
-- com.bitcamp.util.Prompt 클래스 변경
-  - inputInt() 메서드에 예외 처리 문법 적용
-  - 예외가 발생하면 리턴 값으로 예외 상황을 알린다.
-  - 예외 정보를 즉시 출력한다.
-    - 호출자가 원하는 방식으로 출력하지 못하는 문제가 있다.
-
-### 2단계 - Prompt의 메서드에서 예외를 던질 경우 처리한다.
+### 1단계 - 메인 메뉴를 잘못 입력 했을 때 발생한 예외를 처리한다.
 
 - com.bitcamp.board.App 클래스 변경
-  - 예외를 발생시킬 수 있는 메서드를 호출할 때 항상 그 리턴 값을 검사한다.
+  - 메뉴 번호 입력 받는 부분에 try ~ catch ~ 적용 
+
+### 2단계 - 게시판 메뉴를 잘못 입력 했을 때 발생한 예외를 처리한다.
+
 - com.bitcamp.board.handler.BoardHandler 클래스 변경
-- com.bitcamp.board.handler.MemberHandler 클래스 변경
+  - execute() 메서드에 try ~ catch ~ 적용
+
+### 3단계 - 게시글 조회, 변경, 삭제 메뉴에서 발생한 예외를 처리한다.
+
+- com.bitcamp.board.handler.BoardHandler 클래스 변경
+  - onDetail(), onUpdate(), onDelete() 에 try ~ catch ~ 적용
+
+예외 처리 코드는 프로그램 동작에 따라 적용이 달라진다.
+  
