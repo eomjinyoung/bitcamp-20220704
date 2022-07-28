@@ -172,4 +172,3 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 016. 예외를 처리하는 방법 1
   - 017. 예외를 처리하는 방법 2
   - 018. 예외를 발생시키는 방법 
-- String 클래스 사용법(eomcs-java-lang: com.eomcs.basic.ex02.*)
