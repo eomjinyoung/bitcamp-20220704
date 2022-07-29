@@ -60,7 +60,7 @@ public class App {
             break;
           default: System.out.println("메뉴 번호가 옳지 않습니다!");
         } // switch
-      } catch (Throwable ex) {
+      } catch (Exception ex) {
         System.out.println("입력 값이 옳지 않습니다.");
       }
 

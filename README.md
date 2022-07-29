@@ -172,3 +172,10 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 016. 예외를 처리하는 방법 1
   - 017. 예외를 처리하는 방법 2
   - 018. 예외를 발생시키는 방법 
+
+### 20일 
+- 아침 특강(com.eomcs.quiz)
+  - ex01.Test11: 알파벳 카운트
+  - ex01.Test12: 주어진 점이 원에 있는지 여부
+- 예외를 다루는 방법(eomcs-java-lang: com.eomcs.exception.*)
+- 019. 사용자 정의 예외를 다루는 방법 
