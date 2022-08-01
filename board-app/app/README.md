@@ -11,4 +11,7 @@
 
 - com.bitcamp.util.LinkedList 클래스 생성
   - 클래스 필드 및 생성자 정의
-  
+  - add() 메서드 구현
+  - get(int) 메서드 구현
+  - remove(int) 메서드 구현
+  - size() 메서드 구현
