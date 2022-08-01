@@ -179,3 +179,10 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ex01.Test12: 주어진 점이 원에 있는지 여부
 - 예외를 다루는 방법(eomcs-java-lang: com.eomcs.exception.*)
 - 019. 사용자 정의 예외를 다루는 방법 
+
+### 21일 
+- 아침 특강(com.eomcs.quiz)
+  - ex01.Test13: 배수의 합 구하기 
+  - ex01.Test14: 10진수 순서 뒤집기
+  - ex02.Test06: 분수의 가분부(Improper) 여부 검사
+- 020. 자료구조를 구현하고 다루는 방법: Linked List 구현 및 사용
