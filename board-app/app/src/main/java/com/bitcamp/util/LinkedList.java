@@ -66,8 +66,8 @@ public class LinkedList {
     size--;
 
     if (head == tail) { // 마지막 남은 노드를 제거할 때
-      head = tail = null;
       head.value = null; // 노드에 들어 있는 값 객체의 주소를 비운다.
+      head = tail = null;
       return;
     }
 
