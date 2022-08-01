@@ -4,13 +4,13 @@
 package com.bitcamp.board.handler;
 
 import java.util.Date;
-import com.bitcamp.board.dao.MemberList;
+import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.domain.Member;
 import com.bitcamp.util.Prompt;
 
 public class MemberHandler {
 
-  private MemberList memberList = new MemberList();
+  private MemberDao memberList = new MemberDao();
 
   public void execute() {
     while (true) {
@@ -56,7 +56,7 @@ public class MemberHandler {
     System.out.println("[회원 목록]");
     System.out.println("이메일 이름");
 
-    Object[] list = this.memberList.getArray();
+    Object[] list = this.memberList.toArray();
 
     for (Object item : list) {
       Member member = (Member) item;
@@ -71,7 +71,7 @@ public class MemberHandler {
 
     String email = Prompt.inputString("조회할 회원 이메일? ");
 
-    Member member = this.memberList.retrieve(email);
+    Member member = this.memberList.get(email);
 
     if (member == null) {
       System.out.println("해당 이메일의 회원이 없습니다!");
@@ -94,7 +94,7 @@ public class MemberHandler {
     member.password = Prompt.inputString("암호? ");
     member.createdDate = System.currentTimeMillis();
 
-    this.memberList.append(member);
+    this.memberList.add(member);
 
     System.out.println("회워을 등록했습니다.");
   }
@@ -104,7 +104,7 @@ public class MemberHandler {
 
     String email = Prompt.inputString("삭제할 회원 이메일? ");
 
-    if (memberList.delete(email) != null) {
+    if (memberList.remove(email)) {
       System.out.println("삭제하였습니다.");
     } else {
       System.out.println("해당 이메일의 회원이 없습니다!");
@@ -116,7 +116,7 @@ public class MemberHandler {
 
     String email = Prompt.inputString("변경할 회원 이메일? ");
 
-    Member member = this.memberList.retrieve(email);
+    Member member = this.memberList.get(email);
 
     if (member == null) {
       System.out.println("해당 이메일의 회원이 없습니다!");

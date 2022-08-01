@@ -5,7 +5,7 @@ package com.bitcamp.board.handler;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import com.bitcamp.board.dao.BoardList;
+import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.domain.Board;
 import com.bitcamp.util.Prompt;
 
@@ -14,7 +14,7 @@ public class BoardHandler {
   private String title; // 게시판의 제목
 
   // 게시글 목록을 관리할 객체 준비
-  private BoardList boardList = new BoardList();
+  private BoardDao boardList = new BoardDao();
 
   public BoardHandler() {
     this.title = "게시판";
@@ -73,7 +73,7 @@ public class BoardHandler {
     System.out.println("번호 제목 조회수 작성자 등록일");
 
     // boardList 인스턴스에 들어 있는 데이터 목록을 가져온다.
-    Object[] list = this.boardList.getArray();
+    Object[] list = this.boardList.toArray();
 
     for (Object item : list) {
       Board board = (Board) item;
@@ -99,7 +99,7 @@ public class BoardHandler {
     }
 
     // 해당 번호의 게시글이 몇 번 배열에 들어 있는지 알아내기
-    Board board = this.boardList.retrieve(boardNo);
+    Board board = this.boardList.get(boardNo);
 
     // 사용자가 입력한 번호에 해당하는 게시글을 못 찾았다면
     if (board == null) {
@@ -129,7 +129,7 @@ public class BoardHandler {
     board.viewCount = 0;
     board.createdDate = System.currentTimeMillis();
 
-    this.boardList.append(board);
+    this.boardList.insert(board);
 
     System.out.println("게시글을 등록했습니다.");
   }
@@ -147,7 +147,7 @@ public class BoardHandler {
       }
     }
 
-    if (boardList.delete(boardNo) != null) {
+    if (boardList.remove(boardNo)) {
       System.out.println("삭제하였습니다.");
     } else {
       System.out.println("해당 번호의 게시글이 없습니다!");
@@ -168,7 +168,7 @@ public class BoardHandler {
       }
     }
 
-    Board board = this.boardList.retrieve(boardNo);
+    Board board = this.boardList.get(boardNo);
 
     if (board == null) {
       System.out.println("해당 번호의 게시글이 없습니다!");
