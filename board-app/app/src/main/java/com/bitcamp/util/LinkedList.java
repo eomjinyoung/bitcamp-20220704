@@ -16,7 +16,7 @@ public class LinkedList {
    * 파라미터로 주어진 값을 노드에 담아 리스트 끝에 연결한다.
    * @param value
    */
-  public void add(Object value) {
+  public void append(Object value) {
     // Node 생성 후 값을 저장한다.
     Node node = new Node(value);
 
@@ -36,7 +36,7 @@ public class LinkedList {
     tail = node; // 새 노드를 끝 노드로 만든다.
   }
 
-  public Object get(int index) {
+  public Object retrieve(int index) {
 
     // 인덱스의 유효 여부 검사
     if (index < 0 || index >= size) {
@@ -55,7 +55,7 @@ public class LinkedList {
     return cursor.value;
   }
 
-  public void remove(int index) {
+  public Object delete(int index) {
 
     // 인덱스의 유효 여부 검사
     if (index < 0 || index >= size) {
@@ -65,10 +65,14 @@ public class LinkedList {
     // 목록 크기를 한 개 줄인다.
     size--;
 
+    // 삭제할 값을 임시 보관하여 메서드를 리턴할 때 호출자에게 전달한다.
+    Object deleted;
+
     if (head == tail) { // 마지막 남은 노드를 제거할 때
+      deleted = head.value; // 노드를 삭제하기 전에 리턴할 수 있도록 값을 임시 보관한다.
       head.value = null; // 노드에 들어 있는 값 객체의 주소를 비운다.
       head = tail = null;
-      return;
+      return deleted; // 메서드를 종료할 때 호출자에게 삭제한 값을 리턴한다.
     }
 
     // 삭제할 노드를 찾기 위해 시작 노드를 head로 설정한다.
@@ -96,13 +100,30 @@ public class LinkedList {
 
     // 삭제할 노드를 초기화시킨다.
     // => garbage 객체가 다른 garbage 객체를 참조하지 않게 한다.
+    deleted = cursor.value; // 노드를 삭제하기 전에 노드에 들어 있는 값을 임시 보관해 둔다.
     cursor.value = null;
     cursor.prev = null;
     cursor.next = null;
+
+    return deleted; // 메서드를 리턴할 때 삭제된 값을 호출자에게 전달한다.
   }
 
-  public int size() {
+  public int length() {
     return size;
+  }
+
+  public Object[] getArray() {
+    // 값을 담을 배열을 준비
+    Object[] arr = new Object[size];
+
+    // 노드를 따라 가면서 값을 꺼내 배열에 담는다.
+    Node cursor = head;
+    for (int i = 0; i < size; i++) {
+      arr[i] = cursor.value;
+      cursor = cursor.next;
+    }
+
+    return arr;
   }
 }
 
