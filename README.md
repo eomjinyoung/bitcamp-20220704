@@ -186,3 +186,4 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ex01.Test14: 10진수 순서 뒤집기
   - ex02.Test06: 분수의 가분부(Improper) 여부 검사
 - 020. 자료구조를 구현하고 다루는 방법: Linked List 구현 및 사용
+- 021. 상속 대신 연관공통 코드(필드,메서드)를 공유하는 방법 : 연관(association)  

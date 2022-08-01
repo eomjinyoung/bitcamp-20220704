@@ -19,3 +19,10 @@
     - 따라서 데이터에 초점을 맞춘 메서드 이름으로 변경한다.
 - com.bitcamp.board.dao.MemberList 클래스 변경
   - BoardList를 변경한 것과 똑같이 처리한다.
+
+### 2단계 - BoardDao와 MemberDao에 맞춰 XxxHandler를 변경한다.
+
+- com.bitcamp.board.handler.BoardHandler 클래스 변경
+  - BoardList 대신 ObjectList에 의존하고 있는 BoardDao를 사용한다.
+- com.bitcamp.board.handler.MemberHandler 클래스 변경
+  - MemberList 대신 ObjectList에 의존하고 있는 MemberDao를 사용한다.

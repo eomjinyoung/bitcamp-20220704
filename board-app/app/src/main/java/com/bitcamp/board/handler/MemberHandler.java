@@ -10,7 +10,7 @@ import com.bitcamp.util.Prompt;
 
 public class MemberHandler {
 
-  private MemberDao memberList = new MemberDao();
+  private MemberDao memberDao = new MemberDao();
 
   public void execute() {
     while (true) {
@@ -56,10 +56,9 @@ public class MemberHandler {
     System.out.println("[회원 목록]");
     System.out.println("이메일 이름");
 
-    Object[] list = this.memberList.toArray();
+    Member[] members = this.memberDao.findAll();
 
-    for (Object item : list) {
-      Member member = (Member) item;
+    for (Member member : members) {
       System.out.printf("%s\t%s\n",
           member.email, member.name);
     }
@@ -71,7 +70,7 @@ public class MemberHandler {
 
     String email = Prompt.inputString("조회할 회원 이메일? ");
 
-    Member member = this.memberList.get(email);
+    Member member = this.memberDao.findByEmail(email);
 
     if (member == null) {
       System.out.println("해당 이메일의 회원이 없습니다!");
@@ -94,7 +93,7 @@ public class MemberHandler {
     member.password = Prompt.inputString("암호? ");
     member.createdDate = System.currentTimeMillis();
 
-    this.memberList.add(member);
+    this.memberDao.insert(member);
 
     System.out.println("회워을 등록했습니다.");
   }
@@ -104,7 +103,7 @@ public class MemberHandler {
 
     String email = Prompt.inputString("삭제할 회원 이메일? ");
 
-    if (memberList.remove(email)) {
+    if (memberDao.delete(email)) {
       System.out.println("삭제하였습니다.");
     } else {
       System.out.println("해당 이메일의 회원이 없습니다!");
@@ -116,7 +115,7 @@ public class MemberHandler {
 
     String email = Prompt.inputString("변경할 회원 이메일? ");
 
-    Member member = this.memberList.get(email);
+    Member member = this.memberDao.findByEmail(email);
 
     if (member == null) {
       System.out.println("해당 이메일의 회원이 없습니다!");

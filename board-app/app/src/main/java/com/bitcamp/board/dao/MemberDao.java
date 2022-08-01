@@ -44,6 +44,17 @@ public class MemberDao {
 
   public Member[] findAll() {
 
+    // 목록에 저장된 회원 데이터를 가져온다.
+    Object[] arr = list.toArray();
+
+    // Object[] 배열의 값을 Member[] 로 옮긴다.
+    Member[] members = new Member[arr.length];
+
+    for (int i = 0; i < arr.length; i++) {
+      members[i] = (Member) arr[i];
+    }
+
+    return members;
   }
 }
 

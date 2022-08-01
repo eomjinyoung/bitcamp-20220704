@@ -28,7 +28,7 @@ public class MemberList extends LinkedList {
         return delete(i);
       }
     }
-    return false;
+    return null;
   }
 }
 
