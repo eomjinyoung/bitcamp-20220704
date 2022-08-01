@@ -65,6 +65,12 @@ public class LinkedList {
     // 목록 크기를 한 개 줄인다.
     size--;
 
+    if (head == tail) { // 마지막 남은 노드를 제거할 때
+      head = tail = null;
+      head.value = null; // 노드에 들어 있는 값 객체의 주소를 비운다.
+      return;
+    }
+
     // 삭제할 노드를 찾기 위해 시작 노드를 head로 설정한다.
     Node cursor = head;
 
@@ -74,8 +80,19 @@ public class LinkedList {
     }
 
     // 찾은 노드의 앞, 뒤 노드를 바로 연결한다.
-    cursor.prev.next = cursor.next; // 현재 노드의 다음 노드 주소를 이전 노드의 next 저장
-    cursor.next.prev = cursor.prev; // 현재 노드의 이전 노드 주소를 다음 노드의 prev 저장
+    if (cursor.prev != null) { // 맨 앞 노드가 아니라면
+      cursor.prev.next = cursor.next; // 현재 노드의 다음 노드 주소를 이전 노드의 next 저장
+    } else { // 맨 앞 노드라면
+      head = cursor.next; // 삭제할 다음 노드를 시작 노드로 설정한다. 
+      head.prev = null; // 시작 노드이기에 앞노드를 가리키지 않게 한다.
+    }
+
+    if (cursor.next != null) { // 마지막 노드가 아니라면
+      cursor.next.prev = cursor.prev; // 현재 노드의 이전 노드 주소를 다음 노드의 prev 저장
+    } else { // 마지막 노드라면 
+      tail = cursor.prev; // 현재 커서의 이전 노드를 마지막 노드로 설정한다.
+      tail.next = null; // 마지막 노드이기에 다음 노드를 가리키지 않게 한다.
+    }
 
     // 삭제할 노드를 초기화시킨다.
     // => garbage 객체가 다른 garbage 객체를 참조하지 않게 한다.
