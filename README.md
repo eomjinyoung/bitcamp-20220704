@@ -199,4 +199,4 @@ export PATH=${JAVA_HOME}/bin:$PATH
     - 021 버전에 LinkedList 적용
   - 023. 메서드 사용법을 규격화하여 객체 사용 방법을 일관성 있게 만들기: 인터페이스
   - 024. List 규격에 맞춰 LinkedList 구현하고 적용하기
-- 인터페이스 사용법(eomcs-java-lang: com.eomcs.exception.*)
+- 인터페이스 사용법(eomcs-java-lang: com.eomcs.oop.ex09.*)
