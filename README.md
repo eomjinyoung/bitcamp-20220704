@@ -186,11 +186,11 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ex01.Test14: 10진수 순서 뒤집기
   - ex02.Test06: 분수의 가분부(Improper) 여부 검사
 - 020. 자료구조를 구현하고 다루는 방법: Linked List 구현 및 사용
-- 021. 상속 대신 연관공통 코드(필드,메서드)를 공유하는 방법 : 연관(association)  
+- 021. 공통 코드(필드,메서드)를 공유하는 방법 : 연관(association)  
 
 ### 22일 
 - 아침 특강(com.eomcs.quiz)
   - ex01.Test15: 반복 문자열 여부 검사하기
   - ex02.Test07: 배열에서 가장 큰 짝수 알아내기
-- 020. 자료구조를 구현하고 다루는 방법: Linked List 구현 및 사용
-- 021. 상속 대신 연관공통 코드(필드,메서드)를 공유하는 방법 : 연관(association) 
+- 022. 자료구조를 구현하고 다루는 방법: Linked List 구현 및 사용
+  - 021 버전에 LinkedList 적용
