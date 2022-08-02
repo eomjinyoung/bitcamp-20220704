@@ -178,19 +178,25 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ex01.Test11: 알파벳 카운트
   - ex01.Test12: 주어진 점이 원에 있는지 여부
 - 예외를 다루는 방법(eomcs-java-lang: com.eomcs.exception.*)
-- 019. 사용자 정의 예외를 다루는 방법 
+- board-app 프로젝트 수행 
+  - 019. 사용자 정의 예외를 다루는 방법 
 
 ### 21일 
 - 아침 특강(com.eomcs.quiz)
   - ex01.Test13: 배수의 합 구하기 
   - ex01.Test14: 10진수 순서 뒤집기
   - ex02.Test06: 분수의 가분부(Improper) 여부 검사
-- 020. 자료구조를 구현하고 다루는 방법: Linked List 구현 및 사용
-- 021. 공통 코드(필드,메서드)를 공유하는 방법 : 연관(association)  
+- board-app 프로젝트 수행 
+  - 020. 자료구조를 구현하고 다루는 방법: Linked List 구현 및 사용
+  - 021. 공통 코드(필드,메서드)를 공유하는 방법 : 연관(association)  
 
 ### 22일 
 - 아침 특강(com.eomcs.quiz)
   - ex01.Test15: 반복 문자열 여부 검사하기
   - ex02.Test07: 배열에서 가장 큰 짝수 알아내기
-- 022. 자료구조를 구현하고 다루는 방법: Linked List 구현 및 사용
-  - 021 버전에 LinkedList 적용
+- board-app 프로젝트 수행 
+  - 022. 자료구조를 구현하고 다루는 방법: Linked List 구현 및 사용
+    - 021 버전에 LinkedList 적용
+  - 023. 메서드 사용법을 규격화하여 객체 사용 방법을 일관성 있게 만들기: 인터페이스
+  - 024. List 규격에 맞춰 LinkedList 구현하고 적용하기
+- 인터페이스 사용법(eomcs-java-lang: com.eomcs.exception.*)
