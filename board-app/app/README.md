@@ -1,29 +1,22 @@
-# 027. 스택 자료 구조를 활용하여 브래드크럼 메뉴 만들기
+# 028. 인터페이스를 이용하여 핸들러의 사용법을 규격화 하기
 
 
 ## 작업 내용
 
-### 1단계 - LinkedList 상속 받아 Stack 클래스를 구현한다.
+### 1단계 - 핸들러의 사용법을 인터페이스로 규격화 한다.
 
-- com.bitcamp.util.Stack 클래스 생성
-  - LinkedList를 상속한다.
-  - push()/pop() 메서드를 추가로 정의한다.
+- com.bitcamp.handler.Handler 인터페이스 생성
+  - 핸들러 사용 규칙을 정의한다.
 
-### 2단계 - 메뉴의 제목을 저장할 수 있도록 스택 객체를 준비한다.
+### 2단계 - 핸들러 사용 규칙에 따라 BoardHandler와 MemberHandler를 구현한다.
 
-- com.bitcamp.board.App 클래스 변경
-  - Stack 객체를 준비한다.
-    - 여러 클래스에서 공통으로 사용할 수 있도록 static 멤버로 선언한다.
-    - 여러 클래스에서 접근할 수 있도록 public으로 공개한다.
-  - 메뉴 출력을 리팩토링 한다.
+- com.bitcamp.board.handler.BoardHandler 클래스 변경
+  - Handler 인터페이스를 구현한다.
+- com.bitcamp.board.handler.MemberHandler 클래스 변경
+  - Handler 인터페이스를 구현한다.  
 
-### 3단계 - 메뉴에 진입할 때 그 메뉴의 이름을 스택에 저장한다.
+### 3단계 - Handler 규칙에 따라 핸들러 객체를 실행한다.
 
 - com.bitcamp.board.App 클래스 변경
-  - 애플리케이션을 실행할 때 "메인" 메뉴 이름을 스택에 추가한다.
-  - 메뉴의 제목을 출력할 때 스택에서 문자열을 꺼내 출력한다.
-  - breadcrumb 메뉴바 적용에 따라 기존 코드를 리팩토링 한다.
-- com.bitcamp.board.handler.XxxHandler 클래스 변경
-  - 핸들러를 실행할 때 해당 핸들러의 메뉴 이름을 스택에 등록한다.
-  - 핸들러의 서브 메뉴 실행을 마치면 스택에 등록된 메뉴를 제거한다.
-  - breadcrumb 메뉴바 적용에 따라 기존 코드를 리팩토링 한다.
+  - Handler 객체를 레퍼런스 배열로 관리한다.
+  - 핸들러를 실행할 때 규칙에 따라 메서드를 호출한다. switch 문 제거!

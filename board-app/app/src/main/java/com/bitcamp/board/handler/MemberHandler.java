@@ -7,9 +7,10 @@ import java.util.Date;
 import com.bitcamp.board.App;
 import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.domain.Member;
+import com.bitcamp.handler.Handler;
 import com.bitcamp.util.Prompt;
 
-public class MemberHandler {
+public class MemberHandler implements Handler {
 
   private MemberDao memberDao = new MemberDao();
 

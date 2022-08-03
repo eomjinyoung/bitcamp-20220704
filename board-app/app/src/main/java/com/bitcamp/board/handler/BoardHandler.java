@@ -8,9 +8,10 @@ import java.util.Date;
 import com.bitcamp.board.App;
 import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.domain.Board;
+import com.bitcamp.handler.Handler;
 import com.bitcamp.util.Prompt;
 
-public class BoardHandler {
+public class BoardHandler implements Handler {
 
   // 게시글 목록을 관리할 객체 준비
   private BoardDao boardDao = new BoardDao();

@@ -6,6 +6,7 @@ package com.bitcamp.board;
 
 import com.bitcamp.board.handler.BoardHandler;
 import com.bitcamp.board.handler.MemberHandler;
+import com.bitcamp.handler.Handler;
 import com.bitcamp.util.Prompt;
 import com.bitcamp.util.Stack;
 
@@ -17,15 +18,15 @@ public class App {
   public static void main(String[] args) {
     welcome();
 
-    // 인스턴스를 생성할 때 생성자가 원하는 값을 반드시 줘야 한다.
-    // 주지 않으면 컴파일 오류이다!
-    //
-    BoardHandler boardHandler = new BoardHandler();
-    BoardHandler readingHandler = new BoardHandler();
-    BoardHandler visitHandler = new BoardHandler();
-    BoardHandler noticeHandler = new BoardHandler();
-    BoardHandler diaryHandler = new BoardHandler();
-    MemberHandler memberHandler = new MemberHandler();
+    // 핸들러를 담을 레퍼런스 배열을 준비한다.
+    Handler[] handlers = new Handler[] {
+        new BoardHandler(), // 게시판
+        new BoardHandler(), // 독서록
+        new BoardHandler(), // 방명록
+        new BoardHandler(), // 공지사항
+        new BoardHandler(), // 일기장
+        new MemberHandler() // 회원
+    };
 
     // "메인" 메뉴의 이름을 스택에 등록한다.
     breadcrumbMenu.push("메인");
@@ -56,26 +57,8 @@ public class App {
         // 메뉴에 진입할 때 breadcrumb 메뉴바에 그 메뉴를 등록한다.
         breadcrumbMenu.push(menus[mainMenuNo - 1]);
 
-        switch (mainMenuNo) {
-          case 1: // 게시판
-            boardHandler.execute();
-            break;
-          case 2: // 독서록
-            readingHandler.execute();
-            break;
-          case 3: // 방명록
-            visitHandler.execute();
-            break;
-          case 4: // 공지사항
-            noticeHandler.execute();
-            break;
-          case 5: // 일기장
-            diaryHandler.execute();
-            break;
-          case 6: // 회원
-            memberHandler.execute();
-            break;
-        } // switch
+        // 메뉴 번호로 Handler 레퍼런스에 들어있는 객체를 찾아 실행한다.
+        handlers[mainMenuNo - 1].execute();
 
         breadcrumbMenu.pop();
 
