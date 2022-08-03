@@ -1,13 +1,9 @@
 package com.bitcamp.util;
 
-// List 규격에 따라 메서드를 구현할 것이라고 선언한다!
-// 만약 규격에 따라 메서드를 구현하지 않으면 컴파일을 안 해준다.
-// 
-public class ObjectList implements List {
+public class ObjectList extends AbstractList {
 
   private static final int DEFAULT_CAPACITY = 10;
 
-  private int size;
   private Object[] elementData;
 
   public ObjectList() {
@@ -59,11 +55,6 @@ public class ObjectList implements List {
     elementData[--size] = null;
 
     return deleted;
-  }
-
-  @Override
-  public int size() {
-    return size;
   }
 
   private void grow() {

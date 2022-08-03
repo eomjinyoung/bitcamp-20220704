@@ -200,3 +200,18 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 023. 메서드 사용법을 규격화하여 객체 사용 방법을 일관성 있게 만들기: 인터페이스
   - 024. List 규격에 맞춰 LinkedList 구현하고 적용하기
 - 인터페이스 사용법(eomcs-java-lang: com.eomcs.oop.ex09.*)
+
+### 23일 
+- 아침 특강(com.eomcs.quiz)
+  - ex01.Test16: 윤년 구하기
+  - ex02.Test08: 배열로 주어진 좌표를 점핑하는 수 구하기
+- board-app 프로젝트 수행 
+  - 022. 자료구조를 구현하고 다루는 방법: Linked List 구현 및 사용
+    - 021 버전에 LinkedList 적용
+  - 023. 메서드 사용법을 규격화하여 객체 사용 방법을 일관성 있게 만들기: 인터페이스
+  - 024. List 규격에 맞춰 LinkedList 구현하고 적용하기
+- 인터페이스 사용법(eomcs-java-lang: com.eomcs.oop.ex09.*)(계속)
+
+
+## 구글 미트
+https://meet.google.com/uou-bbtj-qzf
