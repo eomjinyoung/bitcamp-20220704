@@ -1,17 +1,11 @@
-# 025. 추상 클래스를 활용하여 인터페이스의 일부를 미리 구현하기
+# 026. 중첩 클래스 문법을 이용하여 클래스 사용 범위를 제한하기
 
 
 ## 작업 내용
 
-### 1단계 - List 규격에 맞춰 AbstractList를 구현한다.
+### 1단계 - LinkedList가 사용하는 Node 클래스를 중첩 클래스를 변경한다.
 
-- com.bitcamp.util.AbstractList 추상클래스 생성
-  - size 필드와 size() 메서드를 구현한다.
-
-  
-### 2단계 - ObjectList와 LinkedList는 AbstractList를 상속한다.
-
-- com.bitcamp.util.ObjectList 클래스 변경
-  - AbstractList가 구현하지 않은 List의 나머지 메서드를 구현한다.
 - com.bitcamp.util.LinkedList 클래스 변경
-  - AbstractList가 구현하지 않은 List의 나머지 메서드를 구현한다.
+  - Node 클래스를 중첩 클래스로 정의한다.
+- com.bitcamp.util.Node 클래스 삭제
+
