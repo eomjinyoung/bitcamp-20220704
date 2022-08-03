@@ -12,53 +12,56 @@ import com.bitcamp.util.Prompt;
 
 public class BoardHandler {
 
-  private String title; // 게시판의 제목
-
   // 게시글 목록을 관리할 객체 준비
   private BoardDao boardDao = new BoardDao();
 
-  public BoardHandler() {
-    this.title = "게시판";
-  }
+  // 모든 인스턴스가 같은 서브 메뉴를 가지기 때문에
+  // 메뉴명을 저장할 배열은 클래스 필드로 준비한다.
+  private static String[] menus = {"목록", "상세보기", "등록", "삭제", "변경"};
 
-  public BoardHandler(String title) {
-    this.title = title;
+  static void printMenus(String[] menus) {
+    for (int i = 0; i < menus.length; i++) {
+      System.out.printf("  %d: %s\n", i + 1, menus[i]);
+    }
   }
 
   public void execute() {
 
-    // 핸들러를 실행할 때 breadcrumb 메뉴에 이 핸들러의 이름을 등록한다.
-    App.breadcrumbMenu.push(title);
-
     while (true) {
       System.out.printf("%s:\n", App.breadcrumbMenu);
-      System.out.println("  1: 목록");
-      System.out.println("  2: 상세보기");
-      System.out.println("  3: 등록");
-      System.out.println("  4: 삭제");
-      System.out.println("  5: 변경");
+      printMenus(menus);
       System.out.println();
 
       try {
         int menuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 이전) ");
 
+        if (menuNo < 0 || menuNo > menus.length) {
+          System.out.println("메뉴 번호가 옳지 않습니다!");
+          continue; // while 문의 조건 검사로 보낸다.
+
+        } else if (menuNo == 0) {
+          return; // 메인 메뉴로 돌아간다.
+        }
+
+        // 메뉴에 진입할 때 breadcrumb 메뉴바에 그 메뉴를 등록한다.
+        App.breadcrumbMenu.push(menus[menuNo - 1]);
+
         displayHeadline();
 
-        // 다른 인스턴스 메서드를 호출할 때 this에 보관된 인스턴스 주소를 사용한다. 
+        // 서브 메뉴의 제목을 출력한다.
+        System.out.printf("%s:\n", App.breadcrumbMenu);
+
         switch (menuNo) {
-          case 0: 
-            // 핸들러를 종료할 때 breadcrumb 메뉴에 등록된 이 핸들러의 이름을 꺼낸다.
-            App.breadcrumbMenu.pop();
-            return;
           case 1: this.onList(); break;
           case 2: this.onDetail(); break;
           case 3: this.onInput(); break;
           case 4: this.onDelete(); break;
           case 5: this.onUpdate(); break;
-          default: System.out.println("메뉴 번호가 옳지 않습니다!");
         }
 
         displayBlankLine();
+
+        App.breadcrumbMenu.pop();
 
       } catch (Exception ex) {
         System.out.printf("예외 발생: %s\n", ex.getMessage());
@@ -77,7 +80,6 @@ public class BoardHandler {
   private void onList() {
     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
 
-    System.out.printf("[%s 목록]\n", this.title);
     System.out.println("번호 제목 조회수 작성자 등록일");
 
     Board[] boards = this.boardDao.findAll();
@@ -92,8 +94,6 @@ public class BoardHandler {
   }
 
   private void onDetail() {
-    System.out.printf("[%s 상세보기]\n", this.title);
-
     int boardNo = 0;
     while (true) {
       try {
@@ -124,8 +124,6 @@ public class BoardHandler {
   }
 
   private void onInput() {
-    System.out.printf("[%s 등록]\n", this.title);
-
     Board board = new Board();
 
     board.title = Prompt.inputString("제목? ");
@@ -141,8 +139,6 @@ public class BoardHandler {
   }
 
   private void onDelete() {
-    System.out.printf("[%s 삭제]\n", this.title);
-
     int boardNo = 0;
     while (true) {
       try {
@@ -161,9 +157,6 @@ public class BoardHandler {
   }
 
   private void onUpdate() {
-
-    System.out.printf("[%s 변경]\n", this.title);
-
     int boardNo = 0;
     while (true) {
       try {
