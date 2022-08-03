@@ -5,6 +5,7 @@ package com.bitcamp.board.handler;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import com.bitcamp.board.App;
 import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.domain.Board;
 import com.bitcamp.util.Prompt;
@@ -25,8 +26,12 @@ public class BoardHandler {
   }
 
   public void execute() {
+
+    // 핸들러를 실행할 때 breadcrumb 메뉴에 이 핸들러의 이름을 등록한다.
+    App.breadcrumbMenu.push(title);
+
     while (true) {
-      System.out.printf("%s:\n", this.title);
+      System.out.printf("%s:\n", App.breadcrumbMenu);
       System.out.println("  1: 목록");
       System.out.println("  2: 상세보기");
       System.out.println("  3: 등록");
@@ -41,7 +46,10 @@ public class BoardHandler {
 
         // 다른 인스턴스 메서드를 호출할 때 this에 보관된 인스턴스 주소를 사용한다. 
         switch (menuNo) {
-          case 0: return;
+          case 0: 
+            // 핸들러를 종료할 때 breadcrumb 메뉴에 등록된 이 핸들러의 이름을 꺼낸다.
+            App.breadcrumbMenu.pop();
+            return;
           case 1: this.onList(); break;
           case 2: this.onDetail(); break;
           case 3: this.onInput(); break;

@@ -7,8 +7,12 @@ package com.bitcamp.board;
 import com.bitcamp.board.handler.BoardHandler;
 import com.bitcamp.board.handler.MemberHandler;
 import com.bitcamp.util.Prompt;
+import com.bitcamp.util.Stack;
 
 public class App {
+
+  // breadcrumb 메뉴를 저장할 스택을 준비
+  public static Stack breadcrumbMenu = new Stack();
 
   public static void main(String[] args) {
     welcome();
@@ -23,10 +27,13 @@ public class App {
     BoardHandler diaryHandler = new BoardHandler("일기장");
     MemberHandler memberHandler = new MemberHandler();
 
+    // "메인" 메뉴의 이름을 스택에 등록한다.
+    breadcrumbMenu.push("메인");
+
     loop: while (true) {
 
       // 메인 메뉴 출력
-      System.out.println("메뉴:");
+      System.out.printf("%s:\n", breadcrumbMenu);
       System.out.println("  1: 게시판");
       System.out.println("  2: 독서록");
       System.out.println("  3: 방명록");
