@@ -212,6 +212,13 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 028. 인터페이스를 이용하여 핸들러의 사용법을 규격화 하기
 - 인터페이스 사용법(eomcs-java-lang: com.eomcs.oop.ex09.*)(계속)
 
+### 24일 
+- 아침 특강(com.eomcs.quiz)
+  - ex01.Test17: 
+  - ex01.Test18: 
+- board-app 프로젝트 수행 
+  - 029. 추상 클래스를 활용하여 인터페이스의 일부를 미리 구현하기
+- 인터페이스 사용법(eomcs-java-lang: com.eomcs.oop.ex09.*)
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
