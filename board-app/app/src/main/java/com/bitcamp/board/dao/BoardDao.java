@@ -24,6 +24,7 @@ public class BoardDao {
     // List 규격에 따라 만든 객체를 사용하여 목록에 추가한다.
     // => 메서드를 호출할 때는 List 규격에 따라 호출한다.
     list.add(e);
+
   }
 
   public Board findByNo(int boardNo) {
