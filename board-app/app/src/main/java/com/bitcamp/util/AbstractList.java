@@ -5,7 +5,7 @@ package com.bitcamp.util;
 // - 인터페이스의 메서드 중에서 서브 클래스에 공통으로 상속해줄 메서드를 일부 구현한다.
 // - 물론 서브 클래스에 상속해 줄 필드가 있다면 이 클래스에서 미리 추가한다.
 //
-public abstract class AbstractList implements List{
+public abstract class AbstractList<E> implements List<E> {
 
   // 목록에 저장된 항목의 개수를 저장하는 필드는 모든 서브 클래스가 가져야 할 필드이다.
   // 또한 이 필드는 서브 클래스에서 접근 가능하도록 개방한다.
