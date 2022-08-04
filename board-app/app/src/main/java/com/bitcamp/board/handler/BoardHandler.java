@@ -5,77 +5,33 @@ package com.bitcamp.board.handler;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import com.bitcamp.board.App;
 import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.domain.Board;
-import com.bitcamp.handler.Handler;
+import com.bitcamp.handler.AbstractHandler;
 import com.bitcamp.util.Prompt;
 
-public class BoardHandler implements Handler {
+public class BoardHandler extends AbstractHandler {
 
   // 게시글 목록을 관리할 객체 준비
   private BoardDao boardDao = new BoardDao();
 
-  // 모든 인스턴스가 같은 서브 메뉴를 가지기 때문에
-  // 메뉴명을 저장할 배열은 클래스 필드로 준비한다.
-  private static String[] menus = {"목록", "상세보기", "등록", "삭제", "변경"};
+  public BoardHandler() {
+    // 수퍼 클래스의 생성자를 호출할 때 메뉴 목록을 전달한다.
+    super(new String[] {"목록", "상세보기", "등록", "삭제", "변경"});
+  }
 
-  static void printMenus(String[] menus) {
-    for (int i = 0; i < menus.length; i++) {
-      System.out.printf("  %d: %s\n", i + 1, menus[i]);
+  // 템플릿 메서드 패턴(template method pattern) 
+  //   - 수퍼 클래스의 execute()에서 동작의 전체적인 흐름을 정의하고(틀을 만들고),
+  //   - 서브 클래스의 service()에서 동작을 구제척으로 정의한다.(세부적인 항목을 구현한다)
+  @Override
+  public void service(int menuNo) {
+    switch (menuNo) {
+      case 1: this.onList(); break;
+      case 2: this.onDetail(); break;
+      case 3: this.onInput(); break;
+      case 4: this.onDelete(); break;
+      case 5: this.onUpdate(); break;
     }
-  }
-
-  public void execute() {
-
-    while (true) {
-      System.out.printf("%s:\n", App.breadcrumbMenu);
-      printMenus(menus);
-      System.out.println();
-
-      try {
-        int menuNo = Prompt.inputInt("메뉴를 선택하세요[1..5](0: 이전) ");
-
-        if (menuNo < 0 || menuNo > menus.length) {
-          System.out.println("메뉴 번호가 옳지 않습니다!");
-          continue; // while 문의 조건 검사로 보낸다.
-
-        } else if (menuNo == 0) {
-          return; // 메인 메뉴로 돌아간다.
-        }
-
-        // 메뉴에 진입할 때 breadcrumb 메뉴바에 그 메뉴를 등록한다.
-        App.breadcrumbMenu.push(menus[menuNo - 1]);
-
-        displayHeadline();
-
-        // 서브 메뉴의 제목을 출력한다.
-        System.out.printf("%s:\n", App.breadcrumbMenu);
-
-        switch (menuNo) {
-          case 1: this.onList(); break;
-          case 2: this.onDetail(); break;
-          case 3: this.onInput(); break;
-          case 4: this.onDelete(); break;
-          case 5: this.onUpdate(); break;
-        }
-
-        displayBlankLine();
-
-        App.breadcrumbMenu.pop();
-
-      } catch (Exception ex) {
-        System.out.printf("예외 발생: %s\n", ex.getMessage());
-      }
-    } // 게시판 while
-  }
-
-  private static void displayHeadline() {
-    System.out.println("=========================================");
-  }
-
-  private static void displayBlankLine() {
-    System.out.println(); // 메뉴를 처리한 후 빈 줄 출력
   }
 
   private void onList() {

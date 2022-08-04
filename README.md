@@ -217,7 +217,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ex01.Test17: 
   - ex01.Test18: 
 - board-app 프로젝트 수행 
-  - 029. 추상 클래스를 활용하여 인터페이스의 일부를 미리 구현하기
+  - 029. 추상 클래스를 사용하여 핸들러의 공통 기능 구현하기: 템플릿 메서드 패턴 적용
 - 인터페이스 사용법(eomcs-java-lang: com.eomcs.oop.ex09.*)
 
 ## 구글 미트
