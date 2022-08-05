@@ -221,6 +221,12 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 030. List가 특정 타입의 목록만 다루게 하는 방법: 제네릭 문법 적용
   - 031. 기존 List 구현체를 자바 컬렉션 API로 교체하기: java.util 패키지의 클래스 사용
 
+### 25일 
+- 아침 특강(com.eomcs.quiz)
+  - ex01.Test19: 
+  - ex01.Test20: 
+- board-app 프로젝트 수행 
+  - 031. 기존 List 구현체를 자바 컬렉션 API로 교체하기: java.util 패키지의 클래스 사용
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf

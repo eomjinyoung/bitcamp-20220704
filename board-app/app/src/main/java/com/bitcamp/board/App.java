@@ -4,16 +4,16 @@
  */
 package com.bitcamp.board;
 
-import java.util.Stack;
 import com.bitcamp.board.handler.BoardHandler;
 import com.bitcamp.board.handler.MemberHandler;
 import com.bitcamp.handler.Handler;
 import com.bitcamp.util.Prompt;
+import com.bitcamp.util.Stack;
 
 public class App {
 
   // breadcrumb 메뉴를 저장할 스택을 준비
-  public static Stack<String> breadcrumbMenu = new Stack<>();
+  public static Stack breadcrumbMenu = new Stack();
 
   public static void main(String[] args) {
     welcome();

@@ -1,14 +1,17 @@
-# 031. 기존 List 구현체를 자바 컬렉션 API로 교체하기: java.util 패키지의 클래스 사용
+# 031. 자료 구조와 조회 조건에 상관없이 일관된 방법으로 조회하기: Iterator 패턴 적용
 
 ## 작업 내용
 
-### 1단계 - 기존의 목록 관련 클래스를 자바 컬렉션 API로 교체한다.
+### 1단계 - BoardDao에서 목록을 출력할 때 최신순으로 나열한다.
 
-- com.bitcamp.util.List 인터페이스 삭제
-- com.bitcamp.util.AbstractList 추상 클래스 삭제
-- com.bitcamp.util.ObjectList 클래스 삭제
-- com.bitcamp.util.LinkedList 클래스 삭제
-- com.bitcamp.util.Stack 클래스 삭제
 - com.bitcamp.board.dao.BoardDao 클래스 변경
-- com.bitcamp.board.dao.MemberDao 클래스 변경
-- com.bitcamp.board.App 클래스 변경
+  - findAll() 메서드 변경: LinkedList 가 리턴해준 배열을 꺼꾸로 만들어 리턴한다.
+    - 문제: 데이터 조회 방식에 따라 코딩이 달라진다.
+    - 유지보수에 좋은 방식: 데이터 조회 방식에 상관없이 동일한 방식으로 조회하고 싶다.
+    - 해결책? 
+      - 데이터 조회를 수행하는 코드를 별도의 객체로 분리하여 관리. 
+      - 그리고 데이터 조회 방식을 일관되게 하기 위해 인터페이스를 이용하여 규격화 한다.
+
+
+
+
