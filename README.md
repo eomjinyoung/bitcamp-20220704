@@ -225,8 +225,6 @@ export PATH=${JAVA_HOME}/bin:$PATH
 - 아침 특강(com.eomcs.quiz)
   - ex01.Test19: 
   - ex01.Test20: 
-- board-app 프로젝트 수행 
-  - 031. 기존 List 구현체를 자바 컬렉션 API로 교체하기: java.util 패키지의 클래스 사용
 - Iterator 패턴과 중첩 클래스 사용법(eomcs-java-lang: com.eomcs.design_pattern.iterator.*)
 
 ## 구글 미트
