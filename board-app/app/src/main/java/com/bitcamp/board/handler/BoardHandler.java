@@ -3,8 +3,6 @@
  */
 package com.bitcamp.board.handler;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import com.bitcamp.board.dao.BoardDao;
@@ -17,11 +15,17 @@ public class BoardHandler extends AbstractHandler {
   // 게시글 목록을 관리할 객체 준비
   private BoardDao boardDao;
 
-  public BoardHandler(String filename) throws FileNotFoundException, IOException {
+  public BoardHandler(String filename) {
     // 수퍼 클래스의 생성자를 호출할 때 메뉴 목록을 전달한다.
     super(new String[] {"목록", "상세보기", "등록", "삭제", "변경"});
 
     boardDao = new BoardDao(filename);
+
+    try {
+      boardDao.load();
+    } catch (Exception e) {
+      System.out.printf("%s 파일 로딩 중 오류 발생!\n", filename);
+    }
   }
 
   // 템플릿 메서드 패턴(template method pattern) 
@@ -29,12 +33,16 @@ public class BoardHandler extends AbstractHandler {
   //   - 서브 클래스의 service()에서 동작을 구제척으로 정의한다.(세부적인 항목을 구현한다)
   @Override
   public void service(int menuNo) {
-    switch (menuNo) {
-      case 1: this.onList(); break;
-      case 2: this.onDetail(); break;
-      case 3: this.onInput(); break;
-      case 4: this.onDelete(); break;
-      case 5: this.onUpdate(); break;
+    try {
+      switch (menuNo) {
+        case 1: this.onList(); break;
+        case 2: this.onDetail(); break;
+        case 3: this.onInput(); break;
+        case 4: this.onDelete(); break;
+        case 5: this.onUpdate(); break;
+      }
+    } catch (Exception e) {
+      throw new RuntimeException(e);
     }
   }
 
@@ -84,7 +92,7 @@ public class BoardHandler extends AbstractHandler {
 
   }
 
-  private void onInput() {
+  private void onInput() throws Exception {
     Board board = new Board();
 
     board.title = Prompt.inputString("제목? ");
@@ -95,11 +103,12 @@ public class BoardHandler extends AbstractHandler {
     board.createdDate = System.currentTimeMillis();
 
     this.boardDao.insert(board);
+    this.boardDao.save();
 
     System.out.println("게시글을 등록했습니다.");
   }
 
-  private void onDelete() {
+  private void onDelete() throws Exception {
     int boardNo = 0;
     while (true) {
       try {
@@ -111,13 +120,14 @@ public class BoardHandler extends AbstractHandler {
     }
 
     if (boardDao.delete(boardNo)) {
+      this.boardDao.save();
       System.out.println("삭제하였습니다.");
     } else {
       System.out.println("해당 번호의 게시글이 없습니다!");
     }
   }
 
-  private void onUpdate() {
+  private void onUpdate() throws Exception {
     int boardNo = 0;
     while (true) {
       try {
@@ -142,6 +152,7 @@ public class BoardHandler extends AbstractHandler {
     if (input.equals("y")) {
       board.title = newTitle;
       board.content = newContent;
+      this.boardDao.save();
       System.out.println("변경했습니다.");
     } else {
       System.out.println("변경 취소했습니다.");
