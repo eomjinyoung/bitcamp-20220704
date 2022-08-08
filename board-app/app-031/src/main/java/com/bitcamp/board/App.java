@@ -4,11 +4,11 @@
  */
 package com.bitcamp.board;
 
-import java.util.Stack;
 import com.bitcamp.board.handler.BoardHandler;
 import com.bitcamp.board.handler.MemberHandler;
 import com.bitcamp.handler.Handler;
 import com.bitcamp.util.Prompt;
+import com.bitcamp.util.Stack;
 
 public class App {
 
