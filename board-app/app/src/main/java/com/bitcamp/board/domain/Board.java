@@ -9,4 +9,12 @@ public class Board {
   public String password;
   public int viewCount;
   public long createdDate;
+
+  @Override
+  public String toString() {
+    return "Board [no=" + no + ", title=" + title + ", content=" + content + ", writer=" + writer
+        + ", password=" + password + ", viewCount=" + viewCount 
+        + ", createdDate=" + new java.sql.Date(createdDate) 
+        + "]";
+  }
 }
