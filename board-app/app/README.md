@@ -1,17 +1,32 @@
-# 031. 자료 구조와 조회 조건에 상관없이 일관된 방법으로 조회하기: Iterator 패턴 적용
+# 031. 데이터 조회 로직을 객체화 하기: Iterator 패턴 적용
 
 ## 작업 내용
 
-### 1단계 - BoardDao에서 목록을 출력할 때 최신순으로 나열한다.
+### 1단계 - Iterator 인터페이스를 정의한다.
 
-- com.bitcamp.board.dao.BoardDao 클래스 변경
-  - findAll() 메서드 변경: LinkedList 가 리턴해준 배열을 꺼꾸로 만들어 리턴한다.
-    - 문제: 데이터 조회 방식에 따라 코딩이 달라진다.
-    - 유지보수에 좋은 방식: 데이터 조회 방식에 상관없이 동일한 방식으로 조회하고 싶다.
-    - 해결책? 
-      - 데이터 조회를 수행하는 코드를 별도의 객체로 분리하여 관리. 
-      - 그리고 데이터 조회 방식을 일관되게 하기 위해 인터페이스를 이용하여 규격화 한다.
+- com.bitcamp.util.Iterator 인터페이스 생성
 
+### 2단계 - List 규격에 Iterator 를 리턴하는 규칙을 추가한다.
 
+- com.bitcamp.util.List 인터페이스 변경
+  - iterator() 규칙 추가
 
+### 3단계 - AbstractList 에서 iterator() 메서드를 구현한다.
 
+- com.bitcamp.util.AbstractList 클래스 변경
+
+### 4단계 - XxxDao 에서 목록을 가져올 때 Iterator를 사용한다.
+
+toArray() 대신 iterator() 사용을 통해 Iterator 객체 사용법 훈련.
+
+- com.bitcamp.board.dao.XxxDao 클래스 변경
+
+### 5단계 - Stack의 toString() 메서드를 구현할 때 Iterator를 사용한다.
+
+- com.bitcamp.util.Stack 클래스 변경
+  - 제네릭을 적용한다.
+  - toString()에서 Iterator를 사용한다. 
+
+### 6단계 - App 클래스에서 Stack 을 만들 때 제네릭을 적용한다.
+
+- com.bitcamp.board.App 클래스 변경

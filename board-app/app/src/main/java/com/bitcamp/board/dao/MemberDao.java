@@ -1,6 +1,7 @@
 package com.bitcamp.board.dao;
 
 import com.bitcamp.board.domain.Member;
+import com.bitcamp.util.Iterator;
 import com.bitcamp.util.LinkedList;
 import com.bitcamp.util.List;
 
@@ -35,7 +36,15 @@ public class MemberDao {
   }
 
   public Member[] findAll() {
-    return list.toArray(new Member[0]);
+    Iterator<Member> iterator = list.iterator();
+
+    Member[] arr = new Member[list.size()];
+
+    int i = 0;
+    while (iterator.hasNext()) {
+      arr[i++] = iterator.next(); 
+    }
+    return arr;
   }
 }
 

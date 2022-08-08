@@ -20,6 +20,21 @@ public abstract class AbstractList<E> implements List<E> {
     return size;
   }
 
+  @Override
+  public Iterator<E> iterator() {
+    return new Iterator<E>() {
+      int index;
+      @Override
+      public boolean hasNext() {
+        return index < AbstractList.this.size();
+      }
+      @Override
+      public E next() {
+        return AbstractList.this.get(index++);
+      }
+    };
+  }
+
   // List 인터페이스의 나머지 메서드는 추상 메서드인채로 그냥 둔다.
   // 왜? 서브 클래스마다 구현하는 방법이 다르기 때문이다.
 }

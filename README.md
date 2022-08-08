@@ -227,5 +227,13 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ex01.Test20: 
 - Iterator 패턴과 중첩 클래스 사용법(eomcs-java-lang: com.eomcs.design_pattern.iterator.*)
 
+### 26일(8/8) 
+- 아침 특강(com.eomcs.quiz)
+  - ex01.Test21: 
+  - ex01.Test22: 
+- board-app 프로젝트 수행 
+  - 031. 데이터 조회 로직을 객체화 하기: Iterator 패턴 적용
+
+
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf

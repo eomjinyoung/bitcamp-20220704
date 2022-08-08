@@ -13,7 +13,7 @@ import com.bitcamp.util.Stack;
 public class App {
 
   // breadcrumb 메뉴를 저장할 스택을 준비
-  public static Stack breadcrumbMenu = new Stack();
+  public static Stack<String> breadcrumbMenu = new Stack<>();
 
   public static void main(String[] args) {
     welcome();
