@@ -10,11 +10,6 @@ import com.bitcamp.board.domain.Member;
 public class MemberDao {
 
   List<Member> list = new LinkedList<Member>();
-  String filename;
-
-  public MemberDao(String filename) {
-    this.filename = filename;
-  }
 
   public void insert(Member member) {
     list.add(member);

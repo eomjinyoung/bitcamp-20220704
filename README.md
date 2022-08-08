@@ -233,7 +233,8 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ex01.Test22: 
 - board-app 프로젝트 수행 
   - 031. 데이터 조회 로직을 객체화 하기: Iterator 패턴 적용
-
+  - 032. 기존 List 구현체를 자바 컬렉션 API로 교체하기: java.util 패키지의 클래스 사용
+  - 033. 입출력 API를 사용하여 데이터를 파일로 저장하기: 바이너리 저장
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf

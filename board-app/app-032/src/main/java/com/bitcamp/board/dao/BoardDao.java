@@ -1,8 +1,5 @@
 package com.bitcamp.board.dao;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -13,28 +10,8 @@ import com.bitcamp.board.domain.Board;
 public class BoardDao {
 
   List<Board> list = new LinkedList<>();
+
   private int boardNo = 0;
-
-  String filename;
-
-  public BoardDao(String filename) throws FileNotFoundException, IOException {
-    this.filename = filename;
-    load();
-  }
-
-  public void load() throws FileNotFoundException, IOException {
-    FileInputStream in = new FileInputStream(filename);
-    // FileInputStream 도구를 사용하여 파일로부터 데이터를 읽어 들인다.
-    in.close();
-  }
-
-  public void save() throws FileNotFoundException {
-    throw new FileNotFoundException();
-    //FileOutputStream out = new FileOutputStream(filename);
-    //    for (Board board : list) {
-    //
-    //    }
-  }
 
   public void insert(Board board) {
     board.no = nextNo();
