@@ -3,15 +3,16 @@ package com.bitcamp.study;
 
 import java.io.FileInputStream;
 
-public class Test05_in {
+public class Test06_in {
 
   public static void main(String[] args) throws Exception {
     FileInputStream in = new FileInputStream("test3.data");
 
     // 바이트를 담을 배열을 준비
-    byte[] arr = new byte[3];
+    byte[] arr = new byte[10];
 
     // 배열 크기만큼 바이트를 읽어서 담기
+    // => 파일의 크기 보다 배열이 클 경우 파일 크기만큼만 읽는다.
     int len = in.read(arr);
     System.out.println("읽은 개수는: " + len);
 
