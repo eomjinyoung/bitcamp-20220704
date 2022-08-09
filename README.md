@@ -242,6 +242,8 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ex02.Test10: 
 - board-app 프로젝트 수행 
   - 033. 입출력 API를 사용하여 데이터를 파일로 저장하기: 바이너리 저장
+- FileOutputStream/FileInputStream 사용법(board-app: com.bitcamp.study.*)
+
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
