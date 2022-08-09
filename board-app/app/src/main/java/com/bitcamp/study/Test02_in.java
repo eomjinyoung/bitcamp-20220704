@@ -27,6 +27,10 @@ public class Test02_in {
     System.out.printf("%08x\n", b);
     System.out.printf("%08x\n", result);
 
+    // 읽을 바이트가 없다면 -1을 리턴한다.
+    b = in.read();
+    System.out.printf("%08x, %d\n", b, b);
+
     in.close();
 
     System.out.println("실행 완료!");
