@@ -3,13 +3,14 @@ package com.bitcamp.util;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class DataInputStream {
+public class DataInputStream implements AutoCloseable {
   FileInputStream in;
 
   public DataInputStream(FileInputStream in) {
     this.in = in;
   }
 
+  @Override
   public void close() throws IOException {
     in.close();
   }
