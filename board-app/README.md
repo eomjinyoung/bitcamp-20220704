@@ -154,4 +154,7 @@
 ### 038. 리팩토링: Factory Method 패턴, Information Expert 패턴
   - CSV 데이터를 가지고 Board 객체를 생성하는 일은 Board 클래스에 맡긴다.
     - 객체 생성은 메서드를 통해 수행한다. => Factory Method 패턴
+  - Board 객체의 값을 CSV 형식으로 변환하는 일은 Board 클래스에 맡긴다.
+    - CSV 데이터 생성은 Board의 메서드를 통해 수행한다. => Information Expert 패턴
+
 
