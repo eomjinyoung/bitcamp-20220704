@@ -151,4 +151,7 @@
   - 인스턴스 필드의 값을 통째로 입출력하는 방법
 ### 037. 인스턴스를 텍스트 형식으로 입출력하기: FileReader/FileWriter
   - 텍스트로 데이터를 입출력하는 방법
+### 038. 리팩토링: Factory Method 패턴, Information Expert 패턴
+  - CSV 데이터를 가지고 Board 객체를 생성하는 일은 Board 클래스에 맡긴다.
+    - 객체 생성은 메서드를 통해 수행한다. => Factory Method 패턴
 

@@ -23,17 +23,7 @@ public class MemberDao {
     try (BufferedReader in = new BufferedReader(new FileReader(filename))) {
       String str;
       while ((str = in.readLine()) != null) {
-
-        String[] values = str.split(",");
-
-        Member member = new Member();
-        member.no = Integer.parseInt(values[0]);
-        member.name = values[1];
-        member.email = values[2];
-        member.password = values[3];
-        member.createdDate = Long.parseLong(values[4]);
-
-        list.add(member);
+        list.add(Member.create(str));
       }
     }
   }
@@ -41,12 +31,7 @@ public class MemberDao {
   public void save() throws Exception {
     try (FileWriter out = new FileWriter(filename)) {
       for (Member member : list) {
-        out.write(String.format("%d,%s,%s,%s,%d\n",
-            member.no,
-            member.name,
-            member.email,
-            member.password,
-            member.createdDate));
+        out.write(member.toCsv() + "\n");
       }
     }
   }

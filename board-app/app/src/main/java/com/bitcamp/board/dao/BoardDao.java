@@ -24,18 +24,7 @@ public class BoardDao {
     try (BufferedReader in = new BufferedReader(new FileReader(filename))) {
       String str;
       while ((str = in.readLine()) != null) {
-
-        String[] values = str.split(",");
-
-        Board board = new Board();
-        board.no = Integer.parseInt(values[0]);
-        board.title = values[1];
-        board.content = values[2];
-        board.writer = values[3];
-        board.password = values[4];
-        board.viewCount = Integer.parseInt(values[5]);
-        board.createdDate = Long.parseLong(values[6]);
-
+        Board board = Board.create(str);
         list.add(board);
         boardNo = board.no;
       }
@@ -45,14 +34,7 @@ public class BoardDao {
   public void save() throws Exception {
     try (FileWriter out = new FileWriter(filename)) {
       for (Board board : list) {
-        out.write(String.format("%d,%s,%s,%s,%s,%d,%d\n",
-            board.no,
-            board.title,
-            board.content,
-            board.writer,
-            board.password,
-            board.viewCount,
-            board.createdDate));
+        out.write(board.toCsv() + "\n");
       }
     }
   }
