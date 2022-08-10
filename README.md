@@ -254,6 +254,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 035. 자바에서 제공하는 데코레이터를 사용하기
   - 036. 인스턴스를 통째로 입출력하기: 객체 직렬화
   - 037. 인스턴스를 텍스트 형식으로 입출력하기: FileReader/FileWriter
+  - 038. 리팩토링: Factory Method 패턴, Information Expert 패턴
 - ObjectOutputStream/ObjectInputStream 사용법
 
 
