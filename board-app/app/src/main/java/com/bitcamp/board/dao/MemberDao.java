@@ -1,13 +1,13 @@
 package com.bitcamp.board.dao;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import com.bitcamp.board.domain.Member;
-import com.bitcamp.util.DataInputStream;
-import com.bitcamp.util.DataOutputStream;
 
 // 회원 목록을 관리하는 역할
 //
@@ -31,7 +31,7 @@ public class MemberDao {
         member.password = in.readUTF();
         member.createdDate = in.readLong();
         list.add(member);
-        System.out.println("============>");
+        //        System.out.println("============>");
       }
     } // try () ==> try 블록을 벗어나기 전에 in.close()가 자동으로 실행된다.
   }

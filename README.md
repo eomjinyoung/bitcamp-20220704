@@ -245,6 +245,15 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 034. Primitive 타입 및 String 타입 데이터를 가공하여 입출력하는 기능을 객체화하기
 - FileOutputStream/FileInputStream 사용법(board-app: com.bitcamp.study.*)
 
+### 28일(8/10) 
+- 아침 특강(com.eomcs.quiz)
+  - ex01.Test23: 
+  - ex01.Test24: 
+- board-app 프로젝트 수행 
+  - 035. 자바에서 제공하는 데코레이터를 사용하기
+  - 036. 인스턴스를 통째로 입출력하기: 객체 직렬화
+- FileOutputStream/FileInputStream 사용법(board-app: com.bitcamp.study.*)
+
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
