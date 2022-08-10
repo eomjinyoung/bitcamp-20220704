@@ -1,18 +1,12 @@
-# 036. 인스턴스를 통째로 입출력하기: 객체 직렬화
+# 037. 인스턴스를 텍스트 형식으로 입출력하기: FileReader/FileWriter
 
 ## 작업 내용
 
-### 1단계 - 도메인 클래스의 인스턴스 값을 직렬화 가능하도록 설정한다.
-
-- com.bitcamp.board.domain.Board 클래스 변경
-  - java.io.Serializable 인터페이스를 구현한다.
-- com.bitcamp.board.domain.Member 클래스 변경
-  - java.io.Serializable 인터페이스를 구현한다.
-
-### 2단계 - ObjectInputStream/ObjectOutputStream 을 사용하여 객체를 통째로 입출력한다.
+### 1단계 - byte 스트림 클래스 대신 character 스트림 클래스로 교체한다.
 
 - com.bitcamp.board.dao.XxxDao 클래스 변경
-  - DataOutputStream/DataInputStream 대신 ObjectOutputStream/ObjectInputStream 클래스를 사용하여 객체를 입출력한다.
+  - FileInputStream/FileOutputStream 대신 FileReader/FileWriter로 교체한다.
+  - 데이터를 입출력 할 때는 CSV(Comma-Seperated Values) 형식을 사용한다.
 
 
 

@@ -1,4 +1,4 @@
-# 034. Primitive 타입 및 String 타입 데이터를 가공하여 입출력하는 기능을 객체화하기
+# 034. Primitive 타입 및 String 타입 데이터를 입출력하는 기능을 캡슐화하기: DataInputStream/DataOutputStream
 
 ## 작업 내용
 

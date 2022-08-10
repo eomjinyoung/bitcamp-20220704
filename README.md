@@ -244,6 +244,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 033. 입출력 API를 사용하여 데이터를 파일로 저장하기: 바이너리 저장(계속)
   - 034. Primitive 타입 및 String 타입 데이터를 가공하여 입출력하는 기능을 객체화하기
 - FileOutputStream/FileInputStream 사용법(board-app: com.bitcamp.study.*)
+- DataOutputStream/DataInputStream 사용법(board-app: com.bitcamp.study.*)
 
 ### 28일(8/10) 
 - 아침 특강(com.eomcs.quiz)
@@ -252,7 +253,8 @@ export PATH=${JAVA_HOME}/bin:$PATH
 - board-app 프로젝트 수행 
   - 035. 자바에서 제공하는 데코레이터를 사용하기
   - 036. 인스턴스를 통째로 입출력하기: 객체 직렬화
-- FileOutputStream/FileInputStream 사용법(board-app: com.bitcamp.study.*)
+  - 037. 인스턴스를 텍스트 형식으로 입출력하기: FileReader/FileWriter
+- ObjectOutputStream/ObjectInputStream 사용법
 
 
 ## 구글 미트

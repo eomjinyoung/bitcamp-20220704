@@ -139,14 +139,16 @@
   
 ### 032. 기존 List 구현체를 자바 컬렉션 API로 교체하기: java.util 패키지의 클래스 사용
   - 기존의 List 관련 클래스를 모두 자바 컬렉션 API로 변환한다
-### 033. 입출력 API를 사용하여 데이터를 파일로 저장하기: 바이너리 저장
+### 033. 파일 API를 사용하여 데이터를 바이너리 형식으로 입출력하기: FileInputStream/FileOutputStream
   - 입출력 스트림 API를 사용하여 데이터를 파일로 저장하고 읽는 방법
   - 바이너리 형식으로 데이터를 입출력하는 방법
-### 034. Primitive 타입 및 String 타입 데이터를 가공하여 입출력하는 기능을 객체화하기
+### 034. Primitive 타입 및 String 타입 데이터를 입출력하는 기능을 캡슐화하기: DataInputStream/DataOutputStream
   - Primitive 타입과 String 타입의 값을 바이트 또는 바이트 배열로 가공하는 기능을 객체화 한다.
   - 이렇게 중간에서 가공해주는 클래스를 사용하여 입출력을 수행한다.
-### 035. 자바에서 제공하는 데코레이터를 사용하기
+### 035. 자바에서 제공하는 I/O Stream API 사용하기: java.io.*
   - java.io 패키지의 스트리밍 API를 사용하여 Primitive type, String type 값을 입출력한다.
-### 036. 인스턴스를 통째로 입출력하기: 객체 직렬화
+### 036. 인스턴스를 통째로 입출력하기(객체 직렬화): ObjectInputStream/ObjectOutputStream
   - 인스턴스 필드의 값을 통째로 입출력하는 방법
-  
+### 037. 인스턴스를 텍스트 형식으로 입출력하기: FileReader/FileWriter
+  - 텍스트로 데이터를 입출력하는 방법
+

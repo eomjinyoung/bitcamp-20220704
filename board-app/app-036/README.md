@@ -1,4 +1,4 @@
-# 036. 인스턴스를 통째로 입출력하기: 객체 직렬화
+# 036. 인스턴스를 통째로 입출력하기(객체 직렬화): ObjectInputStream/ObjectOutputStream
 
 ## 작업 내용
 
