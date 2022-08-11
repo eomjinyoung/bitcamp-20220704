@@ -156,5 +156,6 @@
     - 객체 생성은 메서드를 통해 수행한다. => Factory Method 패턴
   - Board 객체의 값을 CSV 형식으로 변환하는 일은 Board 클래스에 맡긴다.
     - CSV 데이터 생성은 Board의 메서드를 통해 수행한다. => Information Expert 패턴
-
-
+### 039. JSON 형식으로 데이터 입출력하기: Gson 라이브러리 사용
+  - JSON 형식으로 데이터를 읽고 쓰는 법
+  - Google 에서 제공해주는 JSON 라이브러리인 Gson 사용법

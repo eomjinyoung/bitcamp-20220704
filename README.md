@@ -257,6 +257,13 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 038. 리팩토링: Factory Method 패턴, Information Expert 패턴
 - ObjectOutputStream/ObjectInputStream 사용법
 
+### 29일(8/10) 
+- 아침 특강(com.eomcs.quiz)
+  - ex01.Test25: 
+  - ex01.Test26: 
+- board-app 프로젝트 수행 
+  - 039. JSON 형식으로 데이터 입출력하기: Gson 라이브러리 사용
+- ObjectOutputStream/ObjectInputStream 사용법
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
