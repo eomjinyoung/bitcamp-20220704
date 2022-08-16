@@ -4,6 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import com.bitcamp.board.servlet.BoardServlet;
 
 public class ServerApp {
   public static void main(String[] args) {
@@ -37,6 +38,14 @@ public class ServerApp {
 
         System.out.println("클라이언트와 연결 되었음!");
 
+        // 클라이언트 요청을 처리할 객체 준비
+        BoardServlet boardServlet = new BoardServlet("board");
+        BoardServlet readingServlet = new BoardServlet("reading");
+        BoardServlet visitServlet = new BoardServlet("visit");
+        BoardServlet noticeServlet = new BoardServlet("notice");
+        BoardServlet dailyServlet = new BoardServlet("daily");
+
+
         while (true) {
           // 클라이언트와 서버 사이에 정해진 규칙(protocol)에 따라 데이터를 주고 받는다.
           String dataName = in.readUTF();
@@ -45,15 +54,12 @@ public class ServerApp {
             break;
           }
 
-          String command = in.readUTF();
-
           switch (dataName) {
-            case "board":
-              out.writeUTF("success");
-              break;
-            case "member":
-              out.writeUTF("success");
-              break;
+            case "board": boardServlet.service(in, out); break;
+            case "reading": readingServlet.service(in, out); break;
+            case "visit": visitServlet.service(in, out); break;
+            case "notice": noticeServlet.service(in, out); break;
+            case "daily": dailyServlet.service(in, out); break;
             default:
               out.writeUTF("fail");
           }

@@ -5,9 +5,9 @@
 package com.bitcamp.board;
 
 import java.util.Stack;
-import com.bitcamp.board.handler.BoardHandler;
-import com.bitcamp.board.handler.MemberHandler;
-import com.bitcamp.handler.Handler;
+import com.bitcamp.board.servlet.BoardServlet;
+import com.bitcamp.board.servlet.MemberHandler;
+import com.bitcamp.servlet.Servlet;
 import com.bitcamp.util.Prompt;
 
 public class App {
@@ -20,12 +20,12 @@ public class App {
       welcome();
 
       // 핸들러를 담을 레퍼런스 배열을 준비한다.
-      Handler[] handlers = new Handler[] {
-          new BoardHandler("board.json"), // 게시판
-          new BoardHandler("reading.json"), // 독서록
-          new BoardHandler("visit.json"), // 방명록
-          new BoardHandler("notice.json"), // 공지사항
-          new BoardHandler("daily.json"), // 일기장
+      Servlet[] handlers = new Servlet[] {
+          new BoardServlet("board.json"), // 게시판
+          new BoardServlet("reading.json"), // 독서록
+          new BoardServlet("visit.json"), // 방명록
+          new BoardServlet("notice.json"), // 공지사항
+          new BoardServlet("daily.json"), // 일기장
           new MemberHandler("member.json") // 회원
       };
 
@@ -56,7 +56,7 @@ public class App {
           breadcrumbMenu.push(menus[mainMenuNo - 1]);
 
           // 메뉴 번호로 Handler 레퍼런스에 들어있는 객체를 찾아 실행한다.
-          handlers[mainMenuNo - 1].execute();
+          handlers[mainMenuNo - 1].service();
 
           breadcrumbMenu.pop();
 
