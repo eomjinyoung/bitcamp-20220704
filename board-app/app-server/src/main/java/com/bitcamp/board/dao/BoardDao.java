@@ -38,6 +38,9 @@ public class BoardDao {
       for (int i = 0; i < arr.length; i++) {
         list.add(arr[i]);
       }
+
+      // 게시글 데이터를 로딩한 후 마지막 게시글 번호를 설정해 둔다.
+      boardNo = arr[arr.length - 1].no;
     }
   }
 

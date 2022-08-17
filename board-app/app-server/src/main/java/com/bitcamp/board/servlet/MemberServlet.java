@@ -9,11 +9,11 @@ import com.bitcamp.board.domain.Member;
 import com.bitcamp.servlet.AbstractServlet;
 import com.bitcamp.util.Prompt;
 
-public class MemberHandler extends AbstractServlet {
+public class MemberServlet extends AbstractServlet {
 
   private MemberDao memberDao;
 
-  public MemberHandler(String filename) {
+  public MemberServlet(String filename) {
     super(new String[] {"목록", "상세보기", "등록", "삭제", "변경"});
     memberDao = new MemberDao(filename);
 
