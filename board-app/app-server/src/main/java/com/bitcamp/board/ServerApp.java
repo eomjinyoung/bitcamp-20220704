@@ -47,6 +47,7 @@ public class ServerApp {
         BoardServlet dailyServlet = new BoardServlet("daily");
         MemberServlet memberServlet = new MemberServlet("member");
 
+
         while (true) {
           // 클라이언트와 서버 사이에 정해진 규칙(protocol)에 따라 데이터를 주고 받는다.
           String dataName = in.readUTF();
