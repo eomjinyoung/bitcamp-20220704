@@ -273,5 +273,16 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ServerSocket, Socket 클래스 사용법
   - IP 주소와 포트 번호
 
+### 31일(8/17) 
+
+- 아침 특강(com.eomcs.quiz)
+  - ex01.Test27: 
+  - ex01.Test28: 
+- board-app 프로젝트 수행 
+  - 040. 네트워킹을 이용한 파일 공유: client/server app. 아키텍처로 전환(계속)
+- 네트워크 프로그래밍 개요
+  - ServerSocket, Socket 클래스 사용법
+  - IP 주소와 포트 번호
+
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
