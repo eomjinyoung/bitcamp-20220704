@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.net.Socket;
 import java.util.Stack;
 import com.bitcamp.board.handler.BoardHandler;
+import com.bitcamp.board.handler.MemberHandler;
 import com.bitcamp.handler.Handler;
 import com.bitcamp.util.Prompt;
 
@@ -33,8 +34,8 @@ public class ClientApp {
           new BoardHandler("reading", in, out), // 독서록
           new BoardHandler("visit", in, out), // 방명록
           new BoardHandler("notice", in, out), // 공지사항
-          new BoardHandler("daily", in, out) // 일기장
-          //new MemberHandler("member", in, out) // 회원
+          new BoardHandler("daily", in, out), // 일기장
+          new MemberHandler("member", in, out) // 회원
       };
 
       // "메인" 메뉴의 이름을 스택에 등록한다.

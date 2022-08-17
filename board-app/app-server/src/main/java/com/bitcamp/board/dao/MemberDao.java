@@ -61,6 +61,17 @@ public class MemberDao {
     return null;
   }
 
+  public boolean update(Member member) {
+    for (int i = 0; i < list.size(); i++) {
+      Member m = list.get(i);
+      if (m.email.equals(member.email)) {
+        list.set(i, member);
+        return true;
+      }
+    }
+    return false;
+  }
+
   public boolean delete(String email) {
     for (int i = 0; i < list.size(); i++) {
       Member member = list.get(i);

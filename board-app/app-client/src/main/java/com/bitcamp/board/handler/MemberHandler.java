@@ -3,26 +3,26 @@
  */
 package com.bitcamp.board.handler;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.util.Date;
-import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.domain.Member;
 import com.bitcamp.handler.AbstractHandler;
 import com.bitcamp.util.Prompt;
+import com.google.gson.Gson;
 
 public class MemberHandler extends AbstractHandler {
 
-  private MemberDao memberDao;
+  private String dataName;
+  private DataInputStream in;
+  private DataOutputStream out;
 
-  public MemberHandler(String filename) {
+  public MemberHandler(String dataName, DataInputStream in, DataOutputStream out) {
     super(new String[] {"목록", "상세보기", "등록", "삭제", "변경"});
-    memberDao = new MemberDao(filename);
 
-    try {
-      memberDao.load();
-    } catch (Exception e) {
-      System.out.printf("%s 파일 로딩 중 오류 발생!\n", filename);
-      //      e.printStackTrace();
-    }
+    this.dataName = dataName;
+    this.in = in;
+    this.out = out;
   }
 
   @Override
@@ -41,45 +41,74 @@ public class MemberHandler extends AbstractHandler {
   }
 
   private void onList() {
-    System.out.println("이메일 이름");
+    try {
+      out.writeUTF(dataName);
+      out.writeUTF("findAll");
 
-    Member[] members = this.memberDao.findAll();
+      if (in.readUTF().equals("faile")) {
+        System.out.println("목록을 가져오는데 실패했습니다!");
+        return;
+      }
 
-    for (Member member : members) {
-      System.out.printf("%s\t%s\n",
-          member.email, member.name);
+      String json = in.readUTF();
+      Member[] members = new Gson().fromJson(json, Member[].class);
+
+      System.out.println("이메일 이름");
+
+      for (Member member : members) {
+        System.out.printf("%s\t%s\n",
+            member.email, member.name);
+      }
+
+    } catch (Exception e) {
+      throw new RuntimeException(e);
     }
 
   }
 
   private void onDetail() {
-    String email = Prompt.inputString("조회할 회원 이메일? ");
+    try {
+      String email = Prompt.inputString("조회할 회원 이메일? ");
 
-    Member member = this.memberDao.findByEmail(email);
+      out.writeUTF(dataName);
+      out.writeUTF("findByEmail");
+      out.writeUTF(email);
 
-    if (member == null) {
-      System.out.println("해당 이메일의 회원이 없습니다!");
-      return;
+      if (in.readUTF().equals("fail")) {
+        System.out.println("해당 이메일의 회원이 없습니다!");
+        return;
+      }
+
+      String json = in.readUTF();
+      Member member = new Gson().fromJson(json, Member.class);
+
+      System.out.printf("이름: %s\n", member.name);
+      System.out.printf("이메일: %s\n", member.email);
+      Date date = new Date(member.createdDate);
+      System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", date);
+
+    } catch (Exception e) {
+      throw new RuntimeException(e);
     }
-
-    System.out.printf("이름: %s\n", member.name);
-    System.out.printf("이메일: %s\n", member.email);
-    Date date = new Date(member.createdDate);
-    System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", date);
   }
 
   private void onInput() throws Exception {
-    Member member = new Member();
+    try {
+      Member member = new Member();
 
-    member.name = Prompt.inputString("이름? ");
-    member.email = Prompt.inputString("이메일? ");
-    member.password = Prompt.inputString("암호? ");
-    member.createdDate = System.currentTimeMillis();
+      member.name = Prompt.inputString("이름? ");
+      member.email = Prompt.inputString("이메일? ");
+      member.password = Prompt.inputString("암호? ");
+      member.createdDate = System.currentTimeMillis();
 
-    this.memberDao.insert(member);
-    memberDao.save();
+      this.memberDao.insert(member);
+      memberDao.save();
 
-    System.out.println("회워을 등록했습니다.");
+      System.out.println("회워을 등록했습니다.");
+
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
   }
 
   private void onDelete() throws Exception {
