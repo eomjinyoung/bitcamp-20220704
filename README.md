@@ -286,6 +286,8 @@ export PATH=${JAVA_HOME}/bin:$PATH
 
 - board-app 프로젝트 수행 
   - 041. Client/Server 리팩토링
+    - Hashtable, ArrayList 활용
+    - 클라이언트 연결을 순차적으로 처리
 - 컬렉션 API 사용법(com.eomcs.basic.ex03.*)(계속)
 
 
