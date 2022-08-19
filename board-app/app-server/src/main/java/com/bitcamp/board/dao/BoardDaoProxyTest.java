@@ -38,7 +38,7 @@ public class BoardDaoProxyTest {
       System.out.println(boardDao.insert(board));
       System.out.println("---------------------------------");
 
-      // 테스트1) 목록 가져오기
+      // 데이터 등록 확인
       boards = boardDao.findAll();
       for (Board b : boards) {
         System.out.println(b);
@@ -55,6 +55,17 @@ public class BoardDaoProxyTest {
       // 데이터 변경 확인
       board = boardDao.findByNo(3);
       System.out.println(board);
+      System.out.println("---------------------------------");
+
+      // 테스트5) 데이터 삭제하기
+      System.out.println(boardDao.delete(3));
+      System.out.println("---------------------------------");
+
+      // 데이터 삭제 확인
+      boards = boardDao.findAll();
+      for (Board b : boards) {
+        System.out.println(b);
+      }
       System.out.println("---------------------------------");
 
       out.writeUTF("exit");
