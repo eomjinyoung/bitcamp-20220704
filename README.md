@@ -290,6 +290,13 @@ export PATH=${JAVA_HOME}/bin:$PATH
     - 클라이언트 연결을 순차적으로 처리
 - 컬렉션 API 사용법(com.eomcs.basic.ex03.*)(계속)
 
+### 32일(8/18) 
+
+- 아침 특강(com.eomcs.quiz)
+  - ex01.Test30: 
+- board-app 프로젝트 수행 
+  - 042. Proxy 패턴을 이용한 네트워킹 코드 캡슐화
+- Proxy 패턴의 이해와 활용법
 
 
 ## 구글 미트
