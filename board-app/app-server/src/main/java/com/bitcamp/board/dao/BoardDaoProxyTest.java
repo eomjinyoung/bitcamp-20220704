@@ -21,7 +21,43 @@ public class BoardDaoProxyTest {
       }
       System.out.println("---------------------------------");
 
+      // 테스트2) 상세 데이터 가져오기
+      Board board = boardDao.findByNo(3);
+      System.out.println(board);
+      System.out.println("---------------------------------");
 
+      // 테스트3) 데이터 등록하기
+      board = new Board();
+      board.title = "xxxx";
+      board.content = "xxxxxxxxxx";
+      board.viewCount = 11;
+      board.createdDate = System.currentTimeMillis();
+      board.writer = "hong";
+      board.password = "1111";
+
+      System.out.println(boardDao.insert(board));
+      System.out.println("---------------------------------");
+
+      // 테스트1) 목록 가져오기
+      boards = boardDao.findAll();
+      for (Board b : boards) {
+        System.out.println(b);
+      }
+      System.out.println("---------------------------------");
+
+      // 테스트4) 데이터 변경하기
+      board = boardDao.findByNo(3);
+      board.title = "okokok";
+      board.content = "nononono";
+      System.out.println(boardDao.update(board));
+      System.out.println("---------------------------------");
+
+      // 데이터 변경 확인
+      board = boardDao.findByNo(3);
+      System.out.println(board);
+      System.out.println("---------------------------------");
+
+      out.writeUTF("exit");
     }
   }
 
