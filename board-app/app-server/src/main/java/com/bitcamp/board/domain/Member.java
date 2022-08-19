@@ -37,4 +37,12 @@ public class Member implements Serializable {
         this.password,
         this.createdDate);
   }
+
+  @Override
+  public String toString() {
+    return "Member [no=" + no + ", name=" + name + ", email=" + email + ", password=" + password
+        + ", createdDate=" + createdDate + "]";
+  }
+
+
 }

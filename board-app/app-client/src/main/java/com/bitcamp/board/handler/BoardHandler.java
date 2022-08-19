@@ -14,7 +14,7 @@ import com.bitcamp.util.Prompt;
 
 public class BoardHandler extends AbstractHandler {
 
-  BoardDaoProxy boardDao;
+  private BoardDaoProxy boardDao;
 
   public BoardHandler(String dataName, DataInputStream in, DataOutputStream out) {
 
