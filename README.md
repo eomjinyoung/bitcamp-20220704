@@ -296,6 +296,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ex01.Test30: 
 - board-app 프로젝트 수행 
   - 042. Proxy 패턴을 이용한 네트워킹 코드 캡슐화
+  - 043. Client/Server 공통 코드를 라이브러리 프로젝트로 분리하기
 - Proxy 패턴의 이해와 활용법
 
 

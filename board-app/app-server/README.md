@@ -1,13 +1,12 @@
-# 042. Proxy 패턴을 이용한 네트워킹 코드 캡슐화
+# 043. Client/Server 공통 코드를 라이브러리 프로젝트로 분리하기
 
 ## 작업 내용
 
-### 1단계 - BoardDao 대행자 클래스를 만든다.
+### 1단계 - 도메인 클래스와 프록시 클래스를 app-common 프로젝트로 옮긴다.
 
-- com.bitcamp.board.dao.BoardDaoProxy 클래스 추가
-- com.bitcamp.board.dao.BoardDaoProxyTest 클래스 추가
+- com.bitcamp.board.domain.* 패키지 삭제
+- com.bitcamp.board.dao.XxxDaoProxyXxx 클래스 삭제
 
-### 1단계 - MemberDao 대행자 클래스를 만든다.
+### 2단계 - app-common 서브 프로젝트를 포함시킨다.
 
-- com.bitcamp.board.dao.MemberDaoProxy 클래스 추가
-- com.bitcamp.board.dao.MemberDaoProxyTest 클래스 추가
+- build.gradle 파일 변경
