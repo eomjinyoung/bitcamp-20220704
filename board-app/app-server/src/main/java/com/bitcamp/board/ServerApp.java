@@ -33,21 +33,19 @@ public class ServerApp {
 
           System.out.println("클라이언트와 연결 되었음!");
 
-          while (true) {
-            // 클라이언트와 서버 사이에 정해진 규칙(protocol)에 따라 데이터를 주고 받는다.
-            String dataName = in.readUTF();
+          // 클라이언트와 서버 사이에 정해진 규칙(protocol)에 따라 데이터를 주고 받는다.
+          String dataName = in.readUTF();
 
-            if (dataName.equals("exit")) {
-              break;
-            }
+          if (dataName.equals("exit")) {
+            break;
+          }
 
-            Servlet servlet = servletMap.get(dataName);
-            if (servlet != null) {
-              servlet.service(in, out);
-            } else {
-              out.writeUTF("fail");
-            }
-          } 
+          Servlet servlet = servletMap.get(dataName);
+          if (servlet != null) {
+            servlet.service(in, out);
+          } else {
+            out.writeUTF("fail");
+          }
 
           System.out.println("클라이언트와 연결을 끊었음!");
         } // 안쪽 try

@@ -170,6 +170,8 @@
   - Proxy 설계 패턴을 활용하는 방법
 ### 043. Client/Server 공통 코드를 라이브러리 프로젝트로 분리하기
   - 서브 프로젝트를 분리하여 공유하는 방법
-
+### 044. 통신 방식을 Stateful에서 Stateless로 변경하기
+  - Stateful과 Stateless 방식의 차이점 이해
+  - Stateless 방식으로 통신하는 방법
 
 
