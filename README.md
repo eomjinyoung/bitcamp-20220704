@@ -311,9 +311,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ex02.Test12: 
 - board-app 프로젝트 수행 
   - 045. Thread를 이용한 멀티 태스킹 구현하기: 동시 요청 처리하기
-- Proxy 패턴의 이해와 활용법
-- Connection-Oriented 통신과 Connectionless 통신 비교
-- Stateful 통신 방식과 Stateless 통신 방식 비교
+- 네트워킹 사용법(com.eomcs.net.*)
 
 
 ## 구글 미트
