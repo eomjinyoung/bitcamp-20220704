@@ -68,6 +68,17 @@ public class BoardDao {
   }
 
   public Board findByNo(int boardNo) {
+
+    System.out.println("시간 지연 시작!");
+    double temp = 1;
+    for (int i = 0; i < 50000; i++) {
+      for (int x = 0; x < i; x++) {
+        temp = Math.random();
+      }
+    }
+    System.out.println(temp);
+    System.out.println("시간 지연 완료!");
+
     for (int i = 0; i < list.size(); i++) {
       Board board = list.get(i);
       if (board.no == boardNo) {
