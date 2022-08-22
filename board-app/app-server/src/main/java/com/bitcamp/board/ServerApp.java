@@ -1,7 +1,5 @@
 package com.bitcamp.board;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Hashtable;
@@ -27,28 +25,14 @@ public class ServerApp {
       servletMap.put("member", new MemberServlet("member"));
 
       while (true) {
-        try (Socket socket = serverSocket.accept();
-            DataInputStream in = new DataInputStream(socket.getInputStream());
-            DataOutputStream out = new DataOutputStream(socket.getOutputStream());) {
+        // 클라이언트가 연결되면,
+        Socket socket = serverSocket.accept();
 
-          System.out.println("클라이언트와 연결 되었음!");
+        // 클라이언트 요청을 처리할 스레드를 만든다.
+        RequestThread t = new RequestThread(socket, servletMap);
 
-          // 클라이언트와 서버 사이에 정해진 규칙(protocol)에 따라 데이터를 주고 받는다.
-          String dataName = in.readUTF();
-
-          if (dataName.equals("exit")) {
-            break;
-          }
-
-          Servlet servlet = servletMap.get(dataName);
-          if (servlet != null) {
-            servlet.service(in, out);
-          } else {
-            out.writeUTF("fail");
-          }
-
-          System.out.println("클라이언트와 연결을 끊었음!");
-        } // 안쪽 try
+        // main 실행 흐름에서 분리하여 별도의 실행 흐름으로 작업을 수행시킨다.
+        t.start();
       }
     } catch (Exception e) {
       e.printStackTrace();
