@@ -310,9 +310,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ex01.Test31:
   - ex02.Test12: 
 - board-app 프로젝트 수행 
-  - 042. Proxy 패턴을 이용한 네트워킹 코드 캡슐화
-  - 043. Client/Server 공통 코드를 라이브러리 프로젝트로 분리하기
-  - 044. 통신 방식을 Stateful에서 Stateless로 변경하기
+  - 045. Thread를 이용한 멀티 태스킹 구현하기: 동시 요청 처리하기
 - Proxy 패턴의 이해와 활용법
 - Connection-Oriented 통신과 Connectionless 통신 비교
 - Stateful 통신 방식과 Stateless 통신 방식 비교
