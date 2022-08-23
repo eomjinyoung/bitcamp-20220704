@@ -313,6 +313,11 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 045. Thread를 이용한 멀티 태스킹 구현하기: 동시 요청 처리하기
 - 네트워킹 사용법(com.eomcs.net.*)
 
+### 35일(8/23) 
+
+- 아침 특강(com.eomcs.quiz)
+  - ex01.Test32:
+- 네트워킹 사용법(com.eomcs.net.*)(계속)
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
