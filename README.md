@@ -319,5 +319,11 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ex01.Test32:
 - 네트워킹 사용법(com.eomcs.net.*)(계속)
 
+### 36일(8/24) 
+
+- 아침 특강(com.eomcs.quiz)
+  - ex01.Test33, 34, 35, 36:
+- 네트워킹 사용법(com.eomcs.net.*)(계속)
+
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
