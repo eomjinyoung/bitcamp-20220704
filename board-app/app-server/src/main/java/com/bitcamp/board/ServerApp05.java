@@ -9,7 +9,7 @@ import com.bitcamp.board.servlet.BoardServlet;
 import com.bitcamp.board.servlet.MemberServlet;
 import com.bitcamp.servlet.Servlet;
 
-public class ServerApp {
+public class ServerApp05 {
 
   public static void main(String[] args) {
 
@@ -29,31 +29,31 @@ public class ServerApp {
       System.out.println("서버 소켓 준비 완료!");
 
       while (true) {
-        // 람다 문법에서는 인스턴스 필드는 처리할 수 없다.
-        // 따라서 다시 로컬 변수로 전환한다.
-        Socket socket = serverSocket.accept();
+        new Thread(new Runnable() {
+          Socket socket = serverSocket.accept();
+          @Override
+          public void run() {
+            try (Socket socket = this.socket;
+                DataInputStream in = new DataInputStream(socket.getInputStream());
+                DataOutputStream out = new DataOutputStream(socket.getOutputStream());) {
 
-        new Thread(() -> {
-          try (Socket socket2 = socket;
-              DataInputStream in = new DataInputStream(socket.getInputStream());
-              DataOutputStream out = new DataOutputStream(socket.getOutputStream());) {
+              System.out.println("클라이언트와 연결 되었음!");
 
-            System.out.println("클라이언트와 연결 되었음!");
+              String dataName = in.readUTF();
 
-            String dataName = in.readUTF();
+              Servlet servlet = servletMap.get(dataName);
+              if (servlet != null) {
+                servlet.service(in, out);
+              } else {
+                out.writeUTF("fail");
+              }
 
-            Servlet servlet = servletMap.get(dataName);
-            if (servlet != null) {
-              servlet.service(in, out);
-            } else {
-              out.writeUTF("fail");
+              System.out.println("클라이언트와 연결을 끊었음!");
+
+            } catch (Exception e) {
+              System.out.println("클라이언트 요청 처리 중 오류 발생!");
+              e.printStackTrace();
             }
-
-            System.out.println("클라이언트와 연결을 끊었음!");
-
-          } catch (Exception e) {
-            System.out.println("클라이언트 요청 처리 중 오류 발생!");
-            e.printStackTrace();
           }
         }).start();
       }

@@ -1,16 +1,13 @@
 package com.bitcamp.board;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.Hashtable;
-import java.util.Map;
 import com.bitcamp.board.servlet.BoardServlet;
 import com.bitcamp.board.servlet.MemberServlet;
 import com.bitcamp.servlet.Servlet;
 
-public class ServerApp {
+public class ServerApp01 {
   public static void main(String[] args) {
     System.out.println("[게시글 데이터 관리 서버]");
 
@@ -32,7 +29,7 @@ public class ServerApp {
         Socket socket = serverSocket.accept();
 
         // 클라이언트 요청을 처리할 스레드를 만든다.
-        RequestThread t = new RequestThread(socket, servletMap);
+        RequestThread01 t = new RequestThread01(socket, servletMap);
 
         // main 실행 흐름에서 분리하여 별도의 실행 흐름으로 작업을 수행시킨다.
         t.start();

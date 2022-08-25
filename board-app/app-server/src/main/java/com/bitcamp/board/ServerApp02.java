@@ -10,7 +10,7 @@ import com.bitcamp.board.servlet.BoardServlet;
 import com.bitcamp.board.servlet.MemberServlet;
 import com.bitcamp.servlet.Servlet;
 
-public class ServerApp {
+public class ServerApp02 {
   public static void main(String[] args) {
     System.out.println("[게시글 데이터 관리 서버]");
 
