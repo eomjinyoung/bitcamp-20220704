@@ -328,6 +328,16 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 멀티 태스킹 기법: 멀티 프로세싱, 멀티 스레딩
   - CPU 스케줄링, 컨텍스트 스위칭 
   
+### 37일(8/25) 
+
+- 아침 특강(com.eomcs.quiz)
+  - 코딩 퀴즈는 백준 코딩 테스트로 대체한다.
+- 스레드 사용법(com.eomcs.concurrent.*)(계속)
+  - Thread, Runnable 사용법
+  - 중첩 클래스를 다루는 방법
+- board-app 프로젝트 수행 
+  - 045. Thread를 이용한 멀티 태스킹 구현하기: 동시 요청 처리하기(계속)
+    - 리팩토링: 중첩 클래스 활용
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
