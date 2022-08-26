@@ -339,5 +339,17 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 045. Thread를 이용한 멀티 태스킹 구현하기: 동시 요청 처리하기(계속)
     - 리팩토링: 중첩 클래스 활용
 
+### 38일(8/26) 
+
+- 스레드 사용법(com.eomcs.concurrent.*)(계속)
+  - 스레드 라이프사이클 
+  - 크리티컬 섹션과 스레드 안전
+  - 뮤텍스와 세마포어
+  - 자바에서 뮤텍스를 다루는 방법
+- DBMS 사용법
+  - Database와 DBMS
+  - MariaDB 설치와 설정
+  
+
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
