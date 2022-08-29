@@ -350,6 +350,11 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - Database와 DBMS
   - MariaDB 설치와 설정
   
+### 39일(8/29) 
+
+- SQL 사용법
+- DBMS 사용법
+  - 사용자 등록, 데이터베이스 생성, 권한 설정
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
