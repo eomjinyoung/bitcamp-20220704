@@ -367,6 +367,8 @@ export PATH=${JAVA_HOME}/bin:$PATH
 
 - SQL 사용법
   - DML 사용법(계속)
+  - PK, FK
+  - 조인 예제 테이블 준비
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
