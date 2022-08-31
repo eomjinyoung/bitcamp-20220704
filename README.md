@@ -363,5 +363,10 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - DDL 사용법(계속)
   - DML 사용법
 
+### 41일(8/31) 
+
+- SQL 사용법
+  - DML 사용법(계속)
+
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
