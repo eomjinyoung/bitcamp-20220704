@@ -374,7 +374,13 @@ export PATH=${JAVA_HOME}/bin:$PATH
 
 - SQL 사용법
   - 조인 사용법
+  - 서브 쿼리 사용법
+  - 그룹핑 사용법
+- DB 모델링
+  - ER-Diagram 도구 설치(www.exerd.com)
   
+
+
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
