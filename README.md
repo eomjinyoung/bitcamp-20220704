@@ -396,6 +396,11 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - Driver 구현체 생성 및 DriverManager에 등록하는 방법
   - DBMS에 연결하는 방법
 
+### 45일(9/6) 
+
+- JDBC 프로그래밍(com.eomcs.jdbc.*)
+  - insert, select, update, delete 을 다루는 법
+  - DAO 객체 사용법
 
 
 ## 구글 미트
