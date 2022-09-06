@@ -400,7 +400,9 @@ export PATH=${JAVA_HOME}/bin:$PATH
 
 - JDBC 프로그래밍(com.eomcs.jdbc.*)
   - insert, select, update, delete 을 다루는 법
-  - DAO 객체 사용법
+  - SQL 삽입 공격을 막는 방법: Statement와 PreparedStatement
+  - 트랜잭션 다루기
+  
 
 
 ## 구글 미트
