@@ -403,6 +403,10 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - SQL 삽입 공격을 막는 방법: Statement와 PreparedStatement
   - 트랜잭션 다루기
   
+### 46일(9/7) 
+
+- board-app 프로젝트 수행 
+  - 046. DBMS 도입하기
 
 
 ## 구글 미트

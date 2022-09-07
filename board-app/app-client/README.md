@@ -1,8 +1,17 @@
-# 044. 통신 방식을 Stateful에서 Stateless로 변경하기
+# 046. DBMS 도입하기
 
 ## 작업 내용
 
-### 1단계 - ClientApp 에서 서버에 연결하는 방식을 제거한다.
+### 1단계 - 테이블을 정의한다.
 
-- com.bitcamp.board.ClientApp 클래스 변경
-- com.bitcamp.board.handler.XxxHandler 클래스 변경
+- 멤버 및 게시글 DB 모델링
+  - model.exerd
+- SQL DDL 작성
+  - ddl.sql
+- DBMS에 테이블 생성
+
+### 2단계 - 테스트용 예제 데이터를 입력한다.
+
+- 회원 데이터 및 게시글 데이터 입력
+  - data.sql
+
