@@ -26,7 +26,7 @@
 
 ### 4단계 - MariaDB 서버와 연동하는 MemberDao를 정의한다.
 
-- com.bitcamp.board.domain.Board 클래스 변경
+- com.bitcamp.board.domain.Member 클래스 변경
   - createdDate 필드를 java.sql.Date 타입으로 변경
   - 기타 메서드 정리
 - com.bitcamp.board.dao.MariaDBMemberDao 클래스 정의
@@ -34,3 +34,19 @@
 ### 5단계 - 기존의 MemberDaoProxy를 MariaDBMemberDao로 교체한다.
 
 - com.bitcamp.board.handler.MemberHandler 클래스 변경
+- com.bitcamp.board.ClientApp 클래스 변경
+  - MemberHandler 객체를 생성할 때 생성자에 파라미터를 넘기지 않는다.
+
+### 6단계 - MariaDB 서버와 연동하는 BoardDao를 정의한다.
+
+- com.bitcamp.board.domain.Board 클래스 변경
+  - createdDate 필드를 java.sql.Date 타입으로 변경
+  - writer 필드를 int 타입 memberNo로 변경
+  - 기타 메서드 정리
+- com.bitcamp.board.dao.MariaDBBoardDao 클래스 정의
+
+### 7단계 - 기존의 BoardDaoProxy를 MariaDBBoardDao로 교체한다.
+
+- com.bitcamp.board.handler.BoardHandler 클래스 변경
+- com.bitcamp.board.ClientApp 클래스 변경
+  - MemberHandler 객체를 생성할 때 생성자에 파라미터를 넘기지 않는다.

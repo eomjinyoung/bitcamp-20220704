@@ -12,34 +12,21 @@ public class MariaDBBoardDao {
 
   public int insert(Board board) throws Exception {
     try (Connection con = DriverManager.getConnection(
-        "jdbc:mariadb://localhost:3306/studydb","study","1111")) {
-
-      if (board.memberNo > 0) { // 회원인 경우
-        try (PreparedStatement pstmt = con.prepareStatement(
+        "jdbc:mariadb://localhost:3306/studydb","study","1111");
+        PreparedStatement pstmt = con.prepareStatement(
             "insert into app_board(title,cont,mno) values(?,?,?)")) {
-          pstmt.setString(1, board.title);
-          pstmt.setString(2, board.content);
-          pstmt.setInt(3, board.memberNo);
-          return pstmt.executeUpdate();
-        }
-      } else { // 비회원인 경우
-        try (PreparedStatement pstmt = con.prepareStatement(
-            "insert into app_board(title,cont,pwd) values(?,?,sha2(?,256))")) {
-          pstmt.setString(1, board.title);
-          pstmt.setString(2, board.content);
-          pstmt.setString(3, board.password);
-          return pstmt.executeUpdate();
-        }
-      }
+      pstmt.setString(1, board.title);
+      pstmt.setString(2, board.content);
+      pstmt.setInt(3, board.memberNo);
+      return pstmt.executeUpdate();
     }
   }
 
   public Board findByNo(int no) throws Exception {
-
     try (Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb","study","1111");
         PreparedStatement pstmt = con.prepareStatement(
-            "select mno,name,email,cdt from app_board where mno=" + no);
+            "select bno,title,cont,mno,cdt,vw_cnt from app_board where bno=" + no);
         ResultSet rs = pstmt.executeQuery()) {
 
       if (!rs.next()) {
@@ -47,10 +34,13 @@ public class MariaDBBoardDao {
       }
 
       Board board = new Board();
-      board.no = rs.getInt("mno");
-      board.name = rs.getString("name");
-      board.email = rs.getString("email");
+      board.no = rs.getInt("bno");
+      board.title = rs.getString("title");
+      board.content = rs.getString("cont");
+      board.memberNo = rs.getInt("mno");
       board.createdDate = rs.getDate("cdt");
+      board.viewCount = rs.getInt("vw_cnt");
+
       return board;
     }
   }
@@ -59,12 +49,11 @@ public class MariaDBBoardDao {
     try (Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb","study","1111");
         PreparedStatement pstmt = con.prepareStatement(
-            "update app_board set name=?, email=?, pwd=sha2(?,256) where mno=?")) {
+            "update app_board set title=?, cont=? where bno=?")) {
 
-      pstmt.setString(1, board.name);
-      pstmt.setString(2, board.email);
-      pstmt.setString(3, board.password);
-      pstmt.setInt(4, board.no);
+      pstmt.setString(1, board.title);
+      pstmt.setString(2, board.content);
+      pstmt.setInt(3, board.no);
 
       return pstmt.executeUpdate();
     }
@@ -73,16 +62,10 @@ public class MariaDBBoardDao {
   public int delete(int no) throws Exception {
     try (Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb","study","1111");
-        PreparedStatement pstmt1 = con.prepareStatement("delete from app_board where mno=?");
-        PreparedStatement pstmt2 = con.prepareStatement("delete from app_board where mno=?")) {
+        PreparedStatement pstmt = con.prepareStatement("delete from app_board where bno=?")) {
 
-      // 회원이 작성한 게시글을 삭제한다.
-      pstmt1.setInt(1, no);
-      pstmt1.executeUpdate();
-
-      // 회원을 삭제한다.
-      pstmt2.setInt(1, no);
-      return pstmt2.executeUpdate();
+      pstmt.setInt(1, no);
+      return pstmt.executeUpdate();
     }
   }
 
@@ -90,16 +73,18 @@ public class MariaDBBoardDao {
     try (Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb","study","1111");
         PreparedStatement pstmt = con.prepareStatement(
-            "select mno,name,email from app_board");
+            "select bno,title,mno,cdt,vw_cnt from app_board");
         ResultSet rs = pstmt.executeQuery()) {
 
       ArrayList<Board> list = new ArrayList<>();
 
       while (rs.next()) {
         Board board = new Board();
-        board.no = rs.getInt("mno");
-        board.name = rs.getString("name");
-        board.email = rs.getString("email");
+        board.no = rs.getInt("bno");
+        board.title = rs.getString("title");
+        board.memberNo = rs.getInt("mno");
+        board.createdDate = rs.getDate("cdt");
+        board.viewCount = rs.getInt("vw_cnt");
 
         list.add(board);
       }
