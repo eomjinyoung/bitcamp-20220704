@@ -30,3 +30,7 @@
   - createdDate 필드를 java.sql.Date 타입으로 변경
   - 기타 메서드 정리
 - com.bitcamp.board.dao.MariaDBMemberDao 클래스 정의
+
+### 5단계 - 기존의 MemberDaoProxy를 MariaDBMemberDao로 교체한다.
+
+- com.bitcamp.board.handler.MemberHandler 클래스 변경

@@ -4,6 +4,7 @@
 package com.bitcamp.board.handler;
 
 import java.util.Date;
+import java.util.List;
 import com.bitcamp.board.dao.MariaDBMemberDao;
 import com.bitcamp.board.domain.Member;
 import com.bitcamp.handler.AbstractHandler;
@@ -16,7 +17,7 @@ public class MemberHandler extends AbstractHandler {
   public MemberHandler(String dataName, String ip, int port) {
     super(new String[] {"목록", "상세보기", "등록", "삭제", "변경"});
 
-    memberDao = new MariaDBMemberDao(dataName, ip, port);
+    memberDao = new MariaDBMemberDao();
   }
 
   @Override
@@ -35,25 +36,20 @@ public class MemberHandler extends AbstractHandler {
   }
 
   private void onList() throws Exception {
-    Member[] members = memberDao.findAll();
+    List<Member> members = memberDao.findAll();
 
-    if (members == null) {
-      System.out.println("목록을 가져오는데 실패했습니다!");
-      return;
-    }
-
-    System.out.println("이메일 이름");
+    System.out.println("번호\t이름\t이메일");
 
     for (Member member : members) {
-      System.out.printf("%s\t%s\n",
-          member.email, member.name);
+      System.out.printf("%d\t%s\t%s\n",
+          member.no, member.name, member.email);
     }
   }
 
   private void onDetail() throws Exception {
-    String email = Prompt.inputString("조회할 회원 이메일? ");
+    int no = Prompt.inputInt("조회할 회원 번호? ");
 
-    Member member = memberDao.findByEmail(email);
+    Member member = memberDao.findByNo(no);
 
     if (member == null) {
       System.out.println("해당 이메일의 회원이 없습니다!");
