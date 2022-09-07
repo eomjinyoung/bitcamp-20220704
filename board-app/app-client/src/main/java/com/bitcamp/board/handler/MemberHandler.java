@@ -3,7 +3,6 @@
  */
 package com.bitcamp.board.handler;
 
-import java.util.Date;
 import java.util.List;
 import com.bitcamp.board.dao.MariaDBMemberDao;
 import com.bitcamp.board.domain.Member;
@@ -52,14 +51,13 @@ public class MemberHandler extends AbstractHandler {
     Member member = memberDao.findByNo(no);
 
     if (member == null) {
-      System.out.println("해당 이메일의 회원이 없습니다!");
+      System.out.println("해당 번호의 회원이 없습니다!");
       return;
     }
 
     System.out.printf("이름: %s\n", member.name);
     System.out.printf("이메일: %s\n", member.email);
-    Date date = new Date(member.createdDate);
-    System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", date);
+    System.out.printf("등록일: %tY-%1$tm-%1$td %1$tH:%1$tM\n", member.createdDate);
   }
 
   private void onInput() throws Exception {
@@ -68,41 +66,39 @@ public class MemberHandler extends AbstractHandler {
     member.name = Prompt.inputString("이름? ");
     member.email = Prompt.inputString("이메일? ");
     member.password = Prompt.inputString("암호? ");
-    member.createdDate = System.currentTimeMillis();
 
-    if (memberDao.insert(member)) {
-      System.out.println("회원을 등록했습니다.");
-    } else {
-      System.out.println("회원 등록에 실패했습니다!");
-    }
+    memberDao.insert(member);
+    System.out.println("회원을 등록했습니다.");
   }
 
   private void onDelete() throws Exception {
-    String email = Prompt.inputString("삭제할 회원 이메일? ");
+    int no = Prompt.inputInt("삭제할 회원 번호? ");
 
-    if (memberDao.delete(email)) {
+    if (memberDao.delete(no) == 1) {
       System.out.println("삭제하였습니다.");
     } else {
-      System.out.println("해당 이메일의 회원이 없습니다!");
+      System.out.println("해당 번호의 회원이 없습니다!");
     }
   }
 
   private void onUpdate() throws Exception {
-    String email = Prompt.inputString("변경할 회원 이메일? ");
+    int no = Prompt.inputInt("변경할 회원 번호? ");
 
-    Member member = memberDao.findByEmail(email);
+    Member member = memberDao.findByNo(no);
 
     if (member == null) {
-      System.out.println("해당 이메일의 회원이 없습니다!");
+      System.out.println("해당 번호의 회원이 없습니다!");
       return;
     }
 
     member.name = Prompt.inputString("이름?(" + member.name + ") ");
+    member.email = Prompt.inputString("이메일?(" + member.email + ") ");
+    member.password = Prompt.inputString("암호?");
 
     String input = Prompt.inputString("변경하시겠습니까?(y/n) ");
 
     if (input.equals("y")) {
-      if (memberDao.update(member)) {
+      if (memberDao.update(member) == 1) {
         System.out.println("변경했습니다.");
       } else {
         System.out.println("변경 실패입니다!");

@@ -82,6 +82,7 @@ public abstract class AbstractHandler implements Handler {
 
       } catch (Exception ex) {
         System.out.printf("예외 발생: %s\n", ex.getMessage());
+        ex.printStackTrace();
       }
     } // while
 
