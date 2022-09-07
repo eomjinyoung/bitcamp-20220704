@@ -4,19 +4,19 @@
 package com.bitcamp.board.handler;
 
 import java.util.Date;
-import com.bitcamp.board.dao.MemberDaoProxy;
+import com.bitcamp.board.dao.MariaDBMemberDao;
 import com.bitcamp.board.domain.Member;
 import com.bitcamp.handler.AbstractHandler;
 import com.bitcamp.util.Prompt;
 
 public class MemberHandler extends AbstractHandler {
 
-  private MemberDaoProxy memberDao;
+  private MariaDBMemberDao memberDao;
 
   public MemberHandler(String dataName, String ip, int port) {
     super(new String[] {"목록", "상세보기", "등록", "삭제", "변경"});
 
-    memberDao = new MemberDaoProxy(dataName, ip, port);
+    memberDao = new MariaDBMemberDao(dataName, ip, port);
   }
 
   @Override
