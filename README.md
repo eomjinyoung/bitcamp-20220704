@@ -413,7 +413,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
 - board-app 프로젝트 수행 
   - 047. Connection 객체 공유하기
   - 048. Connection 객체 공유하기 II - 의존 객체 주입 방식
-  
+  - 049. DAO 객체를 교체하기 쉽게 만들기 - 의존 객체 주입과 인터페이스
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
