@@ -414,6 +414,6 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 047. Connection 객체 공유하기
   - 048. Connection 객체 공유하기 II - 의존 객체 주입 방식
   - 049. DAO 객체를 교체하기 쉽게 만들기 - 의존 객체 주입과 인터페이스
-
+  - 050. 트랜잭션 다루기 - 자동 커밋과 수동 커밋
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
