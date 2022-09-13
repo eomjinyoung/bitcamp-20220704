@@ -1,6 +1,9 @@
 package com.bitcamp.handler;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 import java.io.PrintWriter;
+import java.io.StringWriter;
 import com.bitcamp.board.ServerApp;
 
 // Handler 규격에 맞춰 서브 클래스에게 물려줄 공통 필드나 메서드를 구현한다.
@@ -25,6 +28,8 @@ public abstract class AbstractHandler implements Handler {
     for (int i = 0; i < menus.length; i++) {
       out.printf("  %d: %s\n", i + 1, menus[i]);
     }
+
+    out.printf("메뉴를 선택하세요[1..%d](0: 이전) ", menus.length);
   }
 
   protected static void printHeadline(PrintWriter out) {
@@ -47,16 +52,38 @@ public abstract class AbstractHandler implements Handler {
   }
 
   @Override
-  public void execute(PrintWriter out) throws Exception {
-    while (true) {
+  public void execute(DataInputStream in, DataOutputStream out) throws Exception {
+
+    // 핸들러의 메뉴를 클라이언트에게 보낸다.
+    try (StringWriter strOut = new StringWriter();
+        PrintWriter tempOut = new PrintWriter(strOut)) {
+
       //      printTitle(out);
-      printMenus(out);
-      printBlankLine(out);
+      printMenus(tempOut);
+      out.writeUTF(strOut.toString());
+    }
+
+    while (true) {
+
+      // 클라이언트가 보낸 요청을 읽는다.
+      String request = in.readUTF();
+      if (request.equals("0")) {
+        break;
+      }
+
+      try (StringWriter strOut = new StringWriter();
+          PrintWriter tempOut = new PrintWriter(strOut)) {
+
+        tempOut.println("해당 메뉴를 준비 중입니다.");
+
+        printBlankLine(tempOut);
+        printMenus(tempOut);
+        out.writeUTF(strOut.toString());
+      }
 
       /*
       try {
-        int menuNo = Prompt.inputInt(String.format(
-            "메뉴를 선택하세요[1..%d](0: 이전) ", menus.length));
+
 
         if (menuNo < 0 || menuNo > menus.length) {
           System.out.println("메뉴 번호가 옳지 않습니다!");

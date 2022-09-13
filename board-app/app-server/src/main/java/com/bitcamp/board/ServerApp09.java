@@ -25,7 +25,7 @@ import com.bitcamp.handler.Handler;
 //    - AbstractHandler 추상 클래스의 execute() 변경
 //
 // 
-public class ServerApp {
+public class ServerApp09 {
 
   // breadcrumb 메뉴를 저장할 스택을 준비
   public static Stack<String> breadcrumbMenu = new Stack<>();
