@@ -4,7 +4,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import com.bitcamp.board.ServerApp;
+import com.bitcamp.util.BreadCrumb;
 
 // Handler 규격에 맞춰 서브 클래스에게 물려줄 공통 필드나 메서드를 구현한다.
 // 
@@ -40,25 +40,17 @@ public abstract class AbstractHandler implements Handler {
     out.println(); // 메뉴를 처리한 후 빈 줄 출력
   }
 
-  protected static void printTitle(PrintWriter out) {
-    StringBuilder builder = new StringBuilder();
-    for (String title : ServerApp.breadcrumbMenu) {
-      if (!builder.isEmpty()) {
-        builder.append(" > ");
-      }
-      builder.append(title);
-    }
-    out.printf("%s:\n", builder.toString());
-  }
-
   @Override
   public void execute(DataInputStream in, DataOutputStream out) throws Exception {
+
+    // 현재 스레드를 위해 보관된 Breadcrumb 객체를 꺼낸다.
+    BreadCrumb breadcrumb = BreadCrumb.getBreadCrumbOfCurrentThread();
 
     // 핸들러의 메뉴를 클라이언트에게 보낸다.
     try (StringWriter strOut = new StringWriter();
         PrintWriter tempOut = new PrintWriter(strOut)) {
 
-      //      printTitle(out);
+      tempOut.println(breadcrumb.toString());
       printMenus(tempOut);
       out.writeUTF(strOut.toString());
     }
@@ -77,6 +69,7 @@ public abstract class AbstractHandler implements Handler {
         tempOut.println("해당 메뉴를 준비 중입니다.");
 
         printBlankLine(tempOut);
+        tempOut.println(breadcrumb.toString());
         printMenus(tempOut);
         out.writeUTF(strOut.toString());
       }
