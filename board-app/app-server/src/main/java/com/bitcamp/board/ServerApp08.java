@@ -21,7 +21,7 @@ import com.bitcamp.handler.Handler;
 // 7) 환영 메시지 후에 메인 메뉴를 응답한다.
 // 8) 사용자가 선택한 메뉴 번호의 유효성을 검증한다.
 //
-public class ServerApp {
+public class ServerApp08 {
 
   // breadcrumb 메뉴를 저장할 스택을 준비
   public static Stack<String> breadcrumbMenu = new Stack<>();

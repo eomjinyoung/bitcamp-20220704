@@ -48,7 +48,6 @@ public class ServerApp07 {
 
               printMainMenus(tempOut);
               out.writeUTF(strOut.toString());
-              // 클라이언트로 응답한 후에 새 출력 스트림으로 교체한다.
 
 
               String request = in.readUTF();
