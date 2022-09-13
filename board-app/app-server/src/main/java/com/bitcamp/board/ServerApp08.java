@@ -6,11 +6,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 import java.util.Stack;
-import com.bitcamp.board.handler.BoardHandler;
-import com.bitcamp.board.handler.MemberHandler;
-import com.bitcamp.handler.Handler;
 
 // 1) 클라이언트 접속 시 환영 메시지 전송
 // 2) 여러 클라이언트를 순차적으로 접속 처리
@@ -32,11 +28,6 @@ public class ServerApp08 {
   public static void main(String[] args) {
     try (ServerSocket serverSocket = new ServerSocket(8888)) {
       System.out.println("서버 실행 중...");
-
-      // 핸들러를 담을 컬렉션을 준비한다.
-      ArrayList<Handler> handlers = new ArrayList<>();
-      handlers.add(new BoardHandler(null));
-      handlers.add(new MemberHandler(null));
 
       while (true) {
         Socket socket = serverSocket.accept();
@@ -120,6 +111,10 @@ public class ServerApp08 {
       MariaDBBoardDao boardDao = new MariaDBBoardDao(con);
 
 
+      // 핸들러를 담을 컬렉션을 준비한다.
+      ArrayList<Handler> handlers = new ArrayList<>();
+      handlers.add(new BoardHandler(null));
+      handlers.add(new MemberHandler(null));
 
       // "메인" 메뉴의 이름을 스택에 등록한다.
       breadcrumbMenu.push("메인");

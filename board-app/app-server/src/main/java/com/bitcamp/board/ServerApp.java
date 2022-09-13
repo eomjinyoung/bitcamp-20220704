@@ -70,8 +70,11 @@ public class ServerApp {
 
                 try {
                   int mainMenuNo = Integer.parseInt(request);
+
                   if (mainMenuNo >= 1 && mainMenuNo <= menus.length) {
-                    tempOut.println("해당 기능을 준비 중입니다.");
+                    // 메뉴 번호로 Handler 객체를 찾아 실행한다.
+                    handlers.get(mainMenuNo - 1).execute();
+
                   } else {
                     tempOut.println("해당 번호의 메뉴가 없습니다!");
                   }
@@ -140,8 +143,7 @@ public class ServerApp {
           // 메뉴에 진입할 때 breadcrumb 메뉴바에 그 메뉴를 등록한다.
           breadcrumbMenu.push(menus[mainMenuNo - 1]);
 
-          // 메뉴 번호로 Handler 레퍼런스에 들어있는 객체를 찾아 실행한다.
-          handlers.get(mainMenuNo - 1).execute();
+
 
           breadcrumbMenu.pop();
 
