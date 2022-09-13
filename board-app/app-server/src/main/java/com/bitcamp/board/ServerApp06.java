@@ -16,7 +16,7 @@ import java.util.Stack;
 // 6) quit 명령을 보내면 연결 끊기
 // 7) 환영 메시지 후에 메인 메뉴를 응답한다.
 //
-public class ServerApp {
+public class ServerApp06 {
 
   // breadcrumb 메뉴를 저장할 스택을 준비
   public static Stack<String> breadcrumbMenu = new Stack<>();
@@ -33,33 +33,22 @@ public class ServerApp {
           try (
               DataOutputStream out = new DataOutputStream(socket.getOutputStream());
               DataInputStream in = new DataInputStream(socket.getInputStream())) {
-            System.out.println("클라이언트 접속!");
+            StringWriter strOut = new StringWriter();
+            PrintWriter tempOut = new PrintWriter(strOut);
 
-            boolean first = true;
+            welcome(tempOut);
+            out.writeUTF(strOut.toString());
 
             while (true) {
-              StringWriter strOut = new StringWriter();
-              PrintWriter tempOut = new PrintWriter(strOut);
-
-              if (first) {
-                welcome(tempOut);
-                first = false;
-              }
-
-              printMainMenus(tempOut);
-              out.writeUTF(strOut.toString());
-              // 클라이언트로 응답한 후에 새 출력 스트림으로 교체한다.
-
-
               String request = in.readUTF();
+
               if (request.equals("quit")) {
                 break;
               }
-
               out.writeUTF(request);
             }
 
-            System.out.println("클라이언트와 접속 종료!");
+            System.out.println("클라이언트에게 응답!");
 
           } catch (Exception e) {
             System.out.println("클라이언트와 통신하는 중 오류 발생!");

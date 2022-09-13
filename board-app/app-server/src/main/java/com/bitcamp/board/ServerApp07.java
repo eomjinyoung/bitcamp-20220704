@@ -16,7 +16,7 @@ import java.util.Stack;
 // 6) quit 명령을 보내면 연결 끊기
 // 7) 환영 메시지 후에 메인 메뉴를 응답한다.
 //
-public class ServerApp {
+public class ServerApp07 {
 
   // breadcrumb 메뉴를 저장할 스택을 준비
   public static Stack<String> breadcrumbMenu = new Stack<>();

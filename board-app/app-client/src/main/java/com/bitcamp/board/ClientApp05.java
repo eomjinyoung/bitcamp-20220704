@@ -8,9 +8,8 @@ import com.bitcamp.util.Prompt;
 // 1) 서버에 접속 
 // 4) 사용자 입력을 서버에 전송
 // 5) 요청/응답을 무한 반복한다.
-// 6) quit 명령을 보내면 연결 끊기
-//
-public class ClientApp {
+// 
+public class ClientApp05 {
 
   public static void main(String[] args) {
 
@@ -28,10 +27,6 @@ public class ClientApp {
 
         String input = Prompt.inputString("> ");
         out.writeUTF(input);
-
-        if (input.equals("quit")) {
-          break;
-        }
       }
 
     } catch (Exception e) {
