@@ -1,6 +1,6 @@
 package com.bitcamp.handler;
 
-import com.bitcamp.board.ClientApp;
+import com.bitcamp.board.ServerApp;
 import com.bitcamp.util.Prompt;
 
 // Handler 규격에 맞춰 서브 클래스에게 물려줄 공통 필드나 메서드를 구현한다.
@@ -37,7 +37,7 @@ public abstract class AbstractHandler implements Handler {
 
   protected static void printTitle() {
     StringBuilder builder = new StringBuilder();
-    for (String title : ClientApp.breadcrumbMenu) {
+    for (String title : ServerApp.breadcrumbMenu) {
       if (!builder.isEmpty()) {
         builder.append(" > ");
       }
@@ -66,7 +66,7 @@ public abstract class AbstractHandler implements Handler {
         }
 
         // 메뉴에 진입할 때 breadcrumb 메뉴바에 그 메뉴를 등록한다.
-        ClientApp.breadcrumbMenu.push(menus[menuNo - 1]);
+        ServerApp.breadcrumbMenu.push(menus[menuNo - 1]);
 
         printHeadline();
 
@@ -78,7 +78,7 @@ public abstract class AbstractHandler implements Handler {
 
         printBlankLine();
 
-        ClientApp.breadcrumbMenu.pop();
+        ServerApp.breadcrumbMenu.pop();
 
       } catch (Exception ex) {
         System.out.printf("예외 발생: %s\n", ex.getMessage());

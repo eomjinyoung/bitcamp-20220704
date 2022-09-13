@@ -417,6 +417,12 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 050. 트랜잭션 다루기 - 자동 커밋과 수동 커밋
 - 팀별 프로젝트
   - 팀원 결정
+
+### 48일(9/13) 
+
+- board-app 프로젝트 수행 
+  - 051. Application Server 구조로 전환하기
   
+
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
