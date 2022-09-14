@@ -3,31 +3,40 @@
  */
 package com.bitcamp.util;
 
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+
 public class Prompt {
 
-  private static java.util.Scanner keyboardInput = new java.util.Scanner(System.in);
+  DataInputStream in;
+  DataOutputStream out;
 
-  public static int inputInt() {
-    String str = keyboardInput.nextLine();
-    return Integer.parseInt(str); //"123" ==> 123, "5" ==> 5, "ok" ==> 실행 오류!
+  public Prompt(DataInputStream in, DataOutputStream out) {
+    this.in = in;
+    this.out = out;
   }
 
-  public static int inputInt(String title) {
-    System.out.print(title);
-    String str = keyboardInput.nextLine();
+  public int inputInt() throws Exception {
+    String str = in.readUTF();
+    return Integer.parseInt(str); 
+  }
+
+  public int inputInt(String title) throws Exception {
+    out.writeUTF(title);
+    String str = in.readUTF();
     return Integer.parseInt(str);
   }
 
-  public static String inputString() {
-    return keyboardInput.nextLine();
+  public String inputString() throws Exception {
+    return in.readUTF();
   }
 
-  public static String inputString(String title) {
-    System.out.print(title);
-    return keyboardInput.nextLine();
-  }
-
-  public static void close() {
-    keyboardInput.close();
+  public String inputString(String title) throws Exception {
+    out.writeUTF(title);
+    return in.readUTF();
   }
 }
+
+
+
+
