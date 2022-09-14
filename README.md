@@ -423,6 +423,17 @@ export PATH=${JAVA_HOME}/bin:$PATH
 - board-app 프로젝트 수행 
   - 051. Application Server 구조로 전환하기
   
+### 49일(9/14) 
+
+- board-app 프로젝트 수행 
+  - 051. Application Server 구조로 전환하기(계속)
+
+### 50일(9/15) 
+
+- board-app 프로젝트 수행 
+  - 052. Web Application Server 구조로 전환하기 - Servlet/JSP 기술 도입
+
+
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
