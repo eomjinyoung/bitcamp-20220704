@@ -33,9 +33,8 @@ import com.bitcamp.util.BreadCrumb;
 //    - BreadCrumb 클래스를 정의한다.
 // 11) 코드 리팩토링
 //    - execute() 메서드 정의: main() 메서드의 코드를 옮긴다.
-// 12) DB 연동
-//  
-public class ServerApp {
+// 
+public class ServerApp11 {
 
   // 메인 메뉴 목록 준비
   private String[] menus = {"게시판", "회원"};
@@ -44,7 +43,7 @@ public class ServerApp {
 
   public static void main(String[] args) {
     try {
-      ServerApp app = new ServerApp(8888);
+      ServerApp11 app = new ServerApp11(8888);
       app.execute();
 
     } catch (Exception e) {
@@ -52,7 +51,7 @@ public class ServerApp {
     }
   }
 
-  public ServerApp(int port) throws Exception {
+  public ServerApp11(int port) throws Exception {
     this.port = port;
 
     // DAO 가 사용할 커넥션 객체 준비

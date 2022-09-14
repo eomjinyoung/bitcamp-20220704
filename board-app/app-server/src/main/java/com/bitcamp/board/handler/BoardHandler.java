@@ -103,7 +103,7 @@ public class BoardHandler extends AbstractHandler {
     board.memberNo = prompt.inputInt("작성자? ");
 
     boardDao.insert(board);
-    System.out.println("게시글을 등록했습니다.");
+    out.writeUTF("게시글을 등록했습니다.");
   }
 
   private void onDelete(DataInputStream in, DataOutputStream out) throws Exception {
@@ -116,14 +116,14 @@ public class BoardHandler extends AbstractHandler {
         boardNo = prompt.inputInt("삭제할 게시글 번호? ");
         break;
       } catch (Exception ex) {
-        System.out.println("입력 값이 옳지 않습니다!");
+        out.writeUTF("입력 값이 옳지 않습니다!");
       }
     }
 
     if (boardDao.delete(boardNo) == 1) {
-      System.out.println("삭제하였습니다.");
+      out.writeUTF("삭제하였습니다.");
     } else {
-      System.out.println("해당 번호의 게시글이 없습니다!");
+      out.writeUTF("해당 번호의 게시글이 없습니다!");
     }
   }
 
@@ -137,13 +137,13 @@ public class BoardHandler extends AbstractHandler {
         boardNo = prompt.inputInt("변경할 게시글 번호? ");
         break;
       } catch (Throwable ex) {
-        System.out.println("입력 값이 옳지 않습니다!");
+        out.writeUTF("입력 값이 옳지 않습니다!");
       }
     }
 
     Board board = boardDao.findByNo(boardNo);
     if (board == null) {
-      System.out.println("해당 번호의 게시글이 없습니다!");
+      out.writeUTF("해당 번호의 게시글이 없습니다!");
       return;
     }
 
@@ -154,13 +154,13 @@ public class BoardHandler extends AbstractHandler {
 
     if (input.equals("y")) {
       if (boardDao.update(board) == 1) {
-        System.out.println("변경했습니다.");
+        out.writeUTF("변경했습니다.");
       } else {
-        System.out.println("변경 실패입니다!");
+        out.writeUTF("변경 실패입니다!");
       }
 
     } else {
-      System.out.println("변경 취소했습니다.");
+      out.writeUTF("변경 취소했습니다.");
     }
   }
 }

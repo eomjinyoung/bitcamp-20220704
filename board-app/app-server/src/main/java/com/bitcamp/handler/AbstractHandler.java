@@ -86,11 +86,13 @@ public abstract class AbstractHandler implements Handler {
         // 사용자가 입력한 메뉴 번호에 대해 작업을 수행한다.
         service(menuNo, in, out);
 
-        // 메뉴에서 나올 때 breadcrumb 메뉴바에 그 메뉴를 제거한다.
-        BreadCrumb.getBreadCrumbOfCurrentThread().pickUp();
-
       } catch (Exception e) {
         error(out, e);
+
+      } finally {
+        // 성공하든 실패하든
+        // 메뉴에서 나올 때 breadcrumb 메뉴바에 그 메뉴를 제거한다.
+        BreadCrumb.getBreadCrumbOfCurrentThread().pickUp();
       }
 
     } // while

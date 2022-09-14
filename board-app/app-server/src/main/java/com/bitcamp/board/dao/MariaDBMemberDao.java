@@ -66,7 +66,7 @@ public class MariaDBMemberDao implements MemberDao {
   @Override
   public int delete(int no) throws Exception {
     try (PreparedStatement pstmt1 = con.prepareStatement("delete from app_board where mno=?");
-        PreparedStatement pstmt2 = con.prepareStatement("delete from app_member2 where mno=?")) {
+        PreparedStatement pstmt2 = con.prepareStatement("delete from app_member where mno=?")) {
 
       // 커넥션 객체를 수동 커밋 상태로 설정한다.
       con.setAutoCommit(false);
