@@ -18,9 +18,8 @@ import com.sun.net.httpserver.HttpServer;
 // 3) HTML 콘텐트를 출력하기
 // 4) 메인 화면을 출력하는 요청처리 객체를 분리하기
 // 5) 요청 자원의 경로를 구분하여 처리하기
-// 6) 게시글 요청 처리하기
-//
-public class MiniWebServer {
+// 
+public class MiniWebServer05 {
 
   public static void main(String[] args) throws Exception {
 

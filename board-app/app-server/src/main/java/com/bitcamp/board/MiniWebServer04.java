@@ -5,8 +5,6 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.InetSocketAddress;
-import java.net.URI;
-import com.bitcamp.board.handler.ErrorHandler;
 import com.bitcamp.board.handler.WelcomeHandler;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
@@ -17,10 +15,8 @@ import com.sun.net.httpserver.HttpServer;
 // 2) 한글 콘텐트를 출력하기
 // 3) HTML 콘텐트를 출력하기
 // 4) 메인 화면을 출력하는 요청처리 객체를 분리하기
-// 5) 요청 자원의 경로를 구분하여 처리하기
-// 6) 게시글 요청 처리하기
-//
-public class MiniWebServer {
+// 
+public class MiniWebServer04 {
 
   public static void main(String[] args) throws Exception {
 
@@ -29,24 +25,13 @@ public class MiniWebServer {
       public void handle(HttpExchange exchange) throws IOException {
         System.out.println("클라이언트가 요청함!");
 
-        URI requestUri = exchange.getRequestURI();
-
-        String path = requestUri.getPath();
-
         WelcomeHandler welcomeHandler = new WelcomeHandler();
-        ErrorHandler errorHandler = new ErrorHandler();
 
         byte[] bytes = null;
 
         try (StringWriter stringWriter = new StringWriter();
             PrintWriter printWriter = new PrintWriter(stringWriter)) {
-
-          if (path.equals("/")) {
-            welcomeHandler.service(printWriter);
-          } else {
-            errorHandler.error(printWriter);
-          }
-
+          welcomeHandler.service(printWriter);
           bytes = stringWriter.toString().getBytes("UTF-8");
         }
 
