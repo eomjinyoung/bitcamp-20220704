@@ -11,10 +11,11 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     implementation 'com.google.guava:guava:30.1.1-jre'
     implementation 'com.google.code.gson:gson:2.9.1'
+    implementation project(':app-common')
 }
 
 application {
-    mainClass = 'com.bitcamp.board.App'
+    mainClass = 'com.bitcamp.board.ServerApp'
 }
 
 // CLI 환경(명령창, 콘솔창)에서 자바 소스를 컴파일 할 때 적용할 옵션
@@ -33,7 +34,7 @@ tasks.withType(JavaCompile) {
 // Eclipse IDE에서 사용할 프로젝트 정보 설정하기
 eclipse {
     project {
-        name = "board-app-client" 
+        name = "board-app-server" 
         // 프로젝트 이름을 지정하지 않으면 build.gradle 파일이 있는 
         // 폴더 이름을 프로젝트 이름을 사용한다.
     }
