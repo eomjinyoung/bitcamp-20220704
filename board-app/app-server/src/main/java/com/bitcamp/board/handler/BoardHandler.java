@@ -71,63 +71,44 @@ public class BoardHandler {
     out.println("</head>");
     out.println("<body>");
     out.println("<h1>게시글 상세 정보</h1>");
-    out.println("<table border='1'>");
-    out.println("  <tr>");
-    out.println("    <th>번호</th>");
-    out.println("    <td>게시글 번호가 놓인다.</td>");
-    out.println("  </tr>");
-    out.println("  <tr>");
-    out.println("    <th>제목</th>");
-    out.println("    <td>게시글 제목 놓인다.</td>");
-    out.println("  </tr>");
-    out.println("  <tr>");
-    out.println("    <th>조회수</th>");
-    out.println("    <td>게시글 내용이 놓인다.</td>");
-    out.println("  </tr>");
-    out.println("  <tr>");
-    out.println("    <th>작성자</th>");
-    out.println("    <td>게시글 작성자가 놓인다.</td>");
-    out.println("  </tr>");
-    out.println("  <tr>");
-    out.println("    <th>등록일</th>");
-    out.println("    <td>게시글 등록일 놓인다.</td>");
-    out.println("  </tr>");
-    out.println("</table>");
+
+    int boardNo = Integer.parseInt(paramMap.get("no"));
+    Board board = boardDao.findByNo(boardNo);
+
+    if (board == null) {
+      out.println("<p>해당 번호의 게시글이 없습니다.</p>");
+
+    } else {
+      out.println("<form action='update'>");
+      out.println("<table border='1'>");
+      out.println("  <tr>");
+      out.printf("    <th>번호</th><td><input name='no' type='number' value='%d' readonly></td>", board.no);
+      out.println("  </tr>");
+      out.println("  <tr>");
+      out.printf("    <th>제목</th><td><input name='title' type='text' value='%s' size='60'></td>", board.title);
+      out.println("  </tr>");
+      out.println("  <tr>");
+      out.printf("    <th>내용</th><td><textarea name='content' rows='10' cols='60'>%s</textarea></td>", board.content);
+      out.println("  </tr>");
+      out.println("  <tr>");
+      out.printf("    <th>조회수</th><td>%d</td>", board.viewCount);
+      out.println("  </tr>");
+      out.println("  <tr>");
+      out.printf("    <th>작성자</th><td>%d</td>", board.memberNo);
+      out.println("  </tr>");
+      out.println("  <tr>");
+      out.printf("    <th>등록일</th><td>%s</td>", board.createdDate);
+      out.println("  </tr>");
+      out.println("</table>");
+      out.println("<p>");
+      out.println("  <button type='submit'>변경</button>");
+      out.println("  <a href='delete?no=%d'>삭제</a>");
+      out.println("</p>");
+      out.println("</form>");
+    }
+
     out.println("</body>");
     out.println("</html>");
-
-    //    Prompt prompt = new Prompt(in, out);
-    //
-    //    int boardNo = 0;
-    //    while (true) {
-    //      try {
-    //        boardNo = prompt.inputInt("조회할 게시글 번호? ");
-    //        break;
-    //      } catch (Exception ex) {
-    //        out.writeUTF("입력 값이 옳지 않습니다!");
-    //      }
-    //    }
-    //
-    //    Board board = boardDao.findByNo(boardNo);
-    //
-    //    try (StringWriter strOut = new StringWriter();
-    //        PrintWriter tempOut = new PrintWriter(strOut)) {
-    //
-    //      if (board == null) {
-    //        tempOut.println("해당 번호의 게시글이 없습니다!");
-    //        out.writeUTF(strOut.toString());
-    //        return;
-    //      }
-    //
-    //      tempOut.printf("번호: %d\n", board.no);
-    //      tempOut.printf("제목: %s\n", board.title);
-    //      tempOut.printf("내용: %s\n", board.content);
-    //      tempOut.printf("조회수: %d\n", board.viewCount);
-    //      tempOut.printf("작성자: %d\n", board.memberNo);
-    //      tempOut.printf("등록일: %s\n", board.createdDate);
-    //
-    //      out.writeUTF(strOut.toString());
-    //    }
   }
 
   private void onInput(DataInputStream in, DataOutputStream out) throws Exception {
@@ -165,41 +146,32 @@ public class BoardHandler {
     }
   }
 
-  private void onUpdate(DataInputStream in, DataOutputStream out) throws Exception {
+  public void update(Map<String,String> paramMap, PrintWriter out) throws Exception {
 
-    Prompt prompt = new Prompt(in, out);
+    out.println("<!DOCTYPE html>");
+    out.println("<html>");
+    out.println("<head>");
+    out.println("<meta charset=\"UTF-8\">");
+    out.println("<title>bitcamp</title>");
+    out.println("<meta http-equiv='Refresh' content='3; url=list'>");
+    out.println("</head>");
+    out.println("<body>");
+    out.println("<h1>게시글 변경</h1>");
 
-    int boardNo = 0;
-    while (true) {
-      try {
-        boardNo = prompt.inputInt("변경할 게시글 번호? ");
-        break;
-      } catch (Throwable ex) {
-        out.writeUTF("입력 값이 옳지 않습니다!");
-      }
-    }
+    Board board = new Board();
+    board.no = Integer.parseInt(paramMap.get("no"));
+    board.title = paramMap.get("title");
+    board.content = paramMap.get("content");
 
-    Board board = boardDao.findByNo(boardNo);
-    if (board == null) {
-      out.writeUTF("해당 번호의 게시글이 없습니다!");
-      return;
-    }
-
-    board.title = prompt.inputString("제목?(" + board.title + ") ");
-    board.content = prompt.inputString(String.format("내용?(%s) ", board.content));
-
-    String input = prompt.inputString("변경하시겠습니까?(y/n) ");
-
-    if (input.equals("y")) {
-      if (boardDao.update(board) == 1) {
-        out.writeUTF("변경했습니다.");
-      } else {
-        out.writeUTF("변경 실패입니다!");
-      }
+    if (boardDao.update(board) == 0) {
+      out.println("<p>해당 번호의 게시글이 없습니다.</p>");
 
     } else {
-      out.writeUTF("변경 취소했습니다.");
+      out.println("<p>해당 게시글을 변경했습니다.</p>");
     }
+
+    out.println("</body>");
+    out.println("</html>");
   }
 }
 

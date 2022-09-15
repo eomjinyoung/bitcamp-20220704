@@ -48,30 +48,35 @@ public class MiniWebServer {
         System.out.println("클라이언트가 요청함!");
 
         URI requestUri = exchange.getRequestURI();
-
         String path = requestUri.getPath();
         String query = requestUri.getQuery();
-
-        Map<String,String> paramMap = new HashMap<>();
-        if (query != null && query.length() > 0) { // 예) no=1&title=aaaa&content=bbb
-          String[] entries = query.split("&");
-          for (String entry : entries) { // 예) no=1
-            String[] kv = entry.split("=");
-            paramMap.put(kv[0], kv[1]);
-          }
-        }
-
-        System.out.println(paramMap);
-
         byte[] bytes = null;
 
         try (StringWriter stringWriter = new StringWriter();
             PrintWriter printWriter = new PrintWriter(stringWriter)) {
 
+          Map<String,String> paramMap = new HashMap<>();
+          if (query != null && query.length() > 0) { // 예) no=1&title=aaaa&content=bbb
+            String[] entries = query.split("&");
+            for (String entry : entries) { // 예) no=1
+              String[] kv = entry.split("=");
+              paramMap.put(kv[0], kv[1]);
+            }
+          }
+          System.out.println(paramMap);
+
           if (path.equals("/")) {
             welcomeHandler.service(paramMap, printWriter);
+
           } else if (path.equals("/board/list")) {
             boardHandler.list(paramMap, printWriter);
+
+          } else if (path.equals("/board/detail")) {
+            boardHandler.detail(paramMap, printWriter);
+
+          } else if (path.equals("/board/update")) {
+            boardHandler.update(paramMap, printWriter);
+
           } else {
             errorHandler.error(paramMap, printWriter);
           }
