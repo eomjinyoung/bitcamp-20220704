@@ -77,6 +77,9 @@ public class MiniWebServer {
           } else if (path.equals("/board/update")) {
             boardHandler.update(paramMap, printWriter);
 
+          } else if (path.equals("/board/delete")) {
+            boardHandler.delete(paramMap, printWriter);
+
           } else {
             errorHandler.error(paramMap, printWriter);
           }

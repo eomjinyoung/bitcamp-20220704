@@ -102,7 +102,7 @@ public class BoardHandler {
       out.println("</table>");
       out.println("<p>");
       out.println("  <button type='submit'>변경</button>");
-      out.println("  <a href='delete?no=%d'>삭제</a>");
+      out.printf("  <a href='delete?no=%d'>삭제</a>", board.no);
       out.println("</p>");
       out.println("</form>");
     }
@@ -125,25 +125,30 @@ public class BoardHandler {
     out.writeUTF("게시글을 등록했습니다.");
   }
 
-  private void onDelete(DataInputStream in, DataOutputStream out) throws Exception {
+  public void delete(Map<String,String> paramMap, PrintWriter out) throws Exception {
 
-    Prompt prompt = new Prompt(in, out);
+    out.println("<!DOCTYPE html>");
+    out.println("<html>");
+    out.println("<head>");
+    out.println("<meta charset=\"UTF-8\">");
+    out.println("<title>bitcamp</title>");
+    out.println("<meta http-equiv='Refresh' content='3; url=list'>");
+    out.println("</head>");
+    out.println("<body>");
+    out.println("<h1>게시글 삭제</h1>");
 
-    int boardNo = 0;
-    while (true) {
-      try {
-        boardNo = prompt.inputInt("삭제할 게시글 번호? ");
-        break;
-      } catch (Exception ex) {
-        out.writeUTF("입력 값이 옳지 않습니다!");
-      }
-    }
+    int no = Integer.parseInt(paramMap.get("no"));
 
-    if (boardDao.delete(boardNo) == 1) {
-      out.writeUTF("삭제하였습니다.");
+    if (boardDao.delete(no) == 0) {
+      out.println("<p>해당 번호의 게시글이 없습니다.</p>");
+
     } else {
-      out.writeUTF("해당 번호의 게시글이 없습니다!");
+      out.println("<p>해당 게시글을 삭제했습니다.</p>");
     }
+
+    out.println("</body>");
+    out.println("</html>");
+
   }
 
   public void update(Map<String,String> paramMap, PrintWriter out) throws Exception {
