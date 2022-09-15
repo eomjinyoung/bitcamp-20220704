@@ -8,6 +8,8 @@ import java.net.InetSocketAddress;
 import java.net.URI;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.HashMap;
+import java.util.Map;
 import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.dao.MariaDBBoardDao;
 import com.bitcamp.board.dao.MariaDBMemberDao;
@@ -48,6 +50,18 @@ public class MiniWebServer {
         URI requestUri = exchange.getRequestURI();
 
         String path = requestUri.getPath();
+        String query = requestUri.getQuery();
+
+        Map<String,String> paramMap = new HashMap<>();
+        if (query != null && query.length() > 0) { // 예) no=1&title=aaaa&content=bbb
+          String[] entries = query.split("&");
+          for (String entry : entries) { // 예) no=1
+            String[] kv = entry.split("=");
+            paramMap.put(kv[0], kv[1]);
+          }
+        }
+
+        System.out.println(paramMap);
 
         byte[] bytes = null;
 
@@ -55,11 +69,11 @@ public class MiniWebServer {
             PrintWriter printWriter = new PrintWriter(stringWriter)) {
 
           if (path.equals("/")) {
-            welcomeHandler.service(printWriter);
+            welcomeHandler.service(paramMap, printWriter);
           } else if (path.equals("/board/list")) {
-            boardHandler.list(printWriter);
+            boardHandler.list(paramMap, printWriter);
           } else {
-            errorHandler.error(printWriter);
+            errorHandler.error(paramMap, printWriter);
           }
 
           bytes = stringWriter.toString().getBytes("UTF-8");

@@ -1,9 +1,10 @@
 package com.bitcamp.board.handler;
 
 import java.io.PrintWriter;
+import java.util.Map;
 
 public class ErrorHandler {
-  public void error(PrintWriter out) {
+  public void error(Map<String,String> paramMap, PrintWriter out) {
     out.println("<!DOCTYPE html>");
     out.println("<html>");
     out.println("<head>");
