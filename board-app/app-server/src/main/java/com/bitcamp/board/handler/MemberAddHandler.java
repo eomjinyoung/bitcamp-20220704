@@ -7,8 +7,9 @@ import java.io.PrintWriter;
 import java.util.Map;
 import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.domain.Member;
+import com.bitcamp.servlet.Servlet;
 
-public class MemberAddHandler {
+public class MemberAddHandler implements Servlet {
 
   private MemberDao memberDao;
 
@@ -16,7 +17,7 @@ public class MemberAddHandler {
     this.memberDao = memberDao;
   }
 
-  public void add(Map<String,String> paramMap, PrintWriter out) throws Exception {
+  public void service(Map<String,String> paramMap, PrintWriter out) throws Exception {
 
     out.println("<!DOCTYPE html>");
     out.println("<html>");

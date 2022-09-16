@@ -7,17 +7,16 @@ import java.io.PrintWriter;
 import java.util.Map;
 import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.domain.Board;
-import com.bitcamp.servlet.Servlet;
 
-public class BoardUpdateHandler implements Servlet {
+public class BoardAddHandler {
 
   private BoardDao boardDao;
 
-  public BoardUpdateHandler(BoardDao boardDao) {
+  public BoardAddHandler(BoardDao boardDao) {
     this.boardDao = boardDao;
   }
 
-  public void service(Map<String,String> paramMap, PrintWriter out) throws Exception {
+  public void add(Map<String,String> paramMap, PrintWriter out) throws Exception {
 
     out.println("<!DOCTYPE html>");
     out.println("<html>");
@@ -27,23 +26,25 @@ public class BoardUpdateHandler implements Servlet {
     out.println("<meta http-equiv='Refresh' content='1; url=list'>");
     out.println("</head>");
     out.println("<body>");
-    out.println("<h1>게시글 변경</h1>");
+    out.println("<h1>게시글 입력</h1>");
 
     Board board = new Board();
-    board.no = Integer.parseInt(paramMap.get("no"));
     board.title = paramMap.get("title");
     board.content = paramMap.get("content");
+    board.memberNo = Integer.parseInt(paramMap.get("writerNo"));
 
-    if (boardDao.update(board) == 0) {
-      out.println("<p>해당 번호의 게시글이 없습니다.</p>");
+    if (boardDao.insert(board) == 0) {
+      out.println("<p>게시글을 등록할 수 없습니다!</p>");
 
     } else {
-      out.println("<p>해당 게시글을 변경했습니다.</p>");
+      out.println("<p>게시글을 등록했습니다.</p>");
     }
 
     out.println("</body>");
     out.println("</html>");
+
   }
+
 
 }
 

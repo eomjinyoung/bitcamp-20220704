@@ -2,8 +2,9 @@ package com.bitcamp.board.handler;
 
 import java.io.PrintWriter;
 import java.util.Map;
+import com.bitcamp.servlet.Servlet;
 
-public class WelcomeHandler {
+public class WelcomeHandler implements Servlet {
   public void service(Map<String,String> paramMap, PrintWriter out) {
     out.println("<!DOCTYPE html>");
     out.println("<html>");
