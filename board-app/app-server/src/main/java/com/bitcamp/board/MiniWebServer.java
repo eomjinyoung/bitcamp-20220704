@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.net.InetSocketAddress;
 import java.net.URI;
+import java.net.URLDecoder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
@@ -27,7 +28,7 @@ import com.sun.net.httpserver.HttpServer;
 // 3) HTML 콘텐트를 출력하기
 // 4) 메인 화면을 출력하는 요청처리 객체를 분리하기
 // 5) 요청 자원의 경로를 구분하여 처리하기
-// 6) 게시글 요청 처리하기
+// 6) 게시글 요청 처리하기 + URL 디코딩 수행
 //
 public class MiniWebServer {
 
@@ -49,7 +50,8 @@ public class MiniWebServer {
 
         URI requestUri = exchange.getRequestURI();
         String path = requestUri.getPath();
-        String query = requestUri.getQuery();
+        // String query = requestUri.getQuery(); // 디코딩을 제대로 수행하지 못한다!
+        String query = requestUri.getRawQuery(); // 디코딩 없이 query string을 그대로 리턴 받기!
         byte[] bytes = null;
 
         try (StringWriter stringWriter = new StringWriter();
@@ -60,9 +62,12 @@ public class MiniWebServer {
             String[] entries = query.split("&");
             for (String entry : entries) { // 예) no=1
               String[] kv = entry.split("=");
-              paramMap.put(kv[0], kv[1]);
+              // 웹브라우저가 보낸 파라미터 값은 저장하기 전에 URL 디코딩 한다.
+              paramMap.put(kv[0], URLDecoder.decode(kv[1], "UTF-8"));
             }
           }
+          System.out.println(requestUri);
+          System.out.println(query);
           System.out.println(paramMap);
 
           if (path.equals("/")) {
