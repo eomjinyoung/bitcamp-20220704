@@ -33,7 +33,7 @@ import com.sun.net.httpserver.HttpServer;
 // 7) URL 디코딩 처리
 // 8) 회원 요청 처리하기
 //
-public class MiniWebServer {
+public class MiniWebServer08 {
 
   public static void main(String[] args) throws Exception {
     Connection con = DriverManager.getConnection(

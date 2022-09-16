@@ -17,7 +17,6 @@ import com.bitcamp.board.dao.MariaDBMemberDao;
 import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.handler.BoardHandler;
 import com.bitcamp.board.handler.ErrorHandler;
-import com.bitcamp.board.handler.MemberHandler;
 import com.bitcamp.board.handler.WelcomeHandler;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
@@ -31,9 +30,8 @@ import com.sun.net.httpserver.HttpServer;
 // 5) 요청 자원의 경로를 구분하여 처리하기
 // 6) 게시글 요청 처리하기
 // 7) URL 디코딩 처리
-// 8) 회원 요청 처리하기
 //
-public class MiniWebServer {
+public class MiniWebServer07 {
 
   public static void main(String[] args) throws Exception {
     Connection con = DriverManager.getConnection(
@@ -45,7 +43,6 @@ public class MiniWebServer {
     WelcomeHandler welcomeHandler = new WelcomeHandler();
     ErrorHandler errorHandler = new ErrorHandler();
     BoardHandler boardHandler = new BoardHandler(boardDao);
-    MemberHandler memberHandler = new MemberHandler(memberDao);
 
     class MyHttpHandler implements HttpHandler {
       @Override
@@ -70,6 +67,8 @@ public class MiniWebServer {
               paramMap.put(kv[0], URLDecoder.decode(kv[1], "UTF-8"));
             }
           }
+          System.out.println(requestUri);
+          System.out.println(query);
           System.out.println(paramMap);
 
           if (path.equals("/")) {
@@ -92,24 +91,6 @@ public class MiniWebServer {
 
           } else if (path.equals("/board/add")) {
             boardHandler.add(paramMap, printWriter);
-
-          } else if (path.equals("/member/list")) {
-            memberHandler.list(paramMap, printWriter);
-
-          } else if (path.equals("/member/detail")) {
-            memberHandler.detail(paramMap, printWriter);
-
-          } else if (path.equals("/member/update")) {
-            memberHandler.update(paramMap, printWriter);
-
-          } else if (path.equals("/member/delete")) {
-            memberHandler.delete(paramMap, printWriter);
-
-          } else if (path.equals("/member/form")) {
-            memberHandler.form(paramMap, printWriter);
-
-          } else if (path.equals("/member/add")) {
-            memberHandler.add(paramMap, printWriter);
 
           } else {
             errorHandler.error(paramMap, printWriter);
