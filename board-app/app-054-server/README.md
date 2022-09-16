@@ -1,12 +1,13 @@
-### 055. 애노테이션으로 커맨드 객체의 path를 설정하기
+### 054. Command 객체의 사용법 통일하기 - 인터페이스 활용
 
 ## 작업 내용
 
-### 1단계 - 요청을 처리하는 객체의 path를 설정할 애노테이션을 정의한다.
+### 1단계 - Command 객체의 사용 규칙을 정의한다.
 
-- com.bitcamp.servlet.annotation.WebServlet 애노테이션 정의
+- com.bitcamp.servlet.Servlet 인터페이스 정의
 
-### 2단계 - 애노테이션으로 커맨드 객체의 경로를 지정한다.
+
+### 2단계 - 기존의 커맨드 객체를 Servlet 구현체로 변경한다.
 
 - com.bitcamp.board.handler.BoardListHandler 클래스 변경
 - com.bitcamp.board.handler.BoardDetailHandler 클래스 변경
@@ -20,9 +21,6 @@
 - com.bitcamp.board.handler.MemberDeleteHandler 클래스 변경
 - com.bitcamp.board.handler.MemberFormHandler 클래스 변경
 - com.bitcamp.board.handler.MemberAddHandler 클래스 변경
+- com.bitcamp.board.handler.ErrorHandler 클래스 변경
 - com.bitcamp.board.handler.WelcomeHandler 클래스 변경
-
-
-
-
 - com.bitcamp.board.MiniWebServer 클래스 변경 

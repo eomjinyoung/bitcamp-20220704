@@ -9,7 +9,9 @@ import java.util.Map;
 import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.domain.Board;
 import com.bitcamp.servlet.Servlet;
+import com.bitcamp.servlet.annotation.WebServlet;
 
+@WebServlet(value="/board/list")
 public class BoardListHandler implements Servlet {
 
   private BoardDao boardDao;
@@ -18,6 +20,7 @@ public class BoardListHandler implements Servlet {
     this.boardDao = boardDao;
   }
 
+  @Override
   public void service(Map<String,String> paramMap, PrintWriter out) throws Exception {
 
     out.println("<!DOCTYPE html>");
