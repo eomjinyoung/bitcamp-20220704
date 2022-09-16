@@ -1,9 +1,12 @@
 package com.bitcamp.board;
 
+import static org.reflections.scanners.Scanners.TypesAnnotated;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Parameter;
 import java.net.InetSocketAddress;
 import java.net.URI;
 import java.net.URLDecoder;
@@ -11,25 +14,15 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
+import org.reflections.Reflections;
 import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.dao.MariaDBBoardDao;
 import com.bitcamp.board.dao.MariaDBMemberDao;
 import com.bitcamp.board.dao.MemberDao;
-import com.bitcamp.board.handler.BoardAddHandler;
-import com.bitcamp.board.handler.BoardDeleteHandler;
-import com.bitcamp.board.handler.BoardDetailHandler;
-import com.bitcamp.board.handler.BoardFormHandler;
-import com.bitcamp.board.handler.BoardListHandler;
-import com.bitcamp.board.handler.BoardUpdateHandler;
 import com.bitcamp.board.handler.ErrorHandler;
-import com.bitcamp.board.handler.MemberAddHandler;
-import com.bitcamp.board.handler.MemberDeleteHandler;
-import com.bitcamp.board.handler.MemberDetailHandler;
-import com.bitcamp.board.handler.MemberFormHandler;
-import com.bitcamp.board.handler.MemberListHandler;
-import com.bitcamp.board.handler.MemberUpdateHandler;
-import com.bitcamp.board.handler.WelcomeHandler;
 import com.bitcamp.servlet.Servlet;
+import com.bitcamp.servlet.annotation.WebServlet;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
@@ -46,6 +39,35 @@ import com.sun.net.httpserver.HttpServer;
 //
 public class MiniWebServer {
 
+  public static void main2(String[] args) throws Exception {
+    // 클래스를 찾아주는 도구를 준비
+    Reflections reflections = new Reflections("com.bitcamp.board");
+
+    /*
+    // 지정된 패키지에서 @WebServlet 애노테이션이 붙은 클래스를 모두 찾는다.
+    // 검색필터 1) WebServlet 애노테이션이 붙어 있는 클래스의 이름들을 모두 찾아라!
+    QueryFunction<Store,String> 검색필터1 = TypesAnnotated.with(WebServlet.class);
+
+    // 검색필터 2) 찾은 클래스 이름을 가지고 클래스를 Method Area 영역에 로딩하여
+    //             Class 객체 목록을 리턴하라!
+    QueryFunction<Store,Class<?>> 검색필터2 = 검색필터1.asClass();
+
+    // 위의 두 검색 조건으로 클래스를 찾는다.
+    Set<Class<?>> 서블릿클래스들 = reflections.get(검색필터2);
+
+    for (Class<?> 서블릿클래스정보 : 서블릿클래스들) {
+      System.out.println(서블릿클래스정보.getName());
+    }
+     */
+
+    Set<Class<?>> servlets = reflections.get(TypesAnnotated.with(WebServlet.class).asClass());
+    for (Class<?> servlet : servlets) {
+      WebServlet anno = servlet.getAnnotation(WebServlet.class);
+      System.out.printf("%s ---> %s\n", anno.value(), servlet.getName());
+    }
+
+  }
+
   public static void main(String[] args) throws Exception {
     Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb","study","1111");
@@ -55,19 +77,30 @@ public class MiniWebServer {
 
     // 서블릿 객체를 보관할 맵을 준비
     Map<String,Servlet> servletMap = new HashMap<>();
-    servletMap.put("/", new WelcomeHandler());
-    servletMap.put("/board/form", new BoardFormHandler());
-    servletMap.put("/board/add", new BoardAddHandler(boardDao));
-    servletMap.put("/board/list", new BoardListHandler(boardDao));
-    servletMap.put("/board/detail", new BoardDetailHandler(boardDao));
-    servletMap.put("/board/update", new BoardUpdateHandler(boardDao));
-    servletMap.put("/board/delete", new BoardDeleteHandler(boardDao)); 
-    servletMap.put("/member/form", new MemberFormHandler());
-    servletMap.put("/member/add", new MemberAddHandler(memberDao));
-    servletMap.put("/member/list", new MemberListHandler(memberDao));
-    servletMap.put("/member/detail", new MemberDetailHandler(memberDao));
-    servletMap.put("/member/update", new MemberUpdateHandler(memberDao));
-    servletMap.put("/member/delete", new MemberDeleteHandler(memberDao));
+
+    // WebServlet 애노테이션이 붙은 클래스를 찾아 객체를 생성한 후 맵에 저장한다.
+    // 맵에 저장할 때 사용할 key는 WebServlet 애노테이션에 설정된 값이다.
+    //
+    Reflections reflections = new Reflections("com.bitcamp.board");
+    Set<Class<?>> servlets = reflections.get(TypesAnnotated.with(WebServlet.class).asClass());
+    for (Class<?> servlet : servlets) {
+      // 서블릿 클래스의 붙은 WebServlet 애노테이션으로부터 path 를 꺼낸다.
+      String servletPath = servlet.getAnnotation(WebServlet.class).value();
+
+      // 생성자의 파라미터의 타입을 알아내, 해당 객체를 주입한다.
+      Constructor<?> constructor = servlet.getConstructors()[0];
+      Parameter[] params = constructor.getParameters();
+
+      if (params.length == 0) { // 생성자의 파라미터가 없다면 
+        servletMap.put(servletPath, (Servlet) constructor.newInstance());
+
+      } else if (params[0].getType() == BoardDao.class) {
+        servletMap.put(servletPath, (Servlet) constructor.newInstance(boardDao));
+
+      } else if (params[0].getType() == MemberDao.class) {
+        servletMap.put(servletPath, (Servlet) constructor.newInstance(memberDao));
+      } 
+    }
 
     ErrorHandler errorHandler = new ErrorHandler();
 
