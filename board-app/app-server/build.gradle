@@ -16,7 +16,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'com.bitcamp.board.ServerApp'
+    mainClass = 'com.bitcamp.board.MiniWebServer'
 }
 
 // CLI 환경(명령창, 콘솔창)에서 자바 소스를 컴파일 할 때 적용할 옵션

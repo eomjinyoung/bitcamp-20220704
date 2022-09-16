@@ -437,6 +437,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
 
 - board-app 프로젝트 수행 
   - 052. Web Application Server 구조로 전환하기 - 웹 기술 도입(계속)
-
+  - 053. 명령처리 부분에 Command 패턴을 적용하기
+  
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
