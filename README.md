@@ -433,7 +433,10 @@ export PATH=${JAVA_HOME}/bin:$PATH
 - board-app 프로젝트 수행 
   - 052. Web Application Server 구조로 전환하기 - 웹 기술 도입
 
+### 51일(9/16) 
 
+- board-app 프로젝트 수행 
+  - 052. Web Application Server 구조로 전환하기 - 웹 기술 도입(계속)
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf

@@ -80,6 +80,12 @@ public class MiniWebServer {
           } else if (path.equals("/board/delete")) {
             boardHandler.delete(paramMap, printWriter);
 
+          } else if (path.equals("/board/form")) {
+            boardHandler.form(paramMap, printWriter);
+
+          } else if (path.equals("/board/add")) {
+            boardHandler.add(paramMap, printWriter);
+
           } else {
             errorHandler.error(paramMap, printWriter);
           }
