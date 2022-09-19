@@ -23,6 +23,7 @@ import com.bitcamp.board.dao.MariaDBMemberDao;
 import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.handler.ErrorHandler;
 import com.bitcamp.servlet.Servlet;
+import com.bitcamp.servlet.annotation.Repository;
 import com.bitcamp.servlet.annotation.WebServlet;
 import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
@@ -73,20 +74,21 @@ public class MiniWebServer {
     Connection con = DriverManager.getConnection(
         "jdbc:mariadb://localhost:3306/studydb","study","1111");
 
-    BoardDao boardDao = new MariaDBBoardDao(con);
-    MemberDao memberDao = new MariaDBMemberDao(con);
-
     // 객체(DAO, 서블릿)를 보관할 맵을 준비
     Map<String,Object> objMap = new HashMap<>();
 
-    // DAO 객체를 맵에 보관한다.
-    objMap.put("boardDao", boardDao);
-    objMap.put("memberDao", memberDao);
+    // DAO 객체를 찾아 맵에 보관한다.
+    Reflections reflections = new Reflections("com.bitcamp.board");
+    Set<Class<?>> classes = reflections.get(TypesAnnotated.with(Repository.class).asClass());
+    for (Class<?> clazz : classes) {
+      String objName = clazz.getAnnotation(Repository.class).value();
+      Constructor<?> constructor = clazz.getConstructor(Connection.class);
+      objMap.put(objName, constructor.newInstance(con));
+    }
 
     // WebServlet 애노테이션이 붙은 클래스를 찾아 객체를 생성한 후 맵에 저장한다.
     // 맵에 저장할 때 사용할 key는 WebServlet 애노테이션에 설정된 값이다.
     //
-    Reflections reflections = new Reflections("com.bitcamp.board");
     Set<Class<?>> servlets = reflections.get(TypesAnnotated.with(WebServlet.class).asClass());
     for (Class<?> servlet : servlets) {
       // 서블릿 클래스의 붙은 WebServlet 애노테이션으로부터 path 를 꺼낸다.
