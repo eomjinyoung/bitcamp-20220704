@@ -447,6 +447,17 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 055. 애노테이션과 리플렉션 API를 활용하여 객체 자동 생성하기(계속)
   - 056. 웹서버와 애플리케이션 서버 기능 분리하기
   - 057. 웹 애플리케이션 서버를 자바 표준 웹 기술로 대체하기: Servlet/JSP
-  
+
+### 53일(9/20) 
+
+- 서블릿 프로그래밍
+  - JavaEE 기술 명세
+  - JavaEE와 Servlet/JSP의 관계
+  - JavaEE 버전과 하위 기술들
+  - JavaEE 구현 서버
+  - 웹애플리케이션을 배포하고 실행하는 원리
+- board-app 프로젝트 수행 
+  - 057. 웹 애플리케이션 서버를 자바 표준 웹 기술로 대체하기: Servlet/JSP(계속)
+
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf

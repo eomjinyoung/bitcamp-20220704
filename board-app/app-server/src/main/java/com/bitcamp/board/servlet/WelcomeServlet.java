@@ -9,7 +9,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 
-@WebServlet(value="/")
+@WebServlet(value="/welcome")
 public class WelcomeServlet implements Servlet {
 
   @Override
