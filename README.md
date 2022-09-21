@@ -465,6 +465,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 
 - board-app 프로젝트 수행 
   - 057. 웹 애플리케이션 서버를 자바 표준 웹 기술로 대체하기: Servlet/JSP(계속)
+  - 058. 서블릿이 사용할 자원을 공유하기
 
 
 ## 구글 미트

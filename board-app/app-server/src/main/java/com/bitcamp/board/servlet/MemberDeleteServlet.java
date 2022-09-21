@@ -1,34 +1,16 @@
-/*
- * 회원 메뉴 처리 클래스
- */
 package com.bitcamp.board.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.bitcamp.board.dao.MariaDBMemberDao;
-import com.bitcamp.board.dao.MemberDao;
 
 @WebServlet(value="/member/delete")
 public class MemberDeleteServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
-
-
-  private MemberDao memberDao;
-
-  public MemberDeleteServlet() throws Exception {
-    Class.forName("org.mariadb.jdbc.Driver");
-    Connection con = DriverManager.getConnection(
-        "jdbc:mariadb://localhost:3306/studydb","study","1111");
-    memberDao = new MariaDBMemberDao(con);
-  }
-
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -50,7 +32,7 @@ public class MemberDeleteServlet extends HttpServlet {
     try {
       int no = Integer.parseInt(req.getParameter("no"));
 
-      if (memberDao.delete(no) == 0) {
+      if (AppInitServlet.memberDao.delete(no) == 0) {
         out.println("<p>해당 번호의 회원이 없습니다.</p>");
 
       } else {

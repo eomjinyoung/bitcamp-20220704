@@ -1,6 +1,3 @@
-/*
- * 게시글 메뉴 처리 클래스
- */
 package com.bitcamp.board.servlet;
 
 import java.io.IOException;
