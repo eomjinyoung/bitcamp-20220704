@@ -475,6 +475,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - ServletContext, HttpSession, ServletRequest, JspContext 보관소 생명주기와 사용법
 - board-app 프로젝트 수행 
   - 059. 공동 보관소를 사용하여 서블릿이 사용할 자원을 공유하기(계속)
-
+  - 060. 리스너를 이용하여 자원을 준비하기
+  
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
