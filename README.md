@@ -462,11 +462,19 @@ export PATH=${JAVA_HOME}/bin:$PATH
 ### 54일(9/21) 
 
 - 서블릿 프로그래밍
-  - 
+  - Servlet 인터페이스의 메서드 호출 규칙
+  - GenericServlet과 HttpServlet 클래스
 - board-app 프로젝트 수행 
   - 057. 웹 애플리케이션 서버를 자바 표준 웹 기술로 대체하기: Servlet/JSP(계속)
   - 058. 서블릿이 사용할 자원을 공유하기
+  - 059. 공동 보관소를 사용하여 서블릿이 사용할 자원을 공유하기
 
+### 55일(9/22) 
+
+- 서블릿 프로그래밍
+  - 
+- board-app 프로젝트 수행 
+  - 059. 공동 보관소를 사용하여 서블릿이 사용할 자원을 공유하기(계속)
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf

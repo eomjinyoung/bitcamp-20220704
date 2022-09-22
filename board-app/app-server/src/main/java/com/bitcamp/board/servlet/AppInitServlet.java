@@ -28,8 +28,11 @@ public class AppInitServlet extends HttpServlet {
           "jdbc:mariadb://localhost:3306/studydb","study","1111");
 
       // 생성자에서 getServletContext()를 호출하면 오류 발생!
-      // 왜? 아직 ServletContext 객체가 준비되지 않았기 때문이다.
-      // 그래서 생성자 다음에 호출되는 init()에서 getServletContext()를 호출해야 한다.
+      // 왜? 
+      //  - ServletContext는 ServletConfig 객체를 통해 꺼낼 수 가 있는데,
+      //  - ServletConfig는 아직 주입되지 않은 상태이다.
+      // ServletConfig 객체가 언제 주입되는가?
+      //  - 생성자 다음에 호출되는 init()가 호출될 때 ServletConfig 객체가 주입된다.
       // 
       ServletContext ctx = this.getServletContext();
       ctx.setAttribute("boardDao", new MariaDBBoardDao(con));
