@@ -7,11 +7,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.bitcamp.board.dao.MemberDao;
 import com.bitcamp.board.domain.Member;
 
 @WebServlet(value="/member/update")
 public class MemberUpdateServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
+
+  MemberDao memberDao;
+
+  @Override
+  public void init() throws ServletException {
+    memberDao = (MemberDao) this.getServletContext().getAttribute("memberDao");
+  }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -37,7 +45,7 @@ public class MemberUpdateServlet extends HttpServlet {
       member.email = req.getParameter("email");
       member.password = req.getParameter("password");
 
-      if (AppInitServlet.memberDao.update(member) == 0) {
+      if (memberDao.update(member) == 0) {
         out.println("<p>해당 번호의 회원이 없습니다.</p>");
 
       } else {

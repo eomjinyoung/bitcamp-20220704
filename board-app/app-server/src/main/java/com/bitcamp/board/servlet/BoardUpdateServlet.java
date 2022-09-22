@@ -7,12 +7,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.domain.Board;
 
 @WebServlet(value="/board/update")
 public class BoardUpdateServlet extends HttpServlet {
 
   private static final long serialVersionUID = 1L;
+
+  BoardDao boardDao;
+
+  @Override
+  public void init() throws ServletException {
+    boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
+  }
 
   @Override
   protected void doGet(HttpServletRequest req, HttpServletResponse resp)
@@ -37,7 +45,7 @@ public class BoardUpdateServlet extends HttpServlet {
       board.title = req.getParameter("title");
       board.content = req.getParameter("content");
 
-      if (AppInitServlet.boardDao.update(board) == 0) {
+      if (boardDao.update(board) == 0) {
         out.println("<p>해당 번호의 게시글이 없습니다.</p>");
 
       } else {

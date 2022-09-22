@@ -472,7 +472,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
 ### 55일(9/22) 
 
 - 서블릿 프로그래밍
-  - 
+  - ServletContext, HttpSession, ServletRequest, JspContext 보관소 생명주기와 사용법
 - board-app 프로젝트 수행 
   - 059. 공동 보관소를 사용하여 서블릿이 사용할 자원을 공유하기(계속)
 
