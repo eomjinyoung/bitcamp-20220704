@@ -476,6 +476,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
 - board-app 프로젝트 수행 
   - 059. 공동 보관소를 사용하여 서블릿이 사용할 자원을 공유하기(계속)
   - 060. 리스너를 이용하여 자원을 준비하기
+  - 061. JSP를 이용하여 출력문을 자동으로 생성하기: MVC 모델1
   
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
