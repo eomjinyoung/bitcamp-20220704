@@ -482,7 +482,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
  ### 56일(9/23) 
 
 - 서블릿 프로그래밍
-  - 
+  - JSP로 만드는 서블릿 클래스의 규격
 - board-app 프로젝트 수행 
   - 061. JSP를 이용하여 출력문을 자동으로 생성하기: MVC 모델1(계속)
 - 팀별 프로젝트
@@ -494,6 +494,9 @@ export PATH=${JAVA_HOME}/bin:$PATH
     - 4팀: 김라윤, 김봉경, 신우섭
     - 6팀: 김원태, 문채원
   - Use-case 모델링
+    - 액터 식별 방법 및 액터의 관계
+    - 유스케이션 식별 방법 및 유스케이스 관계
+    
   
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
