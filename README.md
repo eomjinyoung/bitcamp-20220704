@@ -497,6 +497,12 @@ export PATH=${JAVA_HOME}/bin:$PATH
     - 액터 식별 방법 및 액터의 관계
     - 유스케이션 식별 방법 및 유스케이스 관계
     
-  
+### 57일(9/26) 
+
+- 서블릿 프로그래밍
+  - JSP로 만드는 서블릿 클래스의 규격
+- board-app 프로젝트 수행 
+  - 061. JSP를 이용하여 출력문을 자동으로 생성하기: MVC 모델1(계속)
+
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
