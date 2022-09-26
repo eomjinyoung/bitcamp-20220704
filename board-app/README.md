@@ -222,3 +222,7 @@
   - include/forward 동작 원리를 이해.
   - ServletContext/HttpSession/ServletRequest/JspContext 보관소의 생명주기를 이해.
   - Refresh/Redirect의 구동 원리 이해. 프로토콜의 차이점 이해.
+### 063. OGNL 표기법으로 객체 프로퍼티를 좀 더 쉽게 다루기: EL 문법 사용
+  - 객체 프로퍼티를 좀 더 쉽게 다루는 방법: OGNL 표기법
+  - EL 문법을 사용하는 방법
+
