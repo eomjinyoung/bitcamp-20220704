@@ -20,15 +20,6 @@
       <servlet-name>board/form</servlet-name>
       <url-pattern>/board/form</url-pattern>
     </servlet-mapping>
-
-    <servlet>
-      <servlet-name>board/add</servlet-name>
-      <jsp-file>/board/add.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-      <servlet-name>board/add</servlet-name>
-      <url-pattern>/board/add</url-pattern>
-    </servlet-mapping>
     
     <servlet>
       <servlet-name>board/detail</servlet-name>
