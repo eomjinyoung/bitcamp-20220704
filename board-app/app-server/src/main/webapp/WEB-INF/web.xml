@@ -11,15 +11,6 @@
     </description>
     
     <display-name>board-app</display-name>
-
-    <servlet>
-      <servlet-name>board/list</servlet-name>
-      <jsp-file>/board/list.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-      <servlet-name>board/list</servlet-name>
-      <url-pattern>/board/list</url-pattern>
-    </servlet-mapping>
     
     <servlet>
       <servlet-name>board/form</servlet-name>
