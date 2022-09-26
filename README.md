@@ -503,6 +503,6 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - JSP로 만드는 서블릿 클래스의 규격
 - board-app 프로젝트 수행 
   - 061. JSP를 이용하여 출력문을 자동으로 생성하기: MVC 모델1(계속)
-
+  - 062. JSP에 있는 자바 코드를 Servlet으로 분리하기: MVC 모델2
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf

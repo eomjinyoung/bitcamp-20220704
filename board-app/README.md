@@ -217,3 +217,8 @@
   - JSP 사용법
   - 디렉토리의 기본 파일을 지정하는 방법: web.xml 설정
   - JSP를 배치하는 방법: web.xml 설정
+### 062. JSP에 있는 자바 코드를 Servlet으로 분리하기: MVC 모델2
+  - MVC 구조에서 각 컴포넌트의 역할을 이해.
+  - include/forward 동작 원리를 이해.
+  - ServletContext/HttpSession/ServletRequest/JspContext 보관소의 생명주기를 이해.
+  - Refresh/Redirect의 구동 원리 이해. 프로토콜의 차이점 이해.
