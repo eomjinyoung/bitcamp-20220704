@@ -62,7 +62,7 @@ try {
 <%     
 }
 %>
-  <p><a href='../welcome'>메인</a></p>
+  <p><a href='../'>메인</a></p>
 </body>
 </html>
 
