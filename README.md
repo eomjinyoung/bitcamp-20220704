@@ -500,11 +500,18 @@ export PATH=${JAVA_HOME}/bin:$PATH
 ### 57일(9/26) 
 
 - 서블릿 프로그래밍
-  - JSP로 만드는 서블릿 클래스의 규격
+  - EL(Expression Language) 사용법
 - board-app 프로젝트 수행 
   - 061. JSP를 이용하여 출력문을 자동으로 생성하기: MVC 모델1(계속)
   - 062. JSP에 있는 자바 코드를 Servlet으로 분리하기: MVC 모델2
   - 063. OGNL 표기법으로 객체 프로퍼티를 좀 더 쉽게 다루기: EL 문법 사용
-  
+
+### 58일(9/27) 
+
+- 서블릿 프로그래밍
+  - JSTL(JSP Standard Tag Library) 사용법
+- board-app 프로젝트 수행 
+  - 063. OGNL 표기법으로 객체 프로퍼티를 좀 더 쉽게 다루기: EL 문법 사용(계속)
+
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
