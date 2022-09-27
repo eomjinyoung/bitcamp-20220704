@@ -510,10 +510,11 @@ export PATH=${JAVA_HOME}/bin:$PATH
 
 - 서블릿 프로그래밍
   - JSTL(JSP Standard Tag Library) 사용법
+  - 세션의 구동 원리와 다루는 방법
 - board-app 프로젝트 수행 
   - 063. OGNL 표기법으로 객체 프로퍼티를 좀 더 쉽게 다루기: EL 문법 사용(계속)
   - 064. JSP에서 자바 코드를 제거하기: JSTL 사용
+  - 065. 로그인, 로그아웃 처리하기: HttpSession, Cookie 사용
 
-  
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
