@@ -12,6 +12,7 @@
 <ul>
   <li><a href='board/list'>게시글</a></li>
   <li><a href='member/list'>회원</a></li>
+  <li><a href='auth/form.jsp'>로그인</a></li>
 </ul>
 </body>
 </html>
