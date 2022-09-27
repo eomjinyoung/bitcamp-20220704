@@ -512,6 +512,8 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - JSTL(JSP Standard Tag Library) 사용법
 - board-app 프로젝트 수행 
   - 063. OGNL 표기법으로 객체 프로퍼티를 좀 더 쉽게 다루기: EL 문법 사용(계속)
+  - 064. JSP에서 자바 코드를 제거하기: JSTL 사용
 
+  
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf

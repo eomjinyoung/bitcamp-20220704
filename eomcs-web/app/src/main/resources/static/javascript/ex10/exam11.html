@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>비동기작업</title>
+</head>
+<body>
+<h1>Promise - 작업 함수를 체인 방식으로 연결하기</h1>
+<script>
+const promise = new Promise((resolve, reject) => {
+  var xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4) {
+      console.log(xhr.responseText);
+      
+      resolve(); // 작업이 완료되었다고 통지한다.
+    }
+  };
+  xhr.open("GET", "exam01", true); 
+  xhr.send();
+});
+
+console.log("1111");
+var promise2 = promise.then(() => console.log("fulfilled...1")); // 이전 함수 다음에 실행할 작업 함수를 등록하기
+
+console.log("2222");
+var promise3 = promise2.then(() => console.log("fulfilled...2")); // 이전 함수 다음에 실행할 작업 함수를 등록하기
+
+console.log("333");
+var promise4 = promise3.then(() => console.log("fulfilled...3")); // 이전 함수 다음에 실행할 작업 함수를 등록하기
+
+console.log("444");
+promise4.then(() => console.log("fulfilled...4")); // 이전 함수 다음에 실행할 작업 함수를 등록하기
+
+console.log("작업 함수 연결 완료!");
+</script>
+</body>
+</html>

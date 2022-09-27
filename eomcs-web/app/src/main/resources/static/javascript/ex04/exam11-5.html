@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ex04</title>
+</head>
+<body>
+<h1>생성자5 - 생성자 상속</h1>
+<script>
+"use strict"
+
+function f1(n) {
+  this.name = n;
+}
+
+function f2(n, k, e, m) {
+  // 상위 생성자를 명시적으로 호출한다.
+  f1.call(this, n);
+
+  this.kor = k;
+  this.eng = e;
+  this.math = m;
+}
+
+var obj1 = new f2("홍길동", 100, 90, 80);
+console.log(obj1);
+
+</script>
+</body>
+</html>
