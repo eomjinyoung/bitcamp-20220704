@@ -23,7 +23,7 @@
     <th>조회수</th><td>${board.viewCount}</td>
   </tr>
   <tr>
-    <th>작성자</th><td>${board.memberNo}</td>
+    <th>작성자</th><td>${board.writer.name}</td>
   </tr>
   <tr>
     <th>등록일</th><td>${board.createdDate}</td>
