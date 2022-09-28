@@ -522,6 +522,6 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 쿠키의 구동 원리와 다루는 방법
 - board-app 프로젝트 수행 
   - 065. 로그인, 로그아웃 처리하기: HttpSession, Cookie 사용(계속)
-
+  - 066. 로그인 기능 활용하기: HttpSession 활용
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf

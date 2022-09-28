@@ -18,9 +18,6 @@
   <tr>
     <th>내용</th><td><textarea name='content' rows='10' cols='60'></textarea></td>
   </tr>
-  <tr>
-    <th>작성자</th><td><input name='writerNo' type='number' size='5'></td>
-  </tr>
 </table>
 <p>
   <button type='submit'>등록</button>
