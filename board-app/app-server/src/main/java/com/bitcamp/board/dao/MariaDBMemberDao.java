@@ -21,9 +21,9 @@ public class MariaDBMemberDao implements MemberDao {
     try (PreparedStatement pstmt = con.prepareStatement(
         "insert into app_member(name,email,pwd) values(?,?,sha2(?,256))")) {
 
-      pstmt.setString(1, member.name);
-      pstmt.setString(2, member.email);
-      pstmt.setString(3, member.password);
+      pstmt.setString(1, member.getName());
+      pstmt.setString(2, member.getEmail());
+      pstmt.setString(3, member.getPassword());
 
       return pstmt.executeUpdate();
     }
@@ -41,10 +41,10 @@ public class MariaDBMemberDao implements MemberDao {
       }
 
       Member member = new Member();
-      member.no = rs.getInt("mno");
-      member.name = rs.getString("name");
-      member.email = rs.getString("email");
-      member.createdDate = rs.getDate("cdt");
+      member.setNo(rs.getInt("mno"));
+      member.setName(rs.getString("name"));
+      member.setEmail(rs.getString("email"));
+      member.setCreatedDate(rs.getDate("cdt"));
       return member;
     }
   }
@@ -54,10 +54,10 @@ public class MariaDBMemberDao implements MemberDao {
     try (PreparedStatement pstmt = con.prepareStatement(
         "update app_member set name=?, email=?, pwd=sha2(?,256) where mno=?")) {
 
-      pstmt.setString(1, member.name);
-      pstmt.setString(2, member.email);
-      pstmt.setString(3, member.password);
-      pstmt.setInt(4, member.no);
+      pstmt.setString(1, member.getName());
+      pstmt.setString(2, member.getEmail());
+      pstmt.setString(3, member.getPassword());
+      pstmt.setInt(4, member.getNo());
 
       return pstmt.executeUpdate();
     }
@@ -108,9 +108,9 @@ public class MariaDBMemberDao implements MemberDao {
 
       while (rs.next()) {
         Member member = new Member();
-        member.no = rs.getInt("mno");
-        member.name = rs.getString("name");
-        member.email = rs.getString("email");
+        member.setNo(rs.getInt("mno"));
+        member.setName(rs.getString("name"));
+        member.setEmail(rs.getString("email"));
 
         list.add(member);
       }
@@ -133,10 +133,10 @@ public class MariaDBMemberDao implements MemberDao {
         }
 
         Member member = new Member();
-        member.no = rs.getInt("mno");
-        member.name = rs.getString("name");
-        member.email = rs.getString("email");
-        member.createdDate = rs.getDate("cdt");
+        member.setNo(rs.getInt("mno"));
+        member.setName(rs.getString("name"));
+        member.setEmail(rs.getString("email"));
+        member.setCreatedDate(rs.getDate("cdt"));
         return member;
       }
     }

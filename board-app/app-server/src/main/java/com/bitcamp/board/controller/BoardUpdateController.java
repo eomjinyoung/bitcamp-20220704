@@ -26,12 +26,12 @@ public class BoardUpdateController extends HttpServlet {
       throws ServletException, IOException {
     try {
       Board board = new Board();
-      board.no = Integer.parseInt(request.getParameter("no"));
-      board.title = request.getParameter("title");
-      board.content = request.getParameter("content");
+      board.setNo(Integer.parseInt(request.getParameter("no")));
+      board.setTitle(request.getParameter("title"));
+      board.setContent(request.getParameter("content"));
 
       Member loginMember = (Member) request.getSession().getAttribute("loginMember");
-      if (boardDao.findByNo(board.no).getMemberNo() != loginMember.getNo()) {
+      if (boardDao.findByNo(board.getNo()).getWriter().getNo() != loginMember.getNo()) {
         throw new Exception("게시글 작성자가 아닙니다.");
       }
 

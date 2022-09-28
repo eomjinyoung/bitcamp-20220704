@@ -4,11 +4,11 @@ import java.sql.Date;
 
 public class Member {
 
-  public int no;
-  public String name;
-  public String email;
-  public String password;
-  public Date createdDate;
+  private int no;
+  private String name;
+  private String email;
+  private String password;
+  private Date createdDate;
 
   @Override
   public String toString() {
