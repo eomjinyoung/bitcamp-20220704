@@ -516,5 +516,12 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 064. JSP에서 자바 코드를 제거하기: JSTL 사용
   - 065. 로그인, 로그아웃 처리하기: HttpSession, Cookie 사용
 
+### 59일(9/28) 
+
+- 서블릿 프로그래밍
+  - 쿠키의 구동 원리와 다루는 방법
+- board-app 프로젝트 수행 
+  - 065. 로그인, 로그아웃 처리하기: HttpSession, Cookie 사용(계속)
+
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
