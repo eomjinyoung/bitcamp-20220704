@@ -3,6 +3,7 @@ package com.bitcamp.board.filter;
 import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -15,9 +16,14 @@ import com.bitcamp.board.domain.Member;
 public class LoginCheckFilter implements Filter {
 
   @Override
+  public void init(FilterConfig filterConfig) throws ServletException {
+    System.out.println("LoginCheckFilter.init() 실행!");
+  }
+
+  @Override
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
       throws IOException, ServletException {
-
+    System.out.println("LoginCheckFilter.doFilter() 실행!");
     // 요청 URL을 통해 로그인 여부를 검사할 지 결정한다.
     // 요청 URL은 HTTP 프로토콜과 관련된 값이다.
     // ServeltRequest 타입은 HTTP 프로토콜과 관련된 기능을 다룰 수 있는 메서드가 없다.

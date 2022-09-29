@@ -525,6 +525,13 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 066. 로그인 기능 활용하기: HttpSession 활용
   - 067. 로그인이 필요한 요청인 경우 로그인으로 유도하기: Filter 활용
 
+### 60일(9/29) 
+
+- 서블릿 프로그래밍
+  - 필터 사용법
+- board-app 프로젝트 수행 
+  - 067. 로그인이 필요한 요청인 경우 로그인으로 유도하기: Filter 활용(계속)
+
   
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
