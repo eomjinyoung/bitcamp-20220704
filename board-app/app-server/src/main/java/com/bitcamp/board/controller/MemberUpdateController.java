@@ -21,9 +21,11 @@ public class MemberUpdateController extends HttpServlet {
   }
 
   @Override
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
+  protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     try {
+      request.setCharacterEncoding("UTF-8");
+
       Member member = new Member();
       member.setNo(Integer.parseInt(request.getParameter("no")));
       member.setName(request.getParameter("name"));
