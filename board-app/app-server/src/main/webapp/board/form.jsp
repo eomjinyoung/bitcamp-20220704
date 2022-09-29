@@ -10,7 +10,7 @@
 <body>
 <h1>게시글 입력-JSP</h1>
 
-<form action='add'>
+<form action='add' method="post">
 <table border='1'>
   <tr>
     <th>제목</th><td><input name='title' type='text' size='60'></td>

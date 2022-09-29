@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>게시글 상세 정보(JSP + Servlet + EL)</h1>
-<form action='update'>
+<form action='update' method="post">
 <table border='1'>
   <tr>
     <th>번호</th><td><input name='no' type='number' value='${board.no}' readonly></td>
