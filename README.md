@@ -529,6 +529,8 @@ export PATH=${JAVA_HOME}/bin:$PATH
 
 - 서블릿 프로그래밍
   - 필터 사용법
+  - GET/POST 프로토콜의 동작 원리
+  - POST 방식으로 한글 데이터를 보낼 때 한글이 깨지는 이유
 - board-app 프로젝트 수행 
   - 067. 로그인이 필요한 요청인 경우 로그인으로 유도하기: Filter 활용(계속)
   - 068. POST 방식으로 데이터 보내기: GET/POST 요청
