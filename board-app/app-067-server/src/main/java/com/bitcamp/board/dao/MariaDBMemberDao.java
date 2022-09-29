@@ -101,7 +101,7 @@ public class MariaDBMemberDao implements MemberDao {
   @Override
   public List<Member> findAll() throws Exception {
     try (PreparedStatement pstmt = con.prepareStatement(
-        "select mno,name,email from app_member order by name");
+        "select mno,name,email from app_member");
         ResultSet rs = pstmt.executeQuery()) {
 
       ArrayList<Member> list = new ArrayList<>();

@@ -10,7 +10,7 @@
 <body>
 <h1>로그인</h1>
 
-<form action='login' method="post">
+<form action='login'>
 <table border='1'>
   <tr>
     <th>이메일</th><td><input name='email' type='email' size='30' value="${cookie.email.value}"></td>
