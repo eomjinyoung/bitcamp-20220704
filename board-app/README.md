@@ -241,6 +241,7 @@
   - GET/POST 요청의 특징 이해
   - GET 방식 요청 프로토콜 이해
   - POST 방식 요청 프로토콜 이해
+  - POST 방식으로 요청할 때 한글이 깨지는 원리와 해결책
 ### 069. 파일을 업로드하기: multipart/form-data MIME 타입
   - multipart/form-data 형식으로 파일을 업로드 하는 방법
   - apache commons-fileupload 라이브러리 사용법 
