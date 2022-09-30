@@ -1,22 +1,20 @@
-### 068. POST 방식으로 데이터 보내기: GET/POST 요청
+### 069. 파일을 업로드하기: multipart/form-data MIME 타입
 
 ## 작업 내용
 
-### 1단계 - 로그인 요청을 POST 방식으로 변경한다.
+### 1단계 - 게시글의 첨부 파일 테이블을 생성한다.
 
-- /webapp/auth/form.jsp 변경
-- com.bitcamp.board.controller.LoginController 클래스 변경
-  
-### 2단계 - 게시글 등록 및 변경도 POST 방식으로 바꾼다.
+- /doc/model.exerd 변경
+- /doc/ddl.sql 변경
+- /doc/data.sql 변경
+
+### 2단계 - 게시글 등록할 때 파일을 첨부한다.
 
 - /webapp/board/form.jsp 변경
-- /webapp/board/detail.jsp 변경
-- com.bitcamp.board.controller.BoardAddController 클래스 변경
-- com.bitcamp.board.controller.BoardUpdateController 클래스 변경
+- charlesproxy 프로그램으로 multipart/form-data 형식으로 넘어가는 프로토콜 확인
 
-### 3단계 - 회원 등록 및 변경도 POST 방식으로 바꾼다.
+### 3단계 - 멀티파트 형식으로 업로드된 데이터를 처리한다.
 
-- /webapp/member/form.jsp 변경
-- /webapp/member/detail.jsp 변경
-- com.bitcamp.board.controller.MemberAddController 클래스 변경
-- com.bitcamp.board.controller.MemberUpdateController 클래스 변경
+- apache의 commons-fileupload 라이브러리를 프로젝트 추가
+
+  

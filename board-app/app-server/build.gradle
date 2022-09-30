@@ -21,7 +21,11 @@ dependencies {
     // - 배포할 필요하는 없다. 왜? 톰캣 서버에 이미 존재한다.
     providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
     
+    // JSTL 명세를 구현한 라이브러리
     implementation 'javax.servlet:jstl:1.2'
+    
+    // multipart/form-data 형식의 데이터를 처리하는 라이브러리
+    implementation 'commons-fileupload:commons-fileupload:1.4'
     
     //implementation project(':app-common')
 }
