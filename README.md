@@ -553,9 +553,11 @@ export PATH=${JAVA_HOME}/bin:$PATH
 ### 62일(10/04) 
 
 - 서블릿 프로그래밍
-  - 
+  - Servlet 3.0 에 추가된 API를 사용하여 파일 업로드를 처리하는 방법
 - board-app 프로젝트 수행 
   - 069. 파일을 업로드하기: multipart/form-data MIME 타입(계속)
+  - 070. 파일을 업로드하기 II: Servler API로 파일업로드 처리하기
+
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
