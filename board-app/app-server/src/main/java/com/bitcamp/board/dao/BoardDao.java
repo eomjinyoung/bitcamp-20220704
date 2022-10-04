@@ -16,6 +16,8 @@ public interface BoardDao {
 
   List<Board> findAll() throws Exception;
 
+  int insertFiles(Board board) throws Exception;
+
   AttachedFile findFileByNo(int fileNo) throws Exception;
 
   int deleteFile(int fileNo) throws Exception;

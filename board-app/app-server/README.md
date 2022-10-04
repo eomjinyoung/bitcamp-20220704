@@ -32,11 +32,18 @@
 
 - /webapp/board/detail.jsp 변경
 - com.bitcamp.board.controller.BoardFileDeleteController 클래스 생성
-
-
-
+- com.bitcamp.board.dao.BoardDao 인터페이스 변경
+  - findFileByNo(), deleteFile() 추가
 - com.bitcamp.board.dao.MariaDBBoardDao 클래스 변경
-  - findByNo() 변경
+  - findFileByNo(), deleteFile() 구현
 
+### 6단계 - 게시글을 변경할 때 첨부파일을 추가할 수 있게 만든다.
+
+- /webapp/board/detail.jsp 변경
 - com.bitcamp.board.controller.BoardUpdateController 클래스 변경
+- com.bitcamp.board.dao.MariaDBBoardDao 클래스 변경
+  - insertFiles() 추가
+  - update(),insert() 변경
+
+
   

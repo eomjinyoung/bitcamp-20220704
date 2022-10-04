@@ -24,10 +24,7 @@ public class MariaDBBoardDao implements BoardDao {
     try (
         PreparedStatement pstmt = con.prepareStatement(
             "insert into app_board(title,cont,mno) values(?,?,?)",
-            Statement.RETURN_GENERATED_KEYS);
-
-        PreparedStatement pstmt2 = con.prepareStatement(
-            "insert into app_board_file(filepath,bno) values(?,?)")) {
+            Statement.RETURN_GENERATED_KEYS)) {
 
       // 게시글 제목과 내용을 app_board 테이블에 저장한다.
       pstmt.setString(1, board.getTitle());
@@ -41,13 +38,7 @@ public class MariaDBBoardDao implements BoardDao {
         board.setNo(rs.getInt(1));
       }
 
-      // 게시글의 첨부파일을 app_board_file 테이블에 저장한다.
-      List<AttachedFile> attachedFiles = board.getAttachedFiles();
-      for (AttachedFile attachedFile : attachedFiles) {
-        pstmt2.setString(1, attachedFile.getFilepath());
-        pstmt2.setInt(2, board.getNo());
-        pstmt2.executeUpdate();
-      }
+      insertFiles(board);
 
       return count;
     }
@@ -114,7 +105,14 @@ public class MariaDBBoardDao implements BoardDao {
       pstmt.setString(2, board.getContent());
       pstmt.setInt(3, board.getNo());
 
-      return pstmt.executeUpdate();
+      int count = pstmt.executeUpdate();
+
+      // 게시글을 변경했다면 첨부 파일 이름을 추가한다.
+      if (count > 0) {
+        insertFiles(board);
+      }
+
+      return count;
     }
   }
 
@@ -161,6 +159,22 @@ public class MariaDBBoardDao implements BoardDao {
       }
 
       return list;
+    }
+  }
+
+
+  @Override
+  public int insertFiles(Board board) throws Exception {
+    try (PreparedStatement pstmt = con.prepareStatement(
+        "insert into app_board_file(filepath,bno) values(?,?)")) {
+
+      List<AttachedFile> attachedFiles = board.getAttachedFiles();
+      for (AttachedFile attachedFile : attachedFiles) {
+        pstmt.setString(1, attachedFile.getFilepath());
+        pstmt.setInt(2, board.getNo());
+        pstmt.executeUpdate();
+      }
+      return attachedFiles.size();
     }
   }
 
