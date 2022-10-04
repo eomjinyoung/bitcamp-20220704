@@ -28,7 +28,7 @@ tr:hover {
 <c:forEach items="${boards}" var="board">
     <tr>
       <td>${board.no}</td>
-      <td><a href='detail?no=${board.no}'>${board.title}</a></td>
+      <td><a href='detail?no=${board.no}'>${board.title == "" ? "(제목없음)" : board.title}</a></td>
       <td>${board.viewCount}</td>
       <td>${board.writer.name}</td>
       <td>${board.createdDate}</td>

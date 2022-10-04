@@ -81,7 +81,7 @@ public class BoardAddController extends HttpServlet {
 
           // 임시 폴더에 저장된 파일을 옮길 폴더 경로 알아내기
           String dirPath = this.getServletContext().getRealPath("/board/files");
-          System.out.println(dirPath + "/" + filename);
+          //          System.out.println(dirPath + "/" + filename);
 
           // FileItem 객체가 가리키는 임시 폴더에 저장된 파일을 
           // 우리가 지정한 디렉토리로 옮긴다. 
@@ -94,6 +94,7 @@ public class BoardAddController extends HttpServlet {
       // Board 객체에서 파일명 목록을 담고 있는 컬렉션 객체를 저장한다.
       board.setAttachedFiles(attachedFiles);
 
+      // Board 객체에 로그인 사용자 정보를 저장한다.
       Member loginMember = (Member) request.getSession().getAttribute("loginMember");
       board.setWriter(loginMember);
 
