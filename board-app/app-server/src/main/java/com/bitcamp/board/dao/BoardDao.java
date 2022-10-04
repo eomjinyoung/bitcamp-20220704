@@ -1,6 +1,7 @@
 package com.bitcamp.board.dao;
 
 import java.util.List;
+import com.bitcamp.board.domain.AttachedFile;
 import com.bitcamp.board.domain.Board;
 
 public interface BoardDao {
@@ -14,6 +15,10 @@ public interface BoardDao {
   int delete(int no) throws Exception;
 
   List<Board> findAll() throws Exception;
+
+  AttachedFile findFileByNo(int fileNo) throws Exception;
+
+  int deleteFile(int fileNo) throws Exception;
 }
 
 

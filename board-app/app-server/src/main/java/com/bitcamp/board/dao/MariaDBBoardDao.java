@@ -163,6 +163,35 @@ public class MariaDBBoardDao implements BoardDao {
       return list;
     }
   }
+
+  @Override
+  public AttachedFile findFileByNo(int fileNo) throws Exception {
+    try (PreparedStatement pstmt = con.prepareStatement(
+        "select bfno, filepath, bno from app_board_file where bfno = " + fileNo);
+        ResultSet rs = pstmt.executeQuery()) {
+
+      if (!rs.next()) {
+        return null;
+      }
+
+      AttachedFile file = new AttachedFile();
+      file.setNo(rs.getInt("bfno"));
+      file.setFilepath(rs.getString("filepath"));
+      file.setBoardNo(rs.getInt("bno"));
+
+      return file;
+    }
+  }
+
+  @Override
+  public int deleteFile(int fileNo) throws Exception {
+    try (PreparedStatement pstmt = con.prepareStatement(
+        "delete from app_board_file where bfno=?")) {
+
+      pstmt.setInt(1, fileNo);
+      return pstmt.executeUpdate();
+    }
+  }
 }
 
 

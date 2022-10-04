@@ -28,6 +28,15 @@
   - findByNo() 변경
 - /webapp/board/detail.jsp 변경
 
+### 5단계 - 첨부파일 삭제 기능을 추가한다.
+
+- /webapp/board/detail.jsp 변경
+- com.bitcamp.board.controller.BoardFileDeleteController 클래스 생성
+
+
+
+- com.bitcamp.board.dao.MariaDBBoardDao 클래스 변경
+  - findByNo() 변경
 
 - com.bitcamp.board.controller.BoardUpdateController 클래스 변경
   
