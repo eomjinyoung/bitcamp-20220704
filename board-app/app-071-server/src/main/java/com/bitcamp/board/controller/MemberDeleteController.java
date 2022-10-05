@@ -6,18 +6,17 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.bitcamp.board.domain.Member;
-import com.bitcamp.board.service.BoardService;
+import com.bitcamp.board.dao.MemberDao;
 
-@WebServlet("/board/delete")
-public class BoardDeleteController extends HttpServlet {
+@WebServlet("/member/delete")
+public class MemberDeleteController extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
-  BoardService boardService;
+  MemberDao memberDao;
 
   @Override
   public void init() {
-    boardService = (BoardService) this.getServletContext().getAttribute("boardService");
+    memberDao = (MemberDao) this.getServletContext().getAttribute("memberDao");
   }
 
   @Override
@@ -26,20 +25,15 @@ public class BoardDeleteController extends HttpServlet {
     try {
       int no = Integer.parseInt(request.getParameter("no"));
 
-      Member loginMember = (Member) request.getSession().getAttribute("loginMember");
-      if (boardService.get(no).getWriter().getNo() != loginMember.getNo()) {
-        throw new Exception("게시글 작성자가 아닙니다.");
-      }
-
-      if (!boardService.delete(no)) {
-        throw new Exception("게시글을 삭제할 수 없습니다.");
+      if (memberDao.delete(no) == 0) {
+        throw new Exception("회원 삭제 오류입니다!");
       }
 
       response.sendRedirect("list");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response);
+      request.getRequestDispatcher("/error.jsp").forward(request, response); 
     }
   }
 }

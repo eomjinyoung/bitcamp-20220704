@@ -6,18 +6,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.domain.Board;
-import com.bitcamp.board.service.BoardService;
 
 @WebServlet("/board/detail")
 public class BoardDetailController extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
-  BoardService boardService;
+  BoardDao boardDao;
 
   @Override
   public void init() {
-    boardService = (BoardService) this.getServletContext().getAttribute("boardService");
+    boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
   }
 
   @Override
@@ -26,7 +26,7 @@ public class BoardDetailController extends HttpServlet {
     try {
       int boardNo = Integer.parseInt(request.getParameter("no"));
 
-      Board board = boardService.get(boardNo);
+      Board board = boardDao.findByNo(boardNo);
 
       if (board == null) {
         throw new Exception("해당 번호의 게시글이 없습니다!");

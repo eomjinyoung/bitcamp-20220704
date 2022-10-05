@@ -12,21 +12,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
+import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.domain.AttachedFile;
 import com.bitcamp.board.domain.Board;
 import com.bitcamp.board.domain.Member;
-import com.bitcamp.board.service.BoardService;
 
-@MultipartConfig(maxFileSize = 1024 * 1024 * 10) 
-@WebServlet("/board/add")
-public class BoardAddController extends HttpServlet {
+@MultipartConfig(maxFileSize = 1024 * 1024 * 10) // 최대 10M까지 업로드 허용
+@WebServlet("/board/update")
+public class BoardUpdateController extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
-  BoardService boardService;
+  BoardDao boardDao;
 
   @Override
   public void init() {
-    boardService = (BoardService) this.getServletContext().getAttribute("boardService");
+    boardDao = (BoardDao) this.getServletContext().getAttribute("boardDao");
   }
 
   @Override
@@ -36,29 +36,34 @@ public class BoardAddController extends HttpServlet {
       request.setCharacterEncoding("UTF-8");
 
       Board board = new Board();
+      board.setNo(Integer.parseInt(request.getParameter("no")));
       board.setTitle(request.getParameter("title"));
       board.setContent(request.getParameter("content"));
 
       List<AttachedFile> attachedFiles = new ArrayList<>();
       String dirPath = this.getServletContext().getRealPath("/board/files");
       Collection<Part> parts = request.getParts();
-
       for (Part part : parts) {
-        if (!part.getName().equals("files")) {
-          continue;
-        }
-
+        if (!part.getName().equals("files")) continue;
         String filename = UUID.randomUUID().toString();
         part.write(dirPath + "/" + filename);
         attachedFiles.add(new AttachedFile(filename));
       }
       board.setAttachedFiles(attachedFiles);
 
+      // 게시글 작성자인지 검사한다.
       Member loginMember = (Member) request.getSession().getAttribute("loginMember");
-      board.setWriter(loginMember);
+      if (boardDao.findByNo(board.getNo()).getWriter().getNo() != loginMember.getNo()) {
+        throw new Exception("게시글 작성자가 아닙니다.");
+      }
 
-      // 서비스 객체에 업무를 맡긴다.
-      boardService.add(board);
+      // 게시글 변경
+      if (boardDao.update(board) == 0) {
+        throw new Exception("게시글 변경 실패!");
+      }
+
+      // 첨부파일 추가
+      boardDao.insertFiles(board);
 
       response.sendRedirect("list");
 
