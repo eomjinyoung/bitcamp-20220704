@@ -67,9 +67,13 @@ public class BoardAddController extends HttpServlet {
       Member loginMember = (Member) request.getSession().getAttribute("loginMember");
       board.setWriter(loginMember);
 
+      // 게시글 등록
       if (boardDao.insert(board) == 0) {
         throw new Exception("게시글 등록 실패!");
       }
+
+      // 첨부파일 등록
+      boardDao.insertFiles(board);
 
       response.sendRedirect("list");
 

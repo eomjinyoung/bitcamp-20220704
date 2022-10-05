@@ -247,4 +247,6 @@
   - apache commons-fileupload 라이브러리 사용법 
 ### 070. 파일을 업로드하기 II: Servler API로 파일업로드 처리하기
   - Servlet에서 제공하는 API(3.0부터 추가됨)를 사용하여 파일 업로드를 처리하는 방법
+### 071. DAO에서 비즈니스 로직 분리하기: Controller에서 비즈니스 로직처리
+  - DAO에서 비즈니스 로직을 분리하는 이유와 방법
   

@@ -57,9 +57,13 @@ public class BoardUpdateController extends HttpServlet {
         throw new Exception("게시글 작성자가 아닙니다.");
       }
 
+      // 게시글 변경
       if (boardDao.update(board) == 0) {
         throw new Exception("게시글 변경 실패!");
       }
+
+      // 첨부파일 추가
+      boardDao.insertFiles(board);
 
       response.sendRedirect("list");
 

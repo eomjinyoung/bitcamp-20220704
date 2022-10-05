@@ -558,6 +558,12 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 069. 파일을 업로드하기: multipart/form-data MIME 타입(계속)
   - 070. 파일을 업로드하기 II: Servler API로 파일업로드 처리하기
 
+### 63일(10/05) 
+
+- 서블릿 프로그래밍
+  - 
+- board-app 프로젝트 수행 
+  - 071. DAO에서 비즈니스 로직 분리하기: Controller에서 비즈니스 로직처리
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
