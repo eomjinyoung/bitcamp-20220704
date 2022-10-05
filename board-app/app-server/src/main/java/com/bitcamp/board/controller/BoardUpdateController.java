@@ -44,7 +44,7 @@ public class BoardUpdateController extends HttpServlet {
       String dirPath = this.getServletContext().getRealPath("/board/files");
       Collection<Part> parts = request.getParts();
       for (Part part : parts) {
-        if (!part.getName().equals("files")) continue;
+        if (!part.getName().equals("files") || part.getSize() == 0) continue;
         String filename = UUID.randomUUID().toString();
         part.write(dirPath + "/" + filename);
         attachedFiles.add(new AttachedFile(filename));

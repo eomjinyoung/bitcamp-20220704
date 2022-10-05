@@ -564,6 +564,8 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 
 - board-app 프로젝트 수행 
   - 071. DAO에서 비즈니스 로직 분리하기: Controller에서 비즈니스 로직처리
+  - 072. Controller에서 비즈니스 로직 분리하기: 서비스 컴포넌트 도입
 
+  
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
