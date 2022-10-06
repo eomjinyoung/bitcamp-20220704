@@ -570,7 +570,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
 - 서블릿 프로그래밍
   - 
 - board-app 프로젝트 수행 
-  - 073. 서비스 객체에 인터페이스 적용하기: 서비스 객체를 교체하기 쉽게 만들기
+  - 074. 서비스 객체에 트랜잭션 적용하기
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
