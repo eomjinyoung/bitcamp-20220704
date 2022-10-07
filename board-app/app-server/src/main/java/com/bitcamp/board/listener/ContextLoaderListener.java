@@ -7,12 +7,16 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.ServletRegistration.Dynamic;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebListener;
+import com.bitcamp.board.controller.BoardDetailController;
+import com.bitcamp.board.controller.BoardListController;
 import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.dao.MariaDBBoardDao;
 import com.bitcamp.board.dao.MariaDBMemberDao;
 import com.bitcamp.board.dao.MemberDao;
+import com.bitcamp.board.service.BoardService;
 import com.bitcamp.board.service.DefaultBoardService;
 import com.bitcamp.board.service.DefaultMemberService;
+import com.bitcamp.board.service.MemberService;
 import com.bitcamp.servlet.DispatcherServlet;
 import com.bitcamp.sql.DataSource;
 import com.bitcamp.transaction.TransactionManager;
@@ -39,8 +43,13 @@ public class ContextLoaderListener implements ServletContextListener {
       BoardDao boardDao = new MariaDBBoardDao(ds);
       MemberDao memberDao = new MariaDBMemberDao(ds);
 
-      ctx.setAttribute("boardService", new DefaultBoardService(boardDao, txManager));
-      ctx.setAttribute("memberService", new DefaultMemberService(memberDao));
+      BoardService boardService = new DefaultBoardService(boardDao, txManager);
+      MemberService memberService = new DefaultMemberService(memberDao);
+
+      ctx.setAttribute("/board/list", new BoardListController(boardService));
+      ctx.setAttribute("/board/detail", new BoardDetailController(boardService));
+
+
 
       // 자바 코드로 서블릿 객체를 직접 생성하여 서버에 등록하기
       DispatcherServlet servlet = new DispatcherServlet();

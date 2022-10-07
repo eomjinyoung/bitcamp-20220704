@@ -1,34 +1,21 @@
 package com.bitcamp.board.controller;
 
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.bitcamp.board.service.BoardService;
+import com.bitcamp.servlet.Controller;
 
-@WebServlet("/board/list")
-public class BoardListController extends HttpServlet {
-  private static final long serialVersionUID = 1L;
+public class BoardListController implements Controller {
 
   BoardService boardService;
-
-  @Override
-  public void init() {
-    boardService = (BoardService) this.getServletContext().getAttribute("boardService");
+  public BoardListController(BoardService boardService) {
+    this.boardService = boardService;
   }
 
   @Override
-  protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-      throws ServletException, IOException {
-    try {
-      req.setAttribute("boards", boardService.list());
-      req.setAttribute("viewName", "/board/list.jsp");
-
-    } catch (Exception e) {
-      req.setAttribute("exception", e);
-    }
+  public String execute(HttpServletRequest req, HttpServletResponse resp) throws Exception {
+    req.setAttribute("boards", boardService.list());
+    return "/board/list.jsp";
   }
 }
 
