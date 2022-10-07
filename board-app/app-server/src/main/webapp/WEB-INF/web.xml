@@ -13,16 +13,6 @@
     <display-name>board-app</display-name>
     
     <servlet>
-      <servlet-name>board/form</servlet-name>
-      <jsp-file>/board/form.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-      <servlet-name>board/form</servlet-name>
-      <url-pattern>/board/form</url-pattern>
-    </servlet-mapping>
-    
-    
-    <servlet>
       <servlet-name>member/form</servlet-name>
       <jsp-file>/member/form.jsp</jsp-file>
     </servlet>

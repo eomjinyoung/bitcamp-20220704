@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>bitcamp</title>
-<meta http-equiv='Refresh' content='1; url=${empty member ? "form.jsp" : "../"}'>
+<meta http-equiv='Refresh' content='1; url=${empty member ? "form" : "../../"}'>
 </head>
 <body>
 <h1>로그인</h1>

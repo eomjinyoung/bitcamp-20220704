@@ -1,6 +1,8 @@
 package com.bitcamp.board.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -42,16 +44,20 @@ public class LoginController extends HttpServlet {
       } else {
         cookie.setMaxAge(60 * 60 * 24 * 7); // 7일
       }
-      response.addCookie(cookie); // 응답 헤더에 쿠키를 포함시킨다.
 
+      // include  되는 서블릿에서는 응답헤더에 쿠키를 포함시킬 수 없다.
+      //      response.addCookie(cookie); 
+
+      // 프론트 컨트롤러에서 쿠키를 응답헤더에 포함시키도록 ServletRequest 보관소에 저장한다.
+      List<Cookie> cookies = new ArrayList<>();
+      cookies.add(cookie);
+
+      request.setAttribute("cookies", cookies);
       request.setAttribute("member", member);
-
-      response.setContentType("text/html;charset=UTF-8");
-      request.getRequestDispatcher("/auth/loginResult.jsp").include(request, response);
+      request.setAttribute("viewName", "/auth/loginResult.jsp");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response); 
     }
   }
 }
