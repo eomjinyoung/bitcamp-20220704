@@ -7,8 +7,13 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.ServletRegistration.Dynamic;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebListener;
+import com.bitcamp.board.controller.BoardAddController;
 import com.bitcamp.board.controller.BoardDetailController;
+import com.bitcamp.board.controller.BoardFormController;
 import com.bitcamp.board.controller.BoardListController;
+import com.bitcamp.board.controller.LoginController;
+import com.bitcamp.board.controller.LoginFormController;
+import com.bitcamp.board.controller.LogoutController;
 import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.dao.MariaDBBoardDao;
 import com.bitcamp.board.dao.MariaDBMemberDao;
@@ -48,7 +53,12 @@ public class ContextLoaderListener implements ServletContextListener {
 
       ctx.setAttribute("/board/list", new BoardListController(boardService));
       ctx.setAttribute("/board/detail", new BoardDetailController(boardService));
+      ctx.setAttribute("/board/form", new BoardFormController());
+      ctx.setAttribute("/board/add", new BoardAddController(boardService));
 
+      ctx.setAttribute("/auth/form", new LoginFormController());
+      ctx.setAttribute("/auth/login", new LoginController(memberService));
+      ctx.setAttribute("/auth/logout", new LogoutController());
 
 
       // 자바 코드로 서블릿 객체를 직접 생성하여 서버에 등록하기
