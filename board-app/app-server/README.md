@@ -8,4 +8,7 @@
 
 ### 2단계 - 기존의 컨트롤러를 페이지 컨트롤러로 만든다.
 
+- com.bitcamp.board.controller.XxxFormController 클래스 생성
 - com.bitcamp.board.controller.XxxController 클래스 변경
+- /webapp/xxx/*.jsp 변경
+  - 서블릿 경로에 맞춰 링크의 경로를 변경한다.

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.bitcamp.board.domain.Member;
 
-@WebFilter("/member/*")
+@WebFilter("/service/member/*")
 public class AdminCheckFilter implements Filter {
 
   @Override

@@ -578,7 +578,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 프론트 컨트롤러 디자인 패턴의 목적과 활용 방법
 - board-app 프로젝트 수행 
   - 076. 트랜잭션 관리자 역할을 별도의 클래스로 분리하기
-
+  - 077. Front Controller 디자인 패턴 도입하기
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
