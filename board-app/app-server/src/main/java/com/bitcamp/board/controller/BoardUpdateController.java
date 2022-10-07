@@ -61,11 +61,10 @@ public class BoardUpdateController extends HttpServlet {
         throw new Exception("게시글을 변경할 수 없습니다!");
       }
 
-      response.sendRedirect("list");
+      request.setAttribute("viewName", "redirect:list");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response);
     }
   }
 }

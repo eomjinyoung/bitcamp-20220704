@@ -35,7 +35,7 @@
       <ul>
       <c:forEach items="${board.attachedFiles}" var="file">
         <li>
-          <a href="files/${file.filepath}">${file.filepath}</a>
+          <a href="../../board/files/${file.filepath}">${file.filepath}</a>
           [<a href="fileDelete?no=${file.no}">삭제</a>]
         </li>
       </c:forEach>
