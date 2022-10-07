@@ -12,15 +12,6 @@
     
     <display-name>board-app</display-name>
     
-    <servlet>
-      <servlet-name>member/form</servlet-name>
-      <jsp-file>/member/form.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-      <servlet-name>member/form</servlet-name>
-      <url-pattern>/member/form</url-pattern>
-    </servlet-mapping>
-
 <!--  
     <servlet>
       <servlet-name>DispatcherServlet</servlet-name>

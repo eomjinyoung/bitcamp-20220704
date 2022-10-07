@@ -32,13 +32,10 @@ public class MemberDetailController extends HttpServlet {
       }
 
       request.setAttribute("member", member);
-
-      response.setContentType("text/html;charset=UTF-8");
-      request.getRequestDispatcher("/member/detail.jsp").include(request, response);
+      request.setAttribute("viewName", "/member/detail.jsp");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response); 
     }
   }
 }

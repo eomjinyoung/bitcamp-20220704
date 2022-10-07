@@ -36,11 +36,10 @@ public class MemberUpdateController extends HttpServlet {
         throw new Exception("회원 변경 오류입니다!");
       }
 
-      response.sendRedirect("list");
+      request.setAttribute("viewName", "redirect:list");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response); 
     }
   }
 }

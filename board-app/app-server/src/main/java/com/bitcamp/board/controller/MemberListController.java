@@ -24,13 +24,10 @@ public class MemberListController extends HttpServlet {
       throws ServletException, IOException {
     try {
       request.setAttribute("members", memberService.list());
-
-      response.setContentType("text/html;charset=UTF-8");
-      request.getRequestDispatcher("/member/list.jsp").include(request, response);
+      request.setAttribute("viewName", "/member/list.jsp");
 
     } catch (Exception e) {
       request.setAttribute("exception", e);
-      request.getRequestDispatcher("/error.jsp").forward(request, response); 
     }
   }
 }
