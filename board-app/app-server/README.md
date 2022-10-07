@@ -6,3 +6,6 @@
 
 - com.bitcamp.servlet.DispatcherServlet 클래스 생성
 
+### 2단계 - 기존의 컨트롤러를 페이지 컨트롤러로 만든다.
+
+- com.bitcamp.board.controller.XxxController 클래스 변경
