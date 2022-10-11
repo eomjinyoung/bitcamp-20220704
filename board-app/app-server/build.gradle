@@ -27,6 +27,9 @@ dependencies {
     // multipart/form-data 형식의 데이터를 처리하는 라이브러리
     //implementation 'commons-fileupload:commons-fileupload:1.4'
     
+    // Spring IoC 컨테이너 라이브러리
+    implementation 'org.springframework:spring-context:5.3.23'
+    
     //implementation project(':app-common')
 }
 
