@@ -5,11 +5,19 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.context.ApplicationContext;
 
 //@MultipartConfig(maxFileSize = 1024 * 1024 * 10) 
 //@WebServlet(value = "/service/*")
 public class DispatcherServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
+
+  ApplicationContext iocContext;
+
+  public DispatcherServlet(ApplicationContext iocContainer) {
+    // Spring IoC 컨테이너를 주입 받는다.
+    this.iocContext = iocContainer;
+  }
 
   @Override
   protected void service(HttpServletRequest req, HttpServletResponse resp)
