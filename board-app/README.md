@@ -270,3 +270,5 @@
   - POJO? Plain Old Java Object (그냥 일반 자바 문법으로 만든 클래스)
 ### 079. Spring IoC 컨테이너 도입하기: 페이지 컨트롤러 생성 자동화
   - Spring IoC 컨테이너를 사용하여 객체를 자동으로 생성하는 방법
+### 080. Spring WebMVC 프론트 컨트롤러 도입하기
+  - Spring WebMVC 프레임워크에서 제공하는 DispatcherServlet 사용법

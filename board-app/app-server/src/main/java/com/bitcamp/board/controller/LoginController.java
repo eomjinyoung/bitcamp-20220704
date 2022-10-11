@@ -4,22 +4,20 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import com.bitcamp.board.domain.Member;
 import com.bitcamp.board.service.MemberService;
-import com.bitcamp.servlet.Controller;
 
-@Component("/auth/login")
-//- 애노테이션을 붙일 때 객체 이름을 명시하면 그 이름으로 저장한다.
-//- 프론트 컨트롤러는 페이지 컨트롤러를 찾을 때 이 이름으로 찾을 것이다.
-public class LoginController implements Controller {
+@Controller // 페이지 컨트롤러에 붙이는 애노테이션
+public class LoginController {
 
   MemberService memberService;
   public LoginController(MemberService memberService) {
     this.memberService = memberService;
   }
 
-  @Override
+  @PostMapping("/auth/login") // 요청이 들어 왔을 때 호출될 메서드에 붙이는 애노테이션
   public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
     String email = request.getParameter("email");
     String password = request.getParameter("password");
