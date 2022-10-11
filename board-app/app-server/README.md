@@ -74,3 +74,7 @@
   - Spring IoC 컨테이너를 주입받는 생성자로 변경한다.
 - com.bitcamp.board.listener.ContextLoaderListener 클래스 변경
   - DispatcherServlet 객체를 생성할 때 생성자 파라미터로 Spring IoC 컨테이너를 주입한다.
+
+### 10단계 - Spring IoC 컨테이너에서 페이지 컨트롤러를 꺼내 실행한다.
+
+- com.bitcamp.servlet.DispatcherServlet 클래스 변경
