@@ -7,6 +7,8 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.ServletRegistration.Dynamic;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebListener;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import com.bitcamp.board.config.AppConfig;
 import com.bitcamp.board.controller.BoardAddController;
 import com.bitcamp.board.controller.BoardDeleteController;
 import com.bitcamp.board.controller.BoardDetailController;
@@ -44,6 +46,11 @@ public class ContextLoaderListener implements ServletContextListener {
   public void contextInitialized(ServletContextEvent sce) {
     System.out.println("공유 자원을 준비 중!!");
     try {
+
+      // 스프링 IoC 컨테이너 준비
+      AnnotationConfigApplicationContext iocContainer = 
+          new AnnotationConfigApplicationContext(AppConfig.class);
+
       ServletContext ctx = sce.getServletContext();
 
       DataSource ds = new DataSource(
