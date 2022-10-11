@@ -583,10 +583,13 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 078. 페이지 컨트롤러를 POJO로 전환하기
 
 ### 66일(10/11) 
+
 - 스프링 프레임워크
   - Spring IoC 컨테이너 사용법
+  - Spring WebMVC 프레임워크 사용법
 - board-app 프로젝트 수행 
   - 079. Spring IoC 컨테이너 도입하기: 페이지 컨트롤러 생성 자동화
+  - 080. Spring WebMVC 프론트 컨트롤러 도입하기
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf

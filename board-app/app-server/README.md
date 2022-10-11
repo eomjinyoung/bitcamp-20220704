@@ -19,3 +19,8 @@
 ### 3단계 - 페이지 컨트롤러를 스프링 규격에 맞춰서 정의한다.
 
 - com.bitcamp.board.controller.XxxController 클래스 변경
+
+### 4단계 - 서비스, DAO 객체의 역할을 설명하는 애노테이션으로 변경한다.
+
+- com.bitcamp.board.dao.*Dao 클래스 변경
+- com.bitcamp.board.service.*Service 클래스 변경
