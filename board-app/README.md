@@ -274,3 +274,5 @@
   - Spring WebMVC 프레임워크에서 제공하는 DispatcherServlet 사용법
 ### 081. CRUD를 수행하는 페이지 컨트롤러를 하나로 합치기
   - 페이지 컨트롤러를 다루는 방법
+### 082. Spring WebMVC 프레임워크 사용법
+  - Spring WebMVC 프레임워크 사용법

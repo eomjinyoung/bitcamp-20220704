@@ -5,12 +5,10 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import com.bitcamp.board.domain.Member;
 import com.bitcamp.board.service.MemberService;
 
 @Controller
-@RequestMapping("/member/")
 public class MemberController {
 
   MemberService memberService;
@@ -18,12 +16,12 @@ public class MemberController {
     this.memberService = memberService;
   }
 
-  @GetMapping("form")
+  @GetMapping("/member/form")
   public String form(HttpServletRequest request, HttpServletResponse response) throws Exception {
     return "/member/form.jsp";
   }
 
-  @PostMapping("add")
+  @PostMapping("/member/add")
   public String add(HttpServletRequest request, HttpServletResponse response) throws Exception {
     Member member = new Member();
     member.setName(request.getParameter("name"));
@@ -35,13 +33,13 @@ public class MemberController {
     return "redirect:list";
   }
 
-  @GetMapping("list")
+  @GetMapping("/member/list")
   public String list(HttpServletRequest request, HttpServletResponse response) throws Exception {
     request.setAttribute("members", memberService.list());
     return "/member/list.jsp";
   }
 
-  @GetMapping("detail")
+  @GetMapping("/member/detail")
   public String detail(HttpServletRequest request, HttpServletResponse response) throws Exception {
     int no = Integer.parseInt(request.getParameter("no"));
     Member member = memberService.get(no);
@@ -54,7 +52,7 @@ public class MemberController {
     return "/member/detail.jsp";
   }
 
-  @PostMapping("update")
+  @PostMapping("/member/update")
   public String update(HttpServletRequest request, HttpServletResponse response) throws Exception {
     Member member = new Member();
     member.setNo(Integer.parseInt(request.getParameter("no")));
@@ -69,7 +67,7 @@ public class MemberController {
     return "redirect:list";
   }
 
-  @GetMapping("delete")
+  @GetMapping("/member/delete")
   public String delete(HttpServletRequest request, HttpServletResponse response) throws Exception {
     int no = Integer.parseInt(request.getParameter("no"));
 

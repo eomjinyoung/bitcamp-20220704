@@ -597,7 +597,8 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - Spring IoC 컨테이너 사용법(계속)
   - Spring WebMVC 프레임워크 사용법(계속)
 - board-app 프로젝트 수행 
-  - 080. Spring WebMVC 프론트 컨트롤러 도입하기
+  - 081. CRUD를 수행하는 페이지 컨트롤러를 하나로 합치기
+  - 082. Spring WebMVC 프레임워크 사용법
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
