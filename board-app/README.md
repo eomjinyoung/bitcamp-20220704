@@ -272,3 +272,5 @@
   - Spring IoC 컨테이너를 사용하여 객체를 자동으로 생성하는 방법
 ### 080. Spring WebMVC 프론트 컨트롤러 도입하기
   - Spring WebMVC 프레임워크에서 제공하는 DispatcherServlet 사용법
+### 081. CRUD를 수행하는 페이지 컨트롤러를 하나로 합치기
+  - 페이지 컨트롤러를 다루는 방법

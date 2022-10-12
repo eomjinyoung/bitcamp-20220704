@@ -591,5 +591,13 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 079. Spring IoC 컨테이너 도입하기: 페이지 컨트롤러 생성 자동화
   - 080. Spring WebMVC 프론트 컨트롤러 도입하기
 
+### 67일(10/12) 
+
+- 스프링 프레임워크
+  - Spring IoC 컨테이너 사용법(계속)
+  - Spring WebMVC 프레임워크 사용법(계속)
+- board-app 프로젝트 수행 
+  - 080. Spring WebMVC 프론트 컨트롤러 도입하기
+
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
