@@ -1,13 +1,15 @@
 package com.bitcamp.board.controller;
 
 import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.JstlView;
 import com.bitcamp.board.domain.Member;
 import com.bitcamp.board.service.MemberService;
 
@@ -21,16 +23,15 @@ public class AuthController {
   }
 
   @GetMapping("form") 
-  public String form() throws Exception {
-    return "/auth/form.jsp";
+  public View form() throws Exception {
+    return new JstlView("/auth/form.jsp");
   }
 
   @PostMapping("login") 
-  public String login(
+  public ModelAndView login(
       String email, 
       String password, 
       String saveEmail, 
-      HttpServletRequest request,
       HttpServletResponse response,
       HttpSession session) throws Exception {
 
@@ -48,8 +49,9 @@ public class AuthController {
     }
     response.addCookie(cookie); 
 
-    request.setAttribute("member", member);
-    return "/auth/loginResult.jsp";
+    ModelAndView mv = new ModelAndView("/auth/loginResult.jsp");
+    mv.addObject("member", member);
+    return mv;
   }
 
   @GetMapping("logout") 

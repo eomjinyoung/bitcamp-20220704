@@ -22,3 +22,4 @@
   - Part 대신 스프링에서 제공하는 MultipartFile 타입으로 첨부파일을 받는다.
   - 낱개의 파라미터 값을 도메인 객체로 바로 받을 수 있다.
     - 단, multipart/form-data 형식으로 전송된 데이터를 처리하려면 MultipartResolver를 설정해야 한다.
+  - ServletRequest 보관소에 작업 결과를 저장할 때 페이지 컨트롤러에서 하는 대신 프론트 컨트롤러에서 하기: ModelAndView 클래스
