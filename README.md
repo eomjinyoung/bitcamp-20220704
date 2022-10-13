@@ -600,5 +600,12 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 081. CRUD를 수행하는 페이지 컨트롤러를 하나로 합치기
   - 082. Spring WebMVC 프레임워크 사용법
 
+### 68일(10/13) 
+
+- 스프링 프레임워크
+  - Spring WebMVC 프레임워크 사용법(계속)
+- board-app 프로젝트 수행 
+  - 082. Spring WebMVC 프레임워크 사용법(계속)
+
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf

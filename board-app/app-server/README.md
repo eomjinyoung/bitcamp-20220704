@@ -34,3 +34,5 @@
 
 - /WEB-INF/jsp 디렉토리 생성
   - 기존의 JSP 파일을 이 디렉토리로 옮긴다.
+- com.bitcamp.board.config.AppConfig 클래스 변경
+  - createViewResolver() 메서드 변경
