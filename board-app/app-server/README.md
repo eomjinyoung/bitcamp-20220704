@@ -19,3 +19,6 @@
   - @RequestParam 을 생략할 수 있는 경우
   - 첨부파일을 파라미터로 직접 받을 수 있다.
   - ServletContext를 받는 방법: 생성자를 통해 주입 받는다. 
+  - Part 대신 스프링에서 제공하는 MultipartFile 타입으로 첨부파일을 받는다.
+  - 낱개의 파라미터 값을 도메인 객체로 바로 받을 수 있다.
+    - 단, multipart/form-data 형식으로 전송된 데이터를 처리하려면 MultipartResolver를 설정해야 한다.

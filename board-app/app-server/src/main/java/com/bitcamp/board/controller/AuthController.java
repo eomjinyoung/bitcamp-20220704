@@ -21,24 +21,27 @@ public class AuthController {
   }
 
   @GetMapping("form") 
-  public String form(HttpServletRequest request, HttpServletResponse response) throws Exception {
+  public String form() throws Exception {
     return "/auth/form.jsp";
   }
 
   @PostMapping("login") 
-  public String login(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    String email = request.getParameter("email");
-    String password = request.getParameter("password");
+  public String login(
+      String email, 
+      String password, 
+      String saveEmail, 
+      HttpServletRequest request,
+      HttpServletResponse response,
+      HttpSession session) throws Exception {
 
     Member member = memberService.get(email, password);
 
     if (member != null) {
-      HttpSession session = request.getSession(); 
       session.setAttribute("loginMember", member); 
     }
 
     Cookie cookie = new Cookie("email", email); 
-    if (request.getParameter("saveEmail") == null) {
+    if (saveEmail == null) {
       cookie.setMaxAge(0); 
     } else {
       cookie.setMaxAge(60 * 60 * 24 * 7); // 7일
@@ -50,10 +53,9 @@ public class AuthController {
   }
 
   @GetMapping("logout") 
-  public String logout(HttpServletRequest request, HttpServletResponse response) throws Exception {
-    HttpSession session = request.getSession();
-    session.invalidate(); // 현재 세션을 무효화시킨다.
-    return "redirect:../../"; // 로그아웃 한 후 메인 페이지를 요청하라고 응답한다.
+  public String logout(HttpSession session) throws Exception {
+    session.invalidate(); 
+    return "redirect:../../"; 
   }
 }
 
