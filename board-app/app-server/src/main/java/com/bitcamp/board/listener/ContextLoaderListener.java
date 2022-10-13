@@ -29,8 +29,8 @@ public class ContextLoaderListener implements ServletContextListener {
       // 웹 기능이 포함된 스프링 IoC 컨테이너 준비
       AnnotationConfigWebApplicationContext iocContainer = 
           new AnnotationConfigWebApplicationContext();
-      iocContainer.register(AppConfig.class);
-      iocContainer.refresh(); // 자바 config 클래스(AppConfig)에 설정된 대로 객체를 생성한다.
+      iocContainer.register(AppConfig.class);  
+      //iocContainer.refresh(); // 자바 config 클래스(AppConfig)에 설정된 대로 객체를 생성한다.
 
       ServletContext ctx = sce.getServletContext();
 
