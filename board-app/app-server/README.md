@@ -11,5 +11,6 @@
 
 ### 2단계 - ServletContextInitializer 사용법
 
-- 
+- WebApplicationInitializer 인터페이스 구현
+  - 멀티파트 데이터에 대한 설정 변경
 
