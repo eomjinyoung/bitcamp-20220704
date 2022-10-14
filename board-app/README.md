@@ -276,3 +276,5 @@
   - 페이지 컨트롤러를 다루는 방법
 ### 082. Spring WebMVC 프레임워크 사용법
   - Spring WebMVC 프레임워크 사용법
+### 083. Spring WebMVC 프레임워크 사용법 II : 기타 설정
+  - Spring WebMVC 프레임워크의 다양한 설정법

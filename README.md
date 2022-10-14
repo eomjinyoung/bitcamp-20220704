@@ -613,6 +613,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - Spring WebMVC 프레임워크 사용법(계속)
 - board-app 프로젝트 수행 
   - 082. Spring WebMVC 프레임워크 사용법(계속)
+  - 083. Spring WebMVC 프레임워크 사용법 II : 기타 설정
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
