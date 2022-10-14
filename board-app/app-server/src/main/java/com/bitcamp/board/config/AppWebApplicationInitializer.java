@@ -3,10 +3,8 @@ package com.bitcamp.board.config;
 import javax.servlet.Filter;
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration.Dynamic;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.servlet.support.AbstractDispatcherServletInitializer;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import com.bitcamp.board.filter.AdminCheckFilter;
 import com.bitcamp.board.filter.LoginCheckFilter;
 
@@ -14,12 +12,14 @@ import com.bitcamp.board.filter.LoginCheckFilter;
 // 서블릿 컨테이너에서 웹 애플리케이션을 시작할 때:
 // ==> 수퍼 클래스 코드를 분석하시오!! 제발!!!
 //
-public class AppWebApplicationInitializer extends AbstractDispatcherServletInitializer {
+public class AppWebApplicationInitializer 
+extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-  // 수퍼클래스에서 ContextLoaderListener 를 준비할 때 사용할 Root IoC 컨테이너를 리턴한다. 
+  // 수퍼클래스에서 Root IoC 컨테이너를 만들어 준단다.
+  // 그럼 우리가 해야 할 일은 그 컨테이너가 사용할 클래스 정보만 알려주면 된다.
   @Override
-  protected WebApplicationContext createRootApplicationContext() {
-    return null; // 설정할 필요가 없다면 null을 리턴
+  protected Class<?>[] getRootConfigClasses() {
+    return null;
   }
 
   // 수퍼클래스에서 DispatcherServlet 을 준비할 때 사용할 서블릿 이름을 리턴한다.
@@ -28,13 +28,12 @@ public class AppWebApplicationInitializer extends AbstractDispatcherServletIniti
     return "app";
   }
 
-  // 수퍼클래스에서 DispatcherServlet 을 준비할 때 사용할 IoC 컨테이너를 리턴한다.
+  // 수퍼클래스에서 DispatcherServlet 이 사용할 IoC 컨테이너를 만들어 준단다.
+  // 그럼 우리가 할 일은 그 컨테이너를 만들 때 사용할 java config 클래스를 알려주면 된다.
   @Override
-  protected WebApplicationContext createServletApplicationContext() {
-    AnnotationConfigWebApplicationContext iocContainer = 
-        new AnnotationConfigWebApplicationContext();
-    iocContainer.register(AppConfig.class);
-    return iocContainer;
+  protected Class<?>[] getServletConfigClasses() {
+    // java config 클래스 정보를 배열에 담아서 리턴한다.
+    return new Class<?>[] {AppConfig.class}; 
   }
 
   // 수퍼클래스에서 DispatcherServlet 의 URL을 연결할 때 사용할 경로를 리턴한다.

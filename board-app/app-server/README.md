@@ -12,5 +12,8 @@
 ### 2단계 - ServletContextInitializer 사용법
 
 - WebApplicationInitializer 인터페이스 구현
-  - 멀티파트 데이터에 대한 설정 변경
+- AbstractContextLoaderInitializer 추상클래스 상속 받아 구현
+- AbstractDispatcherServletInitializer 추상클래스 상속 받아 구현
+- AbstractAnnotationConfigDispatcherServletInitializer 추상클래스 상속 받아 구현
+
 
