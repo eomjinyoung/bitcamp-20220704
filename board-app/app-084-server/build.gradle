@@ -40,12 +40,6 @@ dependencies {
     // 프레임워크나 라이브러리 등에서 출력하는 로그를 다루는 라이브러리
     implementation 'org.apache.logging.log4j:log4j-core:2.18.0'
     
-    // SQL Mapper 라이브러리
-    implementation 'org.mybatis:mybatis:3.5.11'
-    
-    // Mybatis를 스프링 프레임워크에서 관리할 수 있도록 도와주는 클래스들 
-    implementation 'org.mybatis:mybatis-spring:2.0.7'
-    
     //implementation project(':app-common')
 }
 
