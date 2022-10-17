@@ -1,4 +1,4 @@
-package com.bitcamp.board.controller;
+package com.bitcamp.board.controller.admin;
 
 import java.util.Map;
 import org.springframework.stereotype.Controller;
@@ -14,6 +14,11 @@ import com.bitcamp.board.service.MemberService;
 public class MemberController {
 
   MemberService memberService;
+
+  public MemberController() {
+    System.out.println("MemberController() 호출됨!");
+  }
+
   public MemberController(MemberService memberService) {
     this.memberService = memberService;
   }
