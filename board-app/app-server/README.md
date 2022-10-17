@@ -17,9 +17,14 @@
 
 - com.bitcamp.board.config.MybatisConfig 클래스 생성
   - sqlSessionFactory() 메서드 추가
+- com.bitcamp.board.config.AppWebApplicationInitializer 클래스 변경
+  - getRootConfigClasses() 메서드 리턴 값 변경
 
 ### 3단계 - Mybatis를 사용하는 DAO를 정의한다.
 
 - com.bitcamp.board.dao.MybatisMemberDao 클래스 생성
+- com/bitcamp/board/mapper/MemberDaoMapper.xml 파일 생성
+
+
 - com.bitcamp.board.dao.MybatisBoardDao 클래스 생성
 

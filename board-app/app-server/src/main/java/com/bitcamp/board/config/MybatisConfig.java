@@ -18,6 +18,8 @@ public class MybatisConfig {
       ApplicationContext iocContainer
       ) throws Exception {
 
+    System.out.println("sqlSessionFactory() 호출됨!");
+
     // SqlSessionFactory 를 만들어 줄 객체를 준비한다. 
     SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
 
@@ -26,7 +28,7 @@ public class MybatisConfig {
 
     // Mybatis가 실행할 SQL 문이 들어 있는 파일의 위치를 설정한다.
     factoryBean.setMapperLocations(
-        iocContainer.getResource("classpath:com/bitcamp/board/mapper/*Mapper.xml"));
+        iocContainer.getResources("classpath:com/bitcamp/board/mapper/*Mapper.xml"));
 
     return factoryBean.getObject();
   }
