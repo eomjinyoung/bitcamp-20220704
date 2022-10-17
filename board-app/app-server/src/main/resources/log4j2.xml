@@ -21,5 +21,17 @@
     <Root level="debug" additivity="false">
       <AppenderRef ref="stdout" /> <!-- 로그를 출력할 때 사용할 출력 방식 지정 -->
     </Root>
+    
+    <!-- Mybatis 프레임워크의 로그 출력 설정 
+        - com.bitcamp.board.dao 패키지에 소속된 클래스를 실행할 때   
+          debug 까지의 로그를 모두 출력한다.
+        - 또한 이 패키지의 클래스가 사용하는 외부 라이브러리가 있다면 
+          그 라이브러리에서 출력하는 로그도 debug 까지 모두 출력한다.
+    -->
+    <!--  
+    <Logger name="com.bitcamp.board.dao" level="debug" additivity="false">
+      <AppenderRef ref="stdout" />
+    </Logger>
+    -->
   </Loggers>
 </Configuration>

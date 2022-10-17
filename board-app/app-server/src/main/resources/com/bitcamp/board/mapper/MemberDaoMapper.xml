@@ -4,6 +4,34 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberDao">
 
+  <insert id="insert" parameterType="com.bitcamp.board.domain.Member">
+    insert into app_member(name,email,pwd) 
+    values(#{name},#{email},sha2(#{password},256))
+  </insert>
+
+  <select id="findByNo" resultType="com.bitcamp.board.domain.Member">
+    select 
+      mno no,
+      name,
+      email,
+      cdt createdDate
+    from 
+      app_member 
+    where 
+      mno=#{value}
+  </select>
+  
+  <select id="findAll" resultType="com.bitcamp.board.domain.Member">
+    select 
+      mno no,
+      name,
+      email 
+    from 
+      app_member 
+    order by 
+      name
+  </select>
+
   <select id="findByEmailPassword" resultType="com.bitcamp.board.domain.Member">
     select 
       mno no,

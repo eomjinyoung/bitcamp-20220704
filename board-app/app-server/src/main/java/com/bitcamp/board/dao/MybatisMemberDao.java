@@ -1,8 +1,6 @@
 package com.bitcamp.board.dao;
 
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,34 +19,15 @@ public class MybatisMemberDao implements MemberDao {
 
   @Override
   public int insert(Member member) throws Exception {
-    try (PreparedStatement pstmt = ds.getConnection().prepareStatement(
-        "insert into app_member(name,email,pwd) values(?,?,sha2(?,256))")) {
-
-      pstmt.setString(1, member.getName());
-      pstmt.setString(2, member.getEmail());
-      pstmt.setString(3, member.getPassword());
-
-      return pstmt.executeUpdate();
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.insert("MemberDao.insert", member);
     }
   }
 
   @Override
   public Member findByNo(int no) throws Exception {
-
-    try (PreparedStatement pstmt = ds.getConnection().prepareStatement(
-        "select mno,name,email,cdt from app_member where mno=" + no);
-        ResultSet rs = pstmt.executeQuery()) {
-
-      if (!rs.next()) {
-        return null;
-      }
-
-      Member member = new Member();
-      member.setNo(rs.getInt("mno"));
-      member.setName(rs.getString("name"));
-      member.setEmail(rs.getString("email"));
-      member.setCreatedDate(rs.getDate("cdt"));
-      return member;
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectOne("MemberDao.findByNo", no);
     }
   }
 
@@ -103,22 +82,8 @@ public class MybatisMemberDao implements MemberDao {
 
   @Override
   public List<Member> findAll() throws Exception {
-    try (PreparedStatement pstmt = ds.getConnection().prepareStatement(
-        "select mno,name,email from app_member order by name");
-        ResultSet rs = pstmt.executeQuery()) {
-
-      ArrayList<Member> list = new ArrayList<>();
-
-      while (rs.next()) {
-        Member member = new Member();
-        member.setNo(rs.getInt("mno"));
-        member.setName(rs.getString("name"));
-        member.setEmail(rs.getString("email"));
-
-        list.add(member);
-      }
-
-      return list;
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("MemberDao.findAll");
     }
   }
 
