@@ -29,11 +29,8 @@ public class BoardController {
   ServletContext sc;
   BoardService boardService;
 
-  public BoardController() {
-    System.out.println("BoardController() 호출됨!");
-  }
-
   public BoardController(BoardService boardService, ServletContext sc) {
+    System.out.println("BoardController() 호출됨!");
     this.boardService = boardService;
     this.sc = sc;
   }

@@ -5,7 +5,6 @@ import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration.Dynamic;
 import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-import com.bitcamp.board.filter.AdminCheckFilter;
 import com.bitcamp.board.filter.LoginCheckFilter;
 
 public class AppWebApplicationInitializer 
@@ -13,7 +12,7 @@ extends AbstractAnnotationConfigDispatcherServletInitializer {
 
   @Override
   protected Class<?>[] getRootConfigClasses() {
-    return new Class<?>[] {RootConfig.class};
+    return new Class<?>[] {RootConfig.class, DatabaseConfig.class};
   }
 
   @Override
@@ -23,8 +22,7 @@ extends AbstractAnnotationConfigDispatcherServletInitializer {
 
   @Override
   protected Class<?>[] getServletConfigClasses() {
-    //return new Class<?>[] {AppConfig.class};
-    return null;
+    return new Class<?>[] {AppWebConfig.class};
   }
 
   @Override
@@ -36,7 +34,6 @@ extends AbstractAnnotationConfigDispatcherServletInitializer {
   protected Filter[] getServletFilters() {
     return new Filter[] {
         new CharacterEncodingFilter("UTF-8"),
-        new AdminCheckFilter(),
         new LoginCheckFilter()
     };
   }

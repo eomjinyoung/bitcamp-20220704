@@ -615,5 +615,12 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 082. Spring WebMVC 프레임워크 사용법(계속)
   - 083. Spring WebMVC 프레임워크 사용법 II : 기타 설정
 
+### 70일(10/17) 
+
+- 스프링 프레임워크
+  - Spring WebMVC 프레임워크 사용법(계속)
+- board-app 프로젝트 수행 
+  - 084. Root IoC 컨테이너와 멀티 프론트 컨트롤러 사용법
+  
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf

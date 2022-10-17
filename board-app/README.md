@@ -279,7 +279,7 @@
 ### 083. Spring WebMVC 프레임워크 사용법 II : 기타 설정
   - Spring WebMVC 프레임워크의 다양한 설정법
   - ServletContextInitializer 사용법
-### 084. Root IoC 컨테이너 사용법
+### 084. Root IoC 컨테이너와 멀티 프론트 컨트롤러 사용법
   - Root IoC 컨테이너를 설정하는 방법
   - 여러 개의 프론트 컨트롤러를 설정하는 방법
   - 프론트 컨트롤러 별로 필터를 설정하는 방법

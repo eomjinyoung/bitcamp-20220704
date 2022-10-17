@@ -15,11 +15,8 @@ public class MemberController {
 
   MemberService memberService;
 
-  public MemberController() {
-    System.out.println("MemberController() 호출됨!");
-  }
-
   public MemberController(MemberService memberService) {
+    System.out.println("MemberController() 호출됨!");
     this.memberService = memberService;
   }
 
