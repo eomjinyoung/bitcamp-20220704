@@ -76,13 +76,16 @@ public class DefaultBoardService implements BoardService {
   @Override
   public Board get(int no) throws Exception {
     // 방법1:
-    //    return boardDao.findByNo1(no);
+    //    return boardDao.findByNo1(no); // select를 두 번 실행한다.
 
     // 방법2:
-    Board board = boardDao.findByNo2(no);
-    List<AttachedFile> attachedFiles = boardDao.findFilesByBoard(no);
-    board.setAttachedFiles(attachedFiles);
-    return board;
+    //    Board board = boardDao.findByNo2(no);
+    //    List<AttachedFile> attachedFiles = boardDao.findFilesByBoard(no);
+    //    board.setAttachedFiles(attachedFiles);
+    //    return board;
+
+    // 방법3:
+    return boardDao.findByNo3(no); // 첨부파일 데이터까지 조인하여 select를 한 번만 실행한다.
   }
 
   @Override

@@ -12,6 +12,8 @@ public interface BoardDao {
 
   Board findByNo2(int no) throws Exception;
 
+  Board findByNo3(int no) throws Exception;
+
   int update(Board board) throws Exception;
 
   int delete(int no) throws Exception;

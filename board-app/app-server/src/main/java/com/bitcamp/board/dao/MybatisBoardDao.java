@@ -69,6 +69,13 @@ public class MybatisBoardDao implements BoardDao {
   }
 
   @Override
+  public Board findByNo3(int no) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectOne("BoardDao.findByNo3", no);
+    }
+  }
+
+  @Override
   public int update(Board board) throws Exception {
     try (PreparedStatement pstmt = ds.getConnection().prepareStatement(
         "update app_board set title=?, cont=? where bno=?")) {
