@@ -4,26 +4,34 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="MemberDao">
 
-  <insert id="insert" parameterType="com.bitcamp.board.domain.Member">
+  <!-- 자바 객체의 프로퍼티와 컬럼 이름을 연결한다. -->
+  <resultMap type="member" id="memberMap">
+    <result column="mno" property="no"/>
+    <result column="name" property="name"/>
+    <result column="email" property="email"/>
+    <result column="cdt" property="createdDate"/>
+  </resultMap>
+
+  <insert id="insert" parameterType="member">
     insert into app_member(name,email,pwd) 
     values(#{name},#{email},sha2(#{password},256))
   </insert>
 
-  <select id="findByNo" resultType="com.bitcamp.board.domain.Member">
+  <select id="findByNo" resultMap="memberMap">
     select 
-      mno no,
+      mno,
       name,
       email,
-      cdt createdDate
+      cdt
     from 
       app_member 
     where 
       mno=#{value}
   </select>
   
-  <select id="findAll" resultType="com.bitcamp.board.domain.Member">
+  <select id="findAll" resultMap="memberMap">
     select 
-      mno no,
+      mno,
       name,
       email 
     from 
@@ -32,17 +40,31 @@
       name
   </select>
 
-  <select id="findByEmailPassword" resultType="com.bitcamp.board.domain.Member">
+  <select id="findByEmailPassword" resultMap="memberMap">
     select 
-      mno no,
+      mno,
       name,
       email,
-      cdt createdDate 
+      cdt 
     from 
       app_member 
     where 
       email=#{email} and pwd=sha2(#{password},256)
   </select>
+  
+  <update id="update" parameterType="Member">
+    update app_member set 
+      name=#{name}, 
+      email=#{email}, 
+      pwd=sha2(#{password},256) 
+    where 
+      mno=#{no}
+  </update>
+  
+  <delete id="delete">
+    delete from app_member 
+    where mno=#{value}
+  </delete>
 
 </mapper>
 
