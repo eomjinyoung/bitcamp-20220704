@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.bitcamp.board.domain.Member;
 
-@Repository 
+@Repository
 public class MybatisMemberDao implements MemberDao {
 
   @Autowired SqlSessionFactory sqlSessionFactory;

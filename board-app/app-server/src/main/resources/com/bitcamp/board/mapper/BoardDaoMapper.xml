@@ -4,6 +4,37 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="BoardDao">
 
+  <resultMap type="board" id="boardMap">
+    <id column="b.bno" property="no"/>
+    <result column="title" property="title"/>
+    <result column="cont" property="content"/>
+    <result column="cdt" property="createdDate"/>
+    <result column="vw_cnt" property="viewCount"/>
+    
+    <association property="writer" javaType="member">
+      <id column="mno" property="no"/>
+      <result column="name" property="name"/>
+    </association>
+    
+  </resultMap>
+  
+  <select id="findAll" resultMap="boardMap">
+    select
+      b.bno,
+      b.title,
+      b.cdt,
+      b.vw_cnt,
+      m.mno,
+      m.name
+    from 
+      app_board b
+      join app_member m on b.mno = m.mno
+    order by 
+      bno desc
+  </select>
+
+
+
   <delete id="deleteByMember">
     delete from app_board 
     where mno=#{value}

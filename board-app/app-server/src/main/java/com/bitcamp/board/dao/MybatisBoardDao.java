@@ -5,21 +5,23 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.mariadb.jdbc.Statement;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.bitcamp.board.domain.AttachedFile;
 import com.bitcamp.board.domain.Board;
 import com.bitcamp.board.domain.Member;
 
-@Repository
-public class MariaDBBoardDao implements BoardDao {
+@Repository 
+public class MybatisBoardDao implements BoardDao {
 
+  @Autowired
   DataSource ds;
 
-  public MariaDBBoardDao(DataSource ds) {
-    System.out.println("MariaDBBoardDao() 호출됨!");
-    this.ds = ds;
-  }
+  @Autowired
+  SqlSessionFactory sqlSessionFactory;
 
   @Override
   public int insert(Board board) throws Exception {
@@ -119,38 +121,8 @@ public class MariaDBBoardDao implements BoardDao {
 
   @Override
   public List<Board> findAll() throws Exception {
-    try (PreparedStatement pstmt = ds.getConnection().prepareStatement(
-        "select "
-            + "   b.bno,"
-            + "   b.title,"
-            + "   b.cdt,"
-            + "   b.vw_cnt,"
-            + "   m.mno,"
-            + "   m.name"
-            + " from app_board b"
-            + "   join app_member m on b.mno = m.mno"
-            + " order by bno desc");
-        ResultSet rs = pstmt.executeQuery()) {
-
-      ArrayList<Board> list = new ArrayList<>();
-
-      while (rs.next()) {
-        Board board = new Board();
-        board.setNo(rs.getInt("bno"));
-        board.setTitle(rs.getString("title"));
-        board.setCreatedDate(rs.getDate("cdt"));
-        board.setViewCount(rs.getInt("vw_cnt"));
-
-        Member writer = new Member();
-        writer.setNo(rs.getInt("mno"));
-        writer.setName(rs.getString("name"));
-
-        board.setWriter(writer);
-
-        list.add(board);
-      }
-
-      return list;
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("BoardDao.findAll");
     }
   }
 

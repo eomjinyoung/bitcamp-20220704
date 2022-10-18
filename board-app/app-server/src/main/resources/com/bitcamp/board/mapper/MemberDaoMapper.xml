@@ -6,7 +6,7 @@
 
   <!-- 자바 객체의 프로퍼티와 컬럼 이름을 연결한다. -->
   <resultMap type="member" id="memberMap">
-    <result column="mno" property="no"/>
+    <id column="mno" property="no"/>
     <result column="name" property="name"/>
     <result column="email" property="email"/>
     <result column="cdt" property="createdDate"/>

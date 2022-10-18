@@ -24,7 +24,5 @@
 
 - com.bitcamp.board.dao.MybatisMemberDao 클래스 생성
 - com/bitcamp/board/mapper/MemberDaoMapper.xml 파일 생성
-
-
 - com.bitcamp.board.dao.MybatisBoardDao 클래스 생성
-
+- com/bitcamp/board/mapper/BoardDaoMapper.xml 파일 생성
