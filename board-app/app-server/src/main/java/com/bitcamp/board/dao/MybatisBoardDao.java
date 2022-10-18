@@ -2,7 +2,6 @@ package com.bitcamp.board.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 import java.util.List;
 import javax.sql.DataSource;
 import org.apache.ibatis.session.SqlSession;
@@ -12,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.bitcamp.board.domain.AttachedFile;
 import com.bitcamp.board.domain.Board;
-import com.bitcamp.board.domain.Member;
 
 @Repository 
 public class MybatisBoardDao implements BoardDao {
@@ -47,54 +45,26 @@ public class MybatisBoardDao implements BoardDao {
   }
 
   @Override
-  public Board findByNo(int no) throws Exception {
-    try (PreparedStatement pstmt = ds.getConnection().prepareStatement(
-        "select "
-            + "   b.bno,"
-            + "   b.title,"
-            + "   b.cont,"
-            + "   b.cdt,"
-            + "   b.vw_cnt,"
-            + "   m.mno,"
-            + "   m.name"
-            + " from app_board b"
-            + "   join app_member m on b.mno = m.mno"
-            + " where b.bno=" + no);
-        ResultSet rs = pstmt.executeQuery()) {
+  public Board findByNo1(int no) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
 
-      if (!rs.next()) {
-        return null;
-      }
+      // 게시글 가져오기
+      Board board = sqlSession.selectOne("BoardDao.findByNo", no);
 
-      Board board = new Board();
-      board.setNo(rs.getInt("bno"));
-      board.setTitle(rs.getString("title"));
-      board.setContent(rs.getString("cont"));
-      board.setCreatedDate(rs.getDate("cdt"));
-      board.setViewCount(rs.getInt("vw_cnt"));
+      // 게시글의 첨부파일 가져오기
+      List<AttachedFile> attachedFiles = 
+          sqlSession.selectList("BoardDao.findFilesByBoard", no);
 
-      Member writer = new Member();
-      writer.setNo(rs.getInt("mno"));
-      writer.setName(rs.getString("name"));
-
-      board.setWriter(writer);
-
-      // 게시글 첨부파일 가져오기
-      try (PreparedStatement pstmt2 = ds.getConnection().prepareStatement(
-          "select bfno, filepath, bno from app_board_file where bno = " + no);
-          ResultSet rs2 = pstmt2.executeQuery()) {
-
-        ArrayList<AttachedFile> attachedFiles = new ArrayList<>();
-        while (rs2.next()) {
-          AttachedFile file = new AttachedFile();
-          file.setNo(rs2.getInt("bfno"));
-          file.setFilepath(rs2.getString("filepath"));
-          attachedFiles.add(file);
-        }
-        board.setAttachedFiles(attachedFiles);
-      }
+      board.setAttachedFiles(attachedFiles);
 
       return board;
+    }
+  }
+
+  @Override
+  public Board findByNo2(int no) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectOne("BoardDao.findByNo", no);
     }
   }
 
@@ -158,6 +128,13 @@ public class MybatisBoardDao implements BoardDao {
       file.setBoardNo(rs.getInt("bno"));
 
       return file;
+    }
+  }
+
+  @Override
+  public List<AttachedFile> findFilesByBoard(int boardNo) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectList("BoardDao.findFilesByBoard", boardNo);
     }
   }
 

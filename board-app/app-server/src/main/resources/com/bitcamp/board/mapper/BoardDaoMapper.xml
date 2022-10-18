@@ -5,7 +5,7 @@
 <mapper namespace="BoardDao">
 
   <resultMap type="board" id="boardMap">
-    <id column="b.bno" property="no"/>
+    <id column="bno" property="no"/>
     <result column="title" property="title"/>
     <result column="cont" property="content"/>
     <result column="cdt" property="createdDate"/>
@@ -17,6 +17,13 @@
     </association>
     
   </resultMap>
+  
+  <resultMap type="attachedFile" id="attachedFileMap">
+    <id column="bfno" property="no"/>
+    <result column="filepath" property="filepath"/>
+    <result column="bno" property="boardNo"/>
+  </resultMap>
+  
   
   <select id="findAll" resultMap="boardMap">
     select
@@ -31,6 +38,33 @@
       join app_member m on b.mno = m.mno
     order by 
       bno desc
+  </select>
+  
+  <select id="findByNo" resultMap="boardMap">
+    select
+      b.bno,
+      b.title,
+      b.cont,
+      b.cdt,
+      b.vw_cnt,
+      m.mno,
+      m.name
+    from 
+      app_board b
+      join app_member m on b.mno = m.mno
+    where 
+      b.bno=#{value}
+  </select>
+  
+  <select id="findFilesByBoard" resultMap="attachedFileMap">
+    select 
+      bfno, 
+      filepath, 
+      bno 
+    from 
+      app_board_file 
+    where 
+      bno = #{value}
   </select>
 
 
