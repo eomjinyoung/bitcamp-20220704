@@ -93,12 +93,24 @@
       bno = #{value}
   </select>
 
-
+  <insert id="insert" parameterType="board"
+          useGeneratedKeys="true" keyColumn="bno" keyProperty="no">
+    insert into app_board(title,cont,mno) 
+    values(#{title},#{content},#{writer.no})
+  </insert>
 
   <delete id="deleteByMember">
     delete from app_board 
     where mno=#{value}
   </delete>
+  
+  <insert id="insertFiles" parameterType="board">
+    insert into app_board_file(filepath,bno) 
+    values 
+    <foreach collection="attachedFiles" item="file" separator=",">
+      (#{file.filepath},#{no})
+    </foreach>
+  </insert>
 
 </mapper>
 

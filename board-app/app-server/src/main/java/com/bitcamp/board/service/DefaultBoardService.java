@@ -38,7 +38,10 @@ public class DefaultBoardService implements BoardService {
       }
 
       // 2) 첨부파일 등록
-      boardDao.insertFiles(board);
+      if (board.getAttachedFiles().size() > 0) {
+        boardDao.insertFiles(board);
+      }
+
       txManager.commit(status);
 
     } catch (Exception e) {

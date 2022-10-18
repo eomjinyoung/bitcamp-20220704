@@ -6,7 +6,6 @@ import java.util.List;
 import javax.sql.DataSource;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.mariadb.jdbc.Statement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.bitcamp.board.domain.AttachedFile;
@@ -23,24 +22,8 @@ public class MybatisBoardDao implements BoardDao {
 
   @Override
   public int insert(Board board) throws Exception {
-    try (
-        PreparedStatement pstmt = ds.getConnection().prepareStatement(
-            "insert into app_board(title,cont,mno) values(?,?,?)",
-            Statement.RETURN_GENERATED_KEYS)) {
-
-      // 게시글 제목과 내용을 app_board 테이블에 저장한다.
-      pstmt.setString(1, board.getTitle());
-      pstmt.setString(2, board.getContent());
-      pstmt.setInt(3, board.getWriter().getNo());
-      int count = pstmt.executeUpdate();
-
-      // 게시글을 app_board 테이블에 입력 한 후 자동 증가된 PK 값을 꺼낸다.
-      try (ResultSet rs = pstmt.getGeneratedKeys()) {
-        rs.next();
-        board.setNo(rs.getInt(1));
-      }
-
-      return count;
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.insert("BoardDao.insert", board);
     }
   }
 
@@ -106,16 +89,8 @@ public class MybatisBoardDao implements BoardDao {
 
   @Override
   public int insertFiles(Board board) throws Exception {
-    try (PreparedStatement pstmt = ds.getConnection().prepareStatement(
-        "insert into app_board_file(filepath,bno) values(?,?)")) {
-
-      List<AttachedFile> attachedFiles = board.getAttachedFiles();
-      for (AttachedFile attachedFile : attachedFiles) {
-        pstmt.setString(1, attachedFile.getFilepath());
-        pstmt.setInt(2, board.getNo());
-        pstmt.executeUpdate();
-      }
-      return attachedFiles.size();
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.insert("BoardDao.insertFiles", board);
     }
   }
 
