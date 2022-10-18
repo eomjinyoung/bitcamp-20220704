@@ -1,7 +1,5 @@
 package com.bitcamp.board.dao;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.util.List;
 import javax.sql.DataSource;
 import org.apache.ibatis.session.SqlSession;
@@ -60,22 +58,15 @@ public class MybatisBoardDao implements BoardDao {
 
   @Override
   public int update(Board board) throws Exception {
-    try (PreparedStatement pstmt = ds.getConnection().prepareStatement(
-        "update app_board set title=?, cont=? where bno=?")) {
-
-      pstmt.setString(1, board.getTitle());
-      pstmt.setString(2, board.getContent());
-      pstmt.setInt(3, board.getNo());
-
-      return pstmt.executeUpdate();
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.update("BoardDao.update", board);
     }
   }
 
   @Override
   public int delete(int no) throws Exception {
-    try (PreparedStatement pstmt = ds.getConnection().prepareStatement("delete from app_board where bno=?")) {
-      pstmt.setInt(1, no);
-      return pstmt.executeUpdate();
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.delete("BoardDao.delete", no);
     }
   }
 
@@ -96,20 +87,8 @@ public class MybatisBoardDao implements BoardDao {
 
   @Override
   public AttachedFile findFileByNo(int fileNo) throws Exception {
-    try (PreparedStatement pstmt = ds.getConnection().prepareStatement(
-        "select bfno, filepath, bno from app_board_file where bfno = " + fileNo);
-        ResultSet rs = pstmt.executeQuery()) {
-
-      if (!rs.next()) {
-        return null;
-      }
-
-      AttachedFile file = new AttachedFile();
-      file.setNo(rs.getInt("bfno"));
-      file.setFilepath(rs.getString("filepath"));
-      file.setBoardNo(rs.getInt("bno"));
-
-      return file;
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.selectOne("BoardDao.findFileByNo", fileNo);
     }
   }
 
@@ -122,21 +101,15 @@ public class MybatisBoardDao implements BoardDao {
 
   @Override
   public int deleteFile(int fileNo) throws Exception {
-    try (PreparedStatement pstmt = ds.getConnection().prepareStatement(
-        "delete from app_board_file where bfno=?")) {
-
-      pstmt.setInt(1, fileNo);
-      return pstmt.executeUpdate();
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.delete("BoardDao.deleteFile", fileNo);
     }
   }
 
   @Override
   public int deleteFiles(int boardNo) throws Exception {
-    try (PreparedStatement pstmt = ds.getConnection().prepareStatement(
-        "delete from app_board_file where bno=?")) {
-
-      pstmt.setInt(1, boardNo);
-      return pstmt.executeUpdate();
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.delete("BoardDao.deleteFiles", boardNo);
     }
   }
 }

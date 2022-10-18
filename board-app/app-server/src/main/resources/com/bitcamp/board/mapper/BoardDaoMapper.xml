@@ -98,6 +98,18 @@
     insert into app_board(title,cont,mno) 
     values(#{title},#{content},#{writer.no})
   </insert>
+  
+  <update id="update" parameterType="board">
+    update app_board set 
+      title=#{title}, 
+      cont=#{content} 
+    where bno=#{no}
+  </update>
+  
+  <delete id="delete">
+    delete from app_board 
+    where bno=#{value}
+  </delete>
 
   <delete id="deleteByMember">
     delete from app_board 
@@ -111,6 +123,27 @@
       (#{file.filepath},#{no})
     </foreach>
   </insert>
+  
+  <delete id="deleteFiles">
+    delete from app_board_file 
+    where bno=#{value}
+  </delete>
+  
+  <delete id="deleteFile">
+    delete from app_board_file 
+    where bfno=#{value}
+  </delete>
+  
+  <select id="findFileByNo" resultMap="attachedFileMap">
+    select 
+      bfno, 
+      filepath, 
+      bno 
+    from 
+      app_board_file 
+    where 
+      bfno = #{value}
+  </select>
 
 </mapper>
 
