@@ -42,7 +42,7 @@ dependencies {
     // SpringBoot는 기본으로 tomcat-embed-core 라이브러리만 포함한다.
     // JSP 엔진이 포함되지 않는다. 
     // 그래서 다음과 같이 직접 JSP 엔진 라이브러리를 포함시켜야 한다.
-    //implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.68'
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.68'
     
     //implementation project(':app-common')
 }

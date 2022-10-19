@@ -4,33 +4,27 @@ import javax.servlet.Filter;
 import javax.servlet.MultipartConfigElement;
 import javax.servlet.ServletRegistration.Dynamic;
 import org.springframework.web.filter.CharacterEncodingFilter;
-import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 import com.bitcamp.board.filter.LoginCheckFilter;
 
 public class AppWebApplicationInitializer 
-extends AbstractAnnotationConfigDispatcherServletInitializer {
+/* extends AbstractAnnotationConfigDispatcherServletInitializer */ {
 
-  @Override
   protected Class<?>[] getRootConfigClasses() {
     return new Class<?>[] {RootConfig.class, DatabaseConfig.class, MybatisConfig.class};
   }
 
-  @Override
   protected String getServletName() {
     return "app";
   }
 
-  @Override
   protected Class<?>[] getServletConfigClasses() {
     return new Class<?>[] {AppWebConfig.class};
   }
 
-  @Override
   protected String[] getServletMappings() {
     return new String[] {"/app/*"};
   }
 
-  @Override
   protected Filter[] getServletFilters() {
     return new Filter[] {
         new CharacterEncodingFilter("UTF-8"),
@@ -38,7 +32,6 @@ extends AbstractAnnotationConfigDispatcherServletInitializer {
     };
   }
 
-  @Override
   protected void customizeRegistration(Dynamic registration) {
     registration.setMultipartConfig(new MultipartConfigElement(
         System.getProperty("java.io.tmpdir"), // 클라이언트가 보낸 파일을 임시 저장할 때 사용할 디렉토리
