@@ -1,10 +1,17 @@
-### 086. Mybatis SQL 매퍼 사용하기 II: DAO 구현 자동화
+### 085. Mybatis SQL 매퍼 사용하기
 
 ## 작업 내용
 
-### 1단계 - DAO 구현체를 자동으로 생성하도록 설정한다.
+### 1단계 - Mybatis SQL Mapper 라이브러리를 프로젝트에 추가한다.
 
-- 
+- search.maven.org 에서 'mybatis' 검색한다.
+  - mybatis 라이브러리 파일
+- search.maven.org 에서 'mybatis-spring' 검색한다.
+  - mybatis를 spring과 연동할 때 사용되는 라이브러리 파일
+- 라이브러리를 빌드 스크립트 파일(build.gradle)에 설정한다.
+- 이클립스 IDE용 설정 파일을 갱신한다.
+- 프로젝트를 갱신한다.
+- 라이브러리가 추가된 것을 확인한다.
 
 ### 2단계 - SqlSessionFactory 객체를 준비한다.
 

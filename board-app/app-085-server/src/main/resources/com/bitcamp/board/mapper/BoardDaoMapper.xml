@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="BoardDao">
+
+  <resultMap type="board" id="boardMap">
+    <id column="bno" property="no"/>
+    <result column="title" property="title"/>
+    <result column="cont" property="content"/>
+    <result column="cdt" property="createdDate"/>
+    <result column="vw_cnt" property="viewCount"/>
+    
+    <!-- 조인 결과에서 같은 게시글에 대해 한 개의 회원 데이터를 담을 경우 -->
+    <association property="writer" javaType="member">
+      <id column="mno" property="no"/>
+      <result column="name" property="name"/>
+    </association>
+    
+    <!-- 조인 결과에서 같은 게시글에 대해 여러 개의 첨부 파일 데이터를 담을 경우 -->
+    <collection property="attachedFiles" ofType="attachedFile">
+      <id column="bfno" property="no"/>
+      <result column="filepath" property="filepath"/>
+    </collection>
+    
+  </resultMap>
+  
+  <resultMap type="attachedFile" id="attachedFileMap">
+    <id column="bfno" property="no"/>
+    <result column="filepath" property="filepath"/>
+    <result column="bno" property="boardNo"/>
+  </resultMap>
+  
+  
+  <select id="findAll" resultMap="boardMap">
+    select
+      b.bno,
+      b.title,
+      b.cdt,
+      b.vw_cnt,
+      m.mno,
+      m.name
+    from 
+      app_board b
+      join app_member m on b.mno = m.mno
+    order by 
+      bno desc
+  </select>
+  
+  <select id="findByNo" resultMap="boardMap">
+    select
+      b.bno,
+      b.title,
+      b.cont,
+      b.cdt,
+      b.vw_cnt,
+      m.mno,
+      m.name
+    from 
+      app_board b
+      join app_member m on b.mno = m.mno
+    where 
+      b.bno=#{value}
+  </select>
+  
+    <select id="findByNo3" resultMap="boardMap">
+    select
+      b.bno,
+      b.title,
+      b.cont,
+      b.cdt,
+      b.vw_cnt,
+      m.mno,
+      m.name,
+      bf.bfno,
+      bf.filepath
+    from 
+      app_board b
+      join app_member m on b.mno = m.mno
+      left outer join app_board_file bf on b.bno=bf.bno
+    where 
+      b.bno=#{value}
+  </select>
+  
+  <select id="findFilesByBoard" resultMap="attachedFileMap">
+    select 
+      bfno, 
+      filepath, 
+      bno 
+    from 
+      app_board_file 
+    where 
+      bno = #{value}
+  </select>
+
+  <insert id="insert" parameterType="board"
+          useGeneratedKeys="true" keyColumn="bno" keyProperty="no">
+    insert into app_board(title,cont,mno) 
+    values(#{title},#{content},#{writer.no})
+  </insert>
+  
+  <update id="update" parameterType="board">
+    update app_board set 
+      title=#{title}, 
+      cont=#{content} 
+    where bno=#{no}
+  </update>
+  
+  <delete id="delete">
+    delete from app_board 
+    where bno=#{value}
+  </delete>
+
+  <delete id="deleteByMember">
+    delete from app_board 
+    where mno=#{value}
+  </delete>
+  
+  <insert id="insertFiles" parameterType="board">
+    insert into app_board_file(filepath,bno) 
+    values 
+    <foreach collection="attachedFiles" item="file" separator=",">
+      (#{file.filepath},#{no})
+    </foreach>
+  </insert>
+  
+  <delete id="deleteFiles">
+    delete from app_board_file 
+    where bno=#{value}
+  </delete>
+  
+  <delete id="deleteFilesByMemberBoards">
+    delete from app_board_file 
+    where bno in (select bno from app_board where mno = #{value})
+  </delete>
+  
+  <delete id="deleteFile">
+    delete from app_board_file 
+    where bfno=#{value}
+  </delete>
+  
+  <select id="findFileByNo" resultMap="attachedFileMap">
+    select 
+      bfno, 
+      filepath, 
+      bno 
+    from 
+      app_board_file 
+    where 
+      bfno = #{value}
+  </select>
+
+</mapper>
+
+
+
