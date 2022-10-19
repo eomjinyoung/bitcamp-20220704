@@ -620,14 +620,23 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - Spring WebMVC 프레임워크 사용법(계속)
 - board-app 프로젝트 수행 
   - 084. Root IoC 컨테이너와 멀티 프론트 컨트롤러 사용법
-  - 085. Mybatis SQL 매퍼 사용하기: DAO 구현 자동화
+  - 085. Mybatis SQL 매퍼 사용하기
 
 ### 71일(10/18) 
 
 - 스프링 프레임워크
   - Spring WebMVC 프레임워크 사용법(계속)
 - board-app 프로젝트 수행 
-  - 085. Mybatis SQL 매퍼 사용하기: DAO 구현 자동화(계속)
+  - 085. Mybatis SQL 매퍼 사용하기(계속)
+
+### 72일(10/19) 
+
+- 스프링 프레임워크
+  - Spring WebMVC 프레임워크 사용법(계속)
+- board-app 프로젝트 수행 
+  - 085. Mybatis SQL 매퍼 사용하기(계속)
+  - 086. Mybatis SQL 매퍼 사용하기 II: DAO 구현 자동화
+  - 087. 프로젝트에 서블릿 컨테이너(예:톰캣) 삽입하기
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
