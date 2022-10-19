@@ -46,6 +46,9 @@ dependencies {
     // Mybatis를 스프링 프레임워크에서 관리할 수 있도록 도와주는 클래스들 
     implementation 'org.mybatis:mybatis-spring:2.0.7'
     
+    // 임베디드용 톰캣 서버 라이브러리
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.68'
+    
     //implementation project(':app-common')
 }
 
