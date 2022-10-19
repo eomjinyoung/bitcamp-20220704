@@ -637,7 +637,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
 - board-app 프로젝트 수행 
   - 085. Mybatis SQL 매퍼 사용하기(계속)
   - 086. Mybatis SQL 매퍼 사용하기 II: DAO 구현 자동화
+  - 087. 프로젝트에 서블릿 컨테이너(예:톰캣) 삽입하기
 
-  
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
