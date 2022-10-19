@@ -630,5 +630,12 @@ export PATH=${JAVA_HOME}/bin:$PATH
 - board-app 프로젝트 수행 
   - 085. Mybatis SQL 매퍼 사용하기: DAO 구현 자동화(계속)
 
+### 72일(10/19) 
+
+- 스프링 프레임워크
+  - Spring WebMVC 프레임워크 사용법(계속)
+- board-app 프로젝트 수행 
+  - 085. Mybatis SQL 매퍼 사용하기: DAO 구현 자동화(계속)
+  
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf

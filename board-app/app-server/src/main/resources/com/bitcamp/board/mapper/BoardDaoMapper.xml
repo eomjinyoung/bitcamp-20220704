@@ -129,6 +129,11 @@
     where bno=#{value}
   </delete>
   
+  <delete id="deleteFilesByMemberBoards">
+    delete from app_board_file 
+    where bno in (select bno from app_board where mno = #{value})
+  </delete>
+  
   <delete id="deleteFile">
     delete from app_board_file 
     where bfno=#{value}

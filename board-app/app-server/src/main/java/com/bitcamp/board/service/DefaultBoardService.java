@@ -2,7 +2,6 @@ package com.bitcamp.board.service;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
@@ -19,7 +18,7 @@ public class DefaultBoardService implements BoardService {
   PlatformTransactionManager txManager;
 
   @Autowired 
-  @Qualifier("mybatisBoardDao") 
+  //  @Qualifier("mybatisBoardDao") 
   BoardDao boardDao;
 
   @Override

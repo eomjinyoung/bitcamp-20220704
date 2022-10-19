@@ -18,6 +18,8 @@ public interface BoardDao {
 
   int delete(int no) throws Exception;
 
+  int deleteByMember(int memberNo) throws Exception;
+
   List<Board> findAll() throws Exception;
 
   int insertFiles(Board board) throws Exception;
@@ -29,6 +31,8 @@ public interface BoardDao {
   int deleteFile(int fileNo) throws Exception;
 
   int deleteFiles(int boardNo) throws Exception;
+
+  int deleteFilesByMemberBoards(int memberNo) throws Exception;
 }
 
 

@@ -71,6 +71,13 @@ public class MybatisBoardDao implements BoardDao {
   }
 
   @Override
+  public int deleteByMember(int memberNo) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.delete("BoardDao.deleteByMember", memberNo);
+    }
+  }
+
+  @Override
   public List<Board> findAll() throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.selectList("BoardDao.findAll");
@@ -110,6 +117,13 @@ public class MybatisBoardDao implements BoardDao {
   public int deleteFiles(int boardNo) throws Exception {
     try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
       return sqlSession.delete("BoardDao.deleteFiles", boardNo);
+    }
+  }
+
+  @Override
+  public int deleteFilesByMemberBoards(int memberNo) throws Exception {
+    try (SqlSession sqlSession = sqlSessionFactory.openSession()) {
+      return sqlSession.delete("BoardDao.deleteFilesByMemberBoards", memberNo);
     }
   }
 }
