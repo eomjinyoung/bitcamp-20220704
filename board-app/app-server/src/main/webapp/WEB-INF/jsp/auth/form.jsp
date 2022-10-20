@@ -22,7 +22,7 @@
 <input type="checkbox" name="saveEmail">이메일 저장<br>
 <p>
   <button type='submit'>로그인</button>
-  <a href='../../'>취소</a>
+  <a href='../'>취소</a>
 </p>
 </form>
 
