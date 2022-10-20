@@ -3,20 +3,15 @@ package com.bitcamp.board.service;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.Transactional;
 import com.bitcamp.board.dao.BoardDao;
 import com.bitcamp.board.domain.AttachedFile;
 import com.bitcamp.board.domain.Board;
 
-@Service // 서비스 역할을 수행하는 객체에 붙이는 애노테이션
+@Service
 public class DefaultBoardService implements BoardService {
 
   @Autowired 
-  PlatformTransactionManager txManager;
-
-  @Autowired 
-  //  @Qualifier("mybatisBoardDao") 
   BoardDao boardDao;
 
   @Transactional
