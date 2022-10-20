@@ -10,11 +10,11 @@ repositories {
 }
 
 dependencies {
-    // spring-jdbc 관련 라이브러리
-    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-    
     // spring-webmvc 관련 라이브러리
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // spring-jdbc 관련 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
     
     // mybatis-spring 관련 라이브러리
     implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
@@ -28,21 +28,17 @@ dependencies {
     // 단위테스트 관련 라이브러리
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     
-    // 웹 애플리케이션에서 사용하는 자바 표준 웹 라이브러리
-    // - 단 개발할 때만 사용한다. 
-    // - 배포할 필요하는 없다. 왜? 톰캣 서버에 이미 존재한다.
-    //providedCompile 'javax.servlet:javax.servlet-api:4.0.1'
-    
+    // SpringBoot는 기본으로 tomcat-embed-core 라이브러리만 포함한다.
+    // JSP 엔진이 포함되지 않는다. 
+    // 그래서 다음과 같이 직접 JSP 엔진 라이브러리를 포함시켜야 한다.
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.68'
+
     // JSTL 명세를 구현한 라이브러리
     implementation 'javax.servlet:jstl:1.2'
     
     // 프레임워크나 라이브러리 등에서 출력하는 로그를 다루는 라이브러리
     //implementation 'org.apache.logging.log4j:log4j-core:2.18.0'
     
-    // SpringBoot는 기본으로 tomcat-embed-core 라이브러리만 포함한다.
-    // JSP 엔진이 포함되지 않는다. 
-    // 그래서 다음과 같이 직접 JSP 엔진 라이브러리를 포함시켜야 한다.
-    //implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.68'
     
     //implementation project(':app-common')
 }
