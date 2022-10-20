@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bitcamp</title>
+<meta data-th-if="${member != null}" http-equiv='Refresh' content='1; url=../'>
+<meta data-th-if="${member == null}" http-equiv='Refresh' content='1; url=form'>
+</head>
+<body>
+<h1>로그인</h1>
+<p data-th-if="${member != null}">로그인 성공입니다!</p>
+<p data-th-if="${member == null}">회원이 존재하지 않습니다!</p>
+</c:choose>
+</body>
+</html>

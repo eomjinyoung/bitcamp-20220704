@@ -10,10 +10,10 @@
 <ul>
   <li><a href='board/list'>게시글</a></li>
   <li><a href='member/list'>회원</a></li>
-  <li data-th-if="${loginMember != null}">
-    <a href="auth/logout">${sessionScope.loginMember.name}(로그아웃)</a>
+  <li data-th-if="${session.loginMember != null}">
+    <a href="auth/logout" data-th-text="${session.loginMember.name} + '(로그아웃)'">홍길동(로그아웃)</a>
   </li>
-  <li data-th-if="${loginMember == null}">
+  <li data-th-if="${session.loginMember == null}">
     <a href='auth/form'>로그인</a>
   </li>
 </ul>

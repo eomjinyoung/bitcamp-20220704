@@ -647,7 +647,7 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - Spring Boot 사용법(계속)
 - board-app 프로젝트 수행 
   - 088. SpringBoot 적용하기(계속)
-  
+  - 089. JSP를 Thymeleaf로 교체하기
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf

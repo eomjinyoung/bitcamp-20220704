@@ -5,7 +5,7 @@
 <title>bitcamp</title>
 </head>
 <body>
-<h1>게시글 상세 정보(JSP + Servlet + EL)</h1>
+<h1>게시글 상세 정보</h1>
 <form action='update' method="post" enctype="multipart/form-data">
 <table border='1'>
   <tr>
@@ -39,7 +39,8 @@
       <ul>
         <li data-th-each="file : ${board.attachedFiles}">
           <a href="files/test.gif"
-             data-th-href="@{files/{path}(path=${file.filepath})}">test.gif</a>
+             data-th-href="@{files/{path}(path=${file.filepath})}"
+             data-th-text="${file.filepath}">test.gif</a>
           [<a href="fileDelete?no=1"
               data-th-href="@{fileDelete(no=${file.no})}">삭제</a>]
         </li>
