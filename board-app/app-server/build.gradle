@@ -12,6 +12,9 @@ repositories {
 dependencies {
     // spring-webmvc 관련 라이브러리
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    
+    // Thymeleaf 관련 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 
     // spring-jdbc 관련 라이브러리
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
@@ -27,14 +30,6 @@ dependencies {
     
     // 단위테스트 관련 라이브러리
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
-    
-    // SpringBoot는 기본으로 tomcat-embed-core 라이브러리만 포함한다.
-    // JSP 엔진이 포함되지 않는다. 
-    // 그래서 다음과 같이 직접 JSP 엔진 라이브러리를 포함시켜야 한다.
-    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.68'
-
-    // JSTL 명세를 구현한 라이브러리
-    implementation 'javax.servlet:jstl:1.2'
     
     // 프레임워크나 라이브러리 등에서 출력하는 로그를 다루는 라이브러리
     //implementation 'org.apache.logging.log4j:log4j-core:2.18.0'
