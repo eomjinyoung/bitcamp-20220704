@@ -634,10 +634,20 @@ export PATH=${JAVA_HOME}/bin:$PATH
 
 - 스프링 프레임워크
   - Spring WebMVC 프레임워크 사용법(계속)
+  - Spring Boot 사용법
 - board-app 프로젝트 수행 
   - 085. Mybatis SQL 매퍼 사용하기(계속)
   - 086. Mybatis SQL 매퍼 사용하기 II: DAO 구현 자동화
   - 087. 프로젝트에 서블릿 컨테이너(예:톰캣) 삽입하기
+  - 088. SpringBoot 적용하기
+
+### 73일(10/20) 
+
+- 스프링 프레임워크
+  - Spring Boot 사용법(계속)
+- board-app 프로젝트 수행 
+  - 088. SpringBoot 적용하기(계속)
+  
 
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
