@@ -1,12 +1,10 @@
-### 089. JSP를 Thymeleaf로 교체하기
+### 090. 서블릿 컨테이너 교체하기: Undertow 서블릿 컨테이너
 
 ## 작업 내용
 
-### 1단계 - Thymeleaf 라이브러를 프로젝트에 적용한다.
+### 1단계 - Undertow 서블릿 컨테이너를 프로젝트에 삽입한다.
 
 - build.gradle 변경
-
-### 2단계 - JSP를 Thymeleaf 로 변경한다.
-
-- src/main/resources/templates 디렉토리 생성
-  - 기존 JSP 파일을 가져와서 Thymeleaf로 바꾼다.
+  - 기존의 tomcat 서버를 제거한다.
+  - Undertow 라이브러리를 추가한다.
+ 
