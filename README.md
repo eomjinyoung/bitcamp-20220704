@@ -656,5 +656,10 @@ export PATH=${JAVA_HOME}/bin:$PATH
   - 090. 서블릿 컨테이너 교체하기: Undertow 서블릿 컨테이너
   - 프로젝트 저장소 준비 및 협업 구축
  
+### 75일(10/24) 
+
+- HTML,CSS 사용법
+
+
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
