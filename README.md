@@ -658,7 +658,11 @@ export PATH=${JAVA_HOME}/bin:$PATH
  
 ### 75일(10/24) 
 
-- HTML,CSS 사용법
+- HTML 사용법
+
+### 76일(10/25) 
+
+- CSS 사용법
 
 
 ## 구글 미트
