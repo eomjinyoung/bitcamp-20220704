@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bitcamp</title>
+</head>
+<body>
+<h1>게시글 상세 정보</h1>
+<form action='update' method="post" enctype="multipart/form-data">
+<table border='1'>
+  <tr>
+    <th>번호</th><td><input name='no' type='number' 
+        value='1' 
+        data-th-value="${board.no}"
+        readonly></td>
+  </tr>
+  <tr>
+    <th>제목</th><td><input name='title' type='text' 
+        value='제목'
+        data-th-value='${board.title}' 
+        size='60'></td>
+  </tr>
+  <tr>
+    <th>내용</th><td><textarea name='content' rows='10' cols='60'
+        data-th-text="${board.content}">내용</textarea></td>
+  </tr>
+  <tr>
+    <th>조회수</th><td data-th-text="${board.viewCount}">17</td>
+  </tr>
+  <tr>
+    <th>작성자</th><td data-th-text="${board.writer.name}">홍길동</td>
+  </tr>
+  <tr>
+    <th>등록일</th><td data-th-text="${board.createdDate}">2022-1-1</td>
+  </tr>
+  <tr>
+    <th>첨부파일</th>
+    <td>
+      <ul>
+        <li data-th-each="file : ${board.attachedFiles}">
+          <a href="files/test.gif"
+             data-th-href="@{files/{path}(path=${file.filepath})}"
+             data-th-text="${file.filepath}">test.gif</a>
+          [<a href="fileDelete?no=1"
+              data-th-href="@{fileDelete(no=${file.no})}">삭제</a>]
+        </li>
+      </ul>
+      파일 추가: <input name='files' type="file" multiple>
+    </td>
+  </tr>
+</table>
+<p>
+  <button type='submit'>변경</button>
+  <a href='delete?no=1'
+     data-th-href="@{delete(no=${board.no})}">삭제</a>
+  <a href='list'>목록</a>
+</p>
+</form>
+</body>
+</html>

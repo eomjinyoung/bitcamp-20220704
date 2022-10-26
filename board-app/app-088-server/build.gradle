@@ -1,0 +1,88 @@
+plugins {
+  id 'org.springframework.boot' version '2.7.4'
+  id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+  id 'java'
+  id 'eclipse'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // spring-webmvc 관련 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // spring-jdbc 관련 라이브러리
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    
+    // mybatis-spring 관련 라이브러리
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2'
+
+    // mariadb jdbc driver 관련 라이브러리    
+    runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    
+    // 개발 편이성을 제공하는 라이브러리 ==> 개발 완료 후 제거한다.
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    
+    // 단위테스트 관련 라이브러리
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    
+    // SpringBoot는 기본으로 tomcat-embed-core 라이브러리만 포함한다.
+    // JSP 엔진이 포함되지 않는다. 
+    // 그래서 다음과 같이 직접 JSP 엔진 라이브러리를 포함시켜야 한다.
+    implementation 'org.apache.tomcat.embed:tomcat-embed-jasper:9.0.68'
+
+    // JSTL 명세를 구현한 라이브러리
+    implementation 'javax.servlet:jstl:1.2'
+    
+    // 프레임워크나 라이브러리 등에서 출력하는 로그를 다루는 라이브러리
+    //implementation 'org.apache.logging.log4j:log4j-core:2.18.0'
+    
+    
+    //implementation project(':app-common')
+}
+
+// 단위 테스트에 사용할 라이브러리를 지정한다.
+tasks.named('test') {
+  useJUnitPlatform()
+}
+
+// `gradle build`를 실행하여 배포 파일을 생성할 때 사용할 이름
+// 예) com.bitcamp.board.0.0.1-SNAPSHOT.jar
+group = 'com.bitcamp'
+version = '0.0.1-SNAPSHOT'
+
+// CLI 환경(명령창, 콘솔창)에서 자바 소스를 컴파일 할 때 적용할 옵션
+tasks.withType(JavaCompile) {
+    // 프로젝트의 소스 파일 인코딩을 gradle에게 알려준다.
+    // $javac -encoding UTF-8 ..
+    options.encoding = 'UTF-8' 
+
+    // 소스 파일을 작성할 때 사용할 자바 버전
+    sourceCompatibility = '11'
+
+    // 자바 클래스를 실행시킬 JVM의 최소 버전
+    targetCompatibility = '11'
+}
+
+// Eclipse IDE에서 사용할 프로젝트 정보 설정하기
+eclipse {
+    project {
+        name = "board-app-server" 
+        // 프로젝트 이름을 지정하지 않으면 build.gradle 파일이 있는 
+        // 폴더 이름을 프로젝트 이름을 사용한다.
+    }
+    jdt {
+      sourceCompatibility = 11
+      targetCompatibility = 11
+      javaRuntimeName = "JavaSE-11"
+    }
+}
+
+
+
+
+
+
+

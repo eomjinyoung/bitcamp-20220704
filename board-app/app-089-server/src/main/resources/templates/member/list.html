@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>bitcamp</title>
+<style>
+tr:hover {
+  background-color: navy;
+  color: white;
+}
+</style>
+</head>
+<body>
+<h1>회원</h1>
+
+<a href='form'>새 회원</a>
+<table border='1'>
+  <tr>
+    <th>번호</th>
+    <th>이름</th>
+    <th>이메일</th>
+  </tr>
+
+  <tr data-th-each="member : ${members}">
+    <td data-th-text="${member.no}">1</td>
+    <td><a href='detail?no=1'
+           data-th-href="@{detail(no=${member.no})}"
+           data-th-text="${member.name}">홍길동</a></td>
+    <td data-th-text="${member.email}">hong@test.com</td>
+  </tr>
+
+</table>
+<p><a href='../'>메인</a></p>
+</body>
+</html>
+
+
+
+    

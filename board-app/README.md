@@ -291,3 +291,7 @@
   - 프로젝트에 톰캣을 삽입하여 구동하는 방법
 ### 088. SpringBoot 적용하기
   - SpringBoot 사용법
+### 089. JSP를 Thymeleaf로 교체하기
+  - Thymeleaf를 설정하고 사용하는 방법
+### 090. 서블릿 컨테이너 교체하기: Undertow 서블릿 컨테이너
+  - SpringBoot의 서블릿 컨테이너를 교체하는 방법 
