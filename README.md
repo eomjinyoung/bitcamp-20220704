@@ -668,6 +668,15 @@ export PATH=${JAVA_HOME}/bin:$PATH
 
 - CSS 사용법(계속)
 
+### 78일(10/27) 
+
+- JavaScript 사용법
+  - 자바스크립트 개요
+  - script 태그 사용법
+
+### 79일(10/28) 
+
+- JavaScript 사용법(계속)
 
 
 ## 구글 미트
