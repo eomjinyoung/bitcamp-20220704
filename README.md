@@ -677,7 +677,11 @@ export PATH=${JAVA_HOME}/bin:$PATH
 
 - JavaScript 사용법(계속)
 
-### 79일(10/31) 
+### 80일(10/31) 
+
+- JavaScript 사용법(계속)
+
+### 81일(11/01) 
 
 - JavaScript 사용법(계속)
 
