@@ -693,5 +693,9 @@ export PATH=${JAVA_HOME}/bin:$PATH
 
 - JavaScript 사용법(계속)
 
+### 84일(11/04) 
+
+- JavaScript 사용법(계속)
+
 ## 구글 미트
 https://meet.google.com/uou-bbtj-qzf
