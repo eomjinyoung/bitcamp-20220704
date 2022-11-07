@@ -16,7 +16,7 @@ public interface BoardService {
 
   boolean delete(int no) throws Exception;
 
-  List<Board> list() throws Exception;
+  List<Board> list(String keyword, String titleSort) throws Exception;
 
   AttachedFile getAttachedFile(int fileNo) throws Exception;
 

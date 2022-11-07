@@ -15,8 +15,8 @@ tr:hover {
   <a href='form'>새 글</a>
   <table border='1'>
     <tr>
-      <th>번호</th>
-      <th>제목</th>
+      <th id="noSort">번호</th>
+      <th id="titleSort" data-type="" data-th-data-type="${titleSort}">제목</th>
       <th>조회수</th>
       <th>작성자</th>
       <th>등록일</th>
@@ -34,7 +34,55 @@ tr:hover {
     </tr>
 
   </table>
+  검색어: <input type="text" name="keyword" value="검색어" data-th-value="${keyword}">
+  <button id='searchBtn'>검색</button><br>
   <p><a href='../'>메인</a></p>
+  
+  <script>
+  var titleSort = document.querySelector("#titleSort");
+  var sortType = titleSort.getAttribute("data-type");
+  var flag = "제목";
+  
+  if (sortType == "" || sortType == null) {
+	  titleSort.innerHTML = "제목"; 
+  } else if (sortType == "desc") {
+	  titleSort.innerHTML = "제목V";
+  } else {
+	  titleSort.innerHTML = "제목^";
+  }
+  
+  document.querySelector("#searchBtn").onclick = () => {
+	  var keyword = document.querySelector("input[name=keyword]").value;
+	  window.location.href = "list?keyword=" + encodeURIComponent(keyword);
+  };
+  
+  document.querySelector("#titleSort").onclick = (e) => {
+	  
+	  console.log(sortType);
+	  var flag = "제목";
+	  if (sortType == "" || sortType == null) {
+		  sortType = "desc";
+		  flag += "V";
+	  } else if (sortType == "desc") {
+		  sortType = "asc";
+		  flag += "^";
+	  } else {
+		  sortType = "";
+		  flag += "";
+	  }
+	  console.log(sortType);
+	  e.target.setAttribute("data-type", sortType);
+	  e.target.innerHTML = flag;
+	  
+	  var sortParam = ""
+	  if (sortType != "") {
+  	   sortParam = "&titleSort=" + sortType;
+	  }
+	  var keyword = document.querySelector("input[name=keyword]").value;
+	  console.log("list?keyword=" + encodeURIComponent(keyword) + sortParam);
+    window.location.href = "list?keyword=" + encodeURIComponent(keyword) + sortParam;
+  };
+  </script>
 </body>
 </html>
 

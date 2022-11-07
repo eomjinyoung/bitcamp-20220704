@@ -9,6 +9,12 @@ repositories {
     mavenCentral()
 }
 
+configurations {
+    all {
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
+
 dependencies {
     // spring-webmvc 관련 라이브러리
     implementation ('org.springframework.boot:spring-boot-starter-web') {
@@ -36,9 +42,7 @@ dependencies {
     // 단위테스트 관련 라이브러리
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     
-    // 프레임워크나 라이브러리 등에서 출력하는 로그를 다루는 라이브러리
-    //implementation 'org.apache.logging.log4j:log4j-core:2.18.0'
-    
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
     
     //implementation project(':app-common')
 }

@@ -95,8 +95,13 @@ public class BoardController {
   }
 
   @GetMapping("list")
-  public void list(Model model) throws Exception {
-    model.addAttribute("boards", boardService.list());
+  public void list(String keyword, String titleSort, Model model) throws Exception {
+    if (keyword.length() == 0) {
+      keyword = null;
+    }
+    model.addAttribute("boards", boardService.list(keyword, titleSort));
+    model.addAttribute("keyword", keyword);
+    model.addAttribute("titleSort", titleSort);
   }
 
   @GetMapping("detail")
@@ -108,6 +113,7 @@ public class BoardController {
 
     Map map = new HashMap();
     map.put("board", board);
+
     return map;
   }
 

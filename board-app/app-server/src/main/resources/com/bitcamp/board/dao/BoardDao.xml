@@ -43,8 +43,19 @@
     from 
       app_board b
       join app_member m on b.mno = m.mno
+    <if test="keyword != null">
+    where
+      b.title like concat("%", #{keyword}, "%")
+      or b.cont like concat("%", #{keyword}, "%")
+      or m.name like concat("%", #{keyword}, "%")
+    </if>
     order by 
+    <if test="titleSort != null">
+      title ${titleSort}
+    </if>
+    <if test="titleSort == null">
       bno desc
+    </if>  
   </select>
   
     <select id="findByNo" resultMap="boardMap">

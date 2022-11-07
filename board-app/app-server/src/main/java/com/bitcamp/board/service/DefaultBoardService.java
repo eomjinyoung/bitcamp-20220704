@@ -60,8 +60,8 @@ public class DefaultBoardService implements BoardService {
   }
 
   @Override
-  public List<Board> list() throws Exception {
-    return boardDao.findAll();
+  public List<Board> list(String keyword, String titleSort) throws Exception {
+    return boardDao.findAll(keyword, titleSort);
   }
 
   @Override

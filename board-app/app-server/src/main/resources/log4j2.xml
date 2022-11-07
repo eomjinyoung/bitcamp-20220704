@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="debug" monitorInterval="5">
+
+  <Properties>
+      <Property name="logFileName">log4jFile</Property>
+      <Property name="consoleLayout">[%-5level] %d{yyyy-MM-dd} [%t] %c{1} - %msg%n</Property>
+      <Property name="fileLayout">%d [%t] %-5level %c(%M:%L) - %m%n</Property>
+  </Properties>
+    
+  <!-- 로그 출력 형태를 정의한다. -->
+  <Appenders>
+   
+    <!-- 표준 출력 장치인 콘솔로 출력하는 방식을 정의한다. -->
+    <Console name="stdout" target="SYSTEM_OUT">
+      <PatternLayout pattern="${consoleLayout}" />
+    </Console>
+    
+    <File name="file" fileName="./logs/file/sample.log" append="false">
+      <PatternLayout pattern="[%-5level] %d{yyyy-MM-dd} [%t] %c{1} - %msg%n" />
+    </File>
+  </Appenders>
+     
+  <!-- 로그 출력을 적용할 대상과 로그 출력 레벨을 지정한다. -->
+  
+   <Loggers>
+        <!-- 스프링 프레임워크에서 찍는건 level을 info로 설정 -->
+        <logger name="org.springframework" level="info" additivity="false" >
+            <AppenderRef ref="stdout" />
+        </logger>
+
+        <!-- rolling file에는 debug, console에는 info 분리하여 처리 가능하다. -->
+        <logger name="com.bitcamp.board" level="debug" additivity="true" >
+            <AppenderRef ref="stdout" />
+        </logger>
+
+    <!-- ROOT logger-->
+        <Root level="debug"></Root>
+    </Loggers>
+    
+</Configuration>
