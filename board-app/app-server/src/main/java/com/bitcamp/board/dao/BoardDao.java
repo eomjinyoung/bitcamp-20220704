@@ -19,7 +19,13 @@ public interface BoardDao {
 
   int deleteByMember(int memberNo);
 
-  List<Board> findAll(@Param("keyword") String keyword, @Param("titleSort") String titleSort);
+  List<Board> findAll(
+      @Param("keyword") String keyword, 
+      @Param("titleSort") String titleSort,
+      @Param("startIndex") int startIndex,
+      @Param("size") int size);
+
+  int count(@Param("keyword") String keyword, @Param("titleSort") String titleSort);
 
   int insertFiles(Board board);
 

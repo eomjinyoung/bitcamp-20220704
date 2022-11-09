@@ -60,8 +60,14 @@ public class DefaultBoardService implements BoardService {
   }
 
   @Override
-  public List<Board> list(String keyword, String titleSort) throws Exception {
-    return boardDao.findAll(keyword, titleSort);
+  public List<Board> list(String keyword, String titleSort, int pageNo, int pageSize) throws Exception {
+    int startIndex = (pageNo - 1) * pageSize; // 이전 페이지까지 레코드 개수
+    return boardDao.findAll(keyword, titleSort, startIndex, pageSize);
+  }
+
+  @Override
+  public int size(String keyword, String titleSort) throws Exception {
+    return boardDao.count(keyword, titleSort);
   }
 
   @Override

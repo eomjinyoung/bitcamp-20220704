@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.bitcamp.board.domain.AttachedFile;
 import com.bitcamp.board.domain.Board;
@@ -95,13 +96,90 @@ public class BoardController {
   }
 
   @GetMapping("list")
-  public void list(String keyword, String titleSort, Model model) throws Exception {
-    if (keyword.length() == 0) {
+  public void list(
+      String keyword, 
+      String titleSort,
+      @RequestParam(defaultValue = "1") int pageNo,
+      @RequestParam(defaultValue = "3") int pageSize,
+      Model model) throws Exception {
+    if (keyword != null && keyword.length() == 0) {
       keyword = null;
     }
-    model.addAttribute("boards", boardService.list(keyword, titleSort));
+    if (titleSort != null && titleSort.length() == 0) {
+      titleSort = null;
+    }
+
+    if (pageSize < 3) {
+      pageSize = 3;
+    } else if (pageSize > 7) {
+      pageSize = 7;
+    }
+
+    int count = boardService.size(keyword, titleSort);
+
+    int maxPageNo = count / pageSize;
+    if ((count % pageSize) > 0) {
+      maxPageNo++;
+    }
+
+    if (pageNo < 1) {
+      pageNo = 1;
+    } else if (pageNo > maxPageNo) {
+      pageNo = maxPageNo;
+    }
+
+    model.addAttribute("boards", boardService.list(keyword, titleSort, pageNo, pageSize));
     model.addAttribute("keyword", keyword);
     model.addAttribute("titleSort", titleSort);
+    model.addAttribute("pageNo", pageNo);
+    model.addAttribute("maxPageNo", maxPageNo);
+    model.addAttribute("pageSize", pageSize); 
+  }
+
+  @RequestMapping("list-ajax")
+  public void listAjax(
+      String keyword, 
+      String titleSort,
+      @RequestParam(defaultValue = "1") int pageNo,
+      @RequestParam(defaultValue = "3") int pageSize,
+      Model model) throws Exception {
+    if (keyword != null && keyword.length() == 0) {
+      keyword = null;
+    }
+    if (titleSort != null && titleSort.length() == 0) {
+      titleSort = null;
+    }
+
+    if (pageSize < 3) {
+      pageSize = 3;
+    } else if (pageSize > 7) {
+      pageSize = 7;
+    }
+
+    int count = boardService.size(keyword, titleSort);
+
+    int maxPageNo = count / pageSize;
+    if ((count % pageSize) > 0) {
+      maxPageNo++;
+    }
+
+    if (pageNo < 1) {
+      pageNo = 1;
+    } else if (pageNo > maxPageNo) {
+      pageNo = maxPageNo;
+    }
+    if (pageNo == 0) {
+      pageNo = 1;
+    }
+
+
+    System.out.println("=====> " + pageNo);
+    model.addAttribute("boards", boardService.list(keyword, titleSort, pageNo, pageSize));
+    model.addAttribute("keyword", keyword);
+    model.addAttribute("titleSort", titleSort);
+    model.addAttribute("pageNo", pageNo);
+    model.addAttribute("maxPageNo", maxPageNo);
+    model.addAttribute("pageSize", pageSize); 
   }
 
   @GetMapping("detail")

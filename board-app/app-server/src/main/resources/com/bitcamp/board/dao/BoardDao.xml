@@ -31,7 +31,6 @@
     <result column="bno" property="boardNo"/>
   </resultMap>
   
-  
   <select id="findAll" resultMap="boardMap">
     select
       b.bno,
@@ -55,10 +54,32 @@
     </if>
     <if test="titleSort == null">
       bno desc
+    </if>
+    limit #{startIndex}, #{size}
+  </select>
+  
+  <select id="count" resultType="int">
+    select
+      count(*)
+    from 
+      app_board b
+      join app_member m on b.mno = m.mno
+    <if test="keyword != null">
+    where
+      b.title like concat("%", #{keyword}, "%")
+      or b.cont like concat("%", #{keyword}, "%")
+      or m.name like concat("%", #{keyword}, "%")
+    </if>
+    order by 
+    <if test="titleSort != null">
+      title ${titleSort}
+    </if>
+    <if test="titleSort == null">
+      bno desc
     </if>  
   </select>
   
-    <select id="findByNo" resultMap="boardMap">
+  <select id="findByNo" resultMap="boardMap">
     select
       b.bno,
       b.title,
