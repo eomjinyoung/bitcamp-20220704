@@ -21,7 +21,7 @@ insert into app_board(bno,title,cont,mno) values(21,'제목11','내용',4);
 insert into app_board(bno,title,cont,mno) values(22,'제목12','내용',4);
 insert into app_board(bno,title,cont,mno) values(23,'제목13','내용',4);
 insert into app_board(bno,title,cont,mno) values(24,'제목14','내용',4);
-insert into app_board(bno,title,cont,mno) values(16,'제목6','내용',4);
+
 
 
 
